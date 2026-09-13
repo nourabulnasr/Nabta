@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+dist/
+.env*
+!.env.example
+*.tsbuildinfo
+npm-debug.log*
+.DS_Store
+.npm-cache/
+artifacts/
+.playwright-mcp/
