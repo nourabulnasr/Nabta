@@ -1,13 +1,13 @@
 import { content, type Locale } from "@/content";
+import { HorizontalWork } from "@/components/motion/horizontal-work";
 
 export function SelectedWork({ locale }: { locale: Locale }) {
   return (
-    <section id="work" className="section-shell section-work page-gutter" aria-labelledby="work-title">
-      <div className="work-heading">
+    <HorizontalWork rtl={locale === "ar"} hint={content.work.scrollHint[locale]} label={content.work.navigationLabel[locale]} heading={
+      <div className="work-heading" data-reveal>
         <h2 id="work-title">{content.sections.work.title[locale]}</h2>
         <p>{content.sections.work.body[locale]}</p>
-      </div>
-      <div className="project-grid">
+      </div>}>
         {content.work.projects.map((project) => (
           <article className="project-entry" key={project.id} aria-labelledby={`${project.id}-title`}>
             <span className="project-category">{project.category[locale]}</span>
@@ -20,7 +20,6 @@ export function SelectedWork({ locale }: { locale: Locale }) {
             ) : <span className="pending-link">{content.work.pending[locale]}</span>}
           </article>
         ))}
-      </div>
-    </section>
+    </HorizontalWork>
   );
 }

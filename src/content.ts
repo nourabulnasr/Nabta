@@ -22,7 +22,7 @@ type Content = {
   hero: { title: LocalizedText; body: LocalizedText; explore: LocalizedText };
   sections: Record<SectionId, SectionContent>;
   about: { steps: EditorialItem[]; offer: LocalizedText; cta: LocalizedText };
-  work: { projects: Project[]; view: LocalizedText; pending: LocalizedText };
+  work: { projects: Project[]; view: LocalizedText; pending: LocalizedText; scrollHint: LocalizedText; navigationLabel: LocalizedText };
   tutoring: { subject: LocalizedText; details: LocalizedText[]; cta: LocalizedText; note: LocalizedText; bookingUrl: string | null };
   contact: { services: EditorialItem[]; invitation: LocalizedText; emailLabel: LocalizedText; whatsappLabel: LocalizedText; email: LocalizedText; whatsapp: LocalizedText; emailUrl: string | null; whatsappUrl: string | null; placeholderNote: LocalizedText };
   footer: { copyright: LocalizedText; backToTop: LocalizedText };
@@ -88,6 +88,8 @@ export const content: Content = {
     cta: { en: "Start with an audit", ar: "ابدأ بمراجعة لشغلك" },
   },
   work: {
+    scrollHint: { en: "Keep exploring", ar: "كمّل واكتشف" },
+    navigationLabel: { en: "Selected projects. Use arrow keys, Home or End to explore.", ar: "مشاريع مختارة. استخدم الأسهم أو Home وEnd للتنقل." },
     view: { en: "View project", ar: "شوف المشروع" },
     pending: { en: "Project link coming soon", ar: "رابط المشروع قريبًا" },
     projects: [

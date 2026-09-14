@@ -12,8 +12,8 @@ export function SectionShell({ id, locale, children }: SectionShellProps) {
 
   return (
     <section id={id} className={`section-shell section-${id} page-gutter`} aria-labelledby={`${id}-title`}>
-      <h2 id={`${id}-title`}>{section.title[locale]}</h2>
-      <div className="section-content">
+      <h2 id={`${id}-title`} data-reveal>{section.title[locale]}</h2>
+      <div className="section-content" data-reveal>
         {section.body[locale] && <p>{section.body[locale]}</p>}
         {children}
       </div>

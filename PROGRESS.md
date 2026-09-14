@@ -1,4 +1,4 @@
-last completed: Phase 2
+last completed: Phase 3
 
 # Nabta build progress
 
@@ -6,7 +6,7 @@ last completed: Phase 2
 
 - [x] DONE — Phase 1: Foundation + bilingual content system.
 - [x] DONE — Phase 2: Populate Hero, What Nabta Does, Selected Work, Tutoring, Services + Contact.
-- [ ] TODO — Phase 3: Motion and Capitolium feel with Motion/CSS; mobile Lighthouse report. Site complete and shippable after this phase.
+- [x] DONE — Phase 3: Motion and Capitolium feel with Motion/CSS; mobile Lighthouse report. Requested site implementation complete; publication prerequisites remain below.
 
 ## Future phases — pick one at a time
 
@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 2 is complete. Local preview only; no deployment. Phase 3 motion and all later work remain deferred until the next explicit go-ahead.
+Phase 3 is complete. Motion/CSS only, local preview only; no deployment. Phase 4+ remains deferred until Nour explicitly selects one. Implementation and verification: `docs/phase-3-plan.md` and `docs/phase-3-verification.md`.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,7 @@ Phase 2 is complete. Local preview only; no deployment. Phase 3 motion and all l
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phase 2 is complete. Wait for Nour's next go-ahead before beginning Phase 3. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–3 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
 
 ## Phase 2 result — 2026-09-14
 
@@ -72,3 +72,15 @@ Read this file first, then `docs/build-brief.md`. Inspect git status and the las
 - Phase 2 commit message: `Phase 2: Populate bilingual content and sections`.
 - Preview left running at `http://127.0.0.1:3000/en` and `/ar`. Visual appearance awaits Nour's review.
 - Outstanding destinations: seven project links, booking URL, email, WhatsApp, GitHub remote and eventual production domain. These do not block the requested placeholder scope. No push or deployment performed.
+
+## Phase 3 result — 2026-09-14
+
+- Added spring hero entrance, scale/fade on scroll, CSS drifting radial gradients, one parallax layer, staggered section entrances and thin scroll progress.
+- Selected Work now travels horizontally with vertical scroll, including reversed Arabic direction and keyboard traversal. Short viewports use native horizontal scrolling; reduced motion and no JavaScript retain a static grid.
+- Added fine-pointer cursor accent, magnetic tutoring CTA and expanding link underlines. Live reduced-motion changes remove animations, transforms and pinning.
+- Production build, lint and TypeScript checks succeeded. Verified both locales, mobile/desktop/short-screen layouts, no-JavaScript readability, keyboard endpoints and live reduced-motion cleanup. See verification record for evidence.
+- Final mobile Lighthouse: English 94, Arabic 88; accessibility 100 and best practices 100 in both. LCP 2.9s/2.8s, CLS 0. Arabic performance remains below 90 and both LCP values exceed the 2.5s target. These are recorded limitations, not claimed resolved.
+- Improved initial scores of 84/76 through inline CSS, a static Arabic font weight, native spring entrance animations and system-font decorative arrows. SEO 50 reflects the intentional local preview noindex and deferred production SEO setup.
+- Reports and screenshots: `artifacts/2026-09-14/`; final reports in `final/`. Visual appearance awaits Nour's review.
+- Commit message: `Phase 3: Add bilingual scroll choreography and motion`.
+- Preview remains local at `http://127.0.0.1:3000/en` and `/ar`. No remote exists for pushing. Phase 4+ was not started.

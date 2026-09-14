@@ -2,7 +2,7 @@
 
 Nabta (نبتة) is an AI consultancy and portfolio website based in Egypt.
 
-**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phase 2 populates the bilingual site; motion is reserved for Phase 3. Later phases require explicit selection. Local preview only for now.
+**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phases 1–3 provide the populated bilingual site and Motion/CSS choreography. Later phases require explicit selection. Local preview only for now.
 
 ## Run locally
 
@@ -41,12 +41,20 @@ Project records live in `content.work.projects`. Supply each `url` to replace it
 - Fraunces display and Manrope body, with Noto Sans Arabic for Arabic. Fonts are served by Next.js through `next/font`; a first build needs access to Google Fonts.
 - Mobile-first spacing and logical CSS properties support both directions.
 - Motion v12 uses `motion/react`, global `reducedMotion="user"` and LazyMotion. Future components should use `m` rather than `motion` inside the strict provider.
-- Phase 3 must additionally gate opacity, color, pointer and scroll-linked animation with `useReducedMotion()`: MotionConfig alone only suppresses transform/layout animation. Global CSS already disables CSS animations and transitions for reduced motion.
-- No storage, trackers, forms, backend, WebGL or animation choreography in Phases 1–2.
+- A live media-query hook gates opacity, pointer and scroll-linked animation as well as transforms. Global CSS disables animations and transitions for reduced motion. The site remains readable without JavaScript.
+- Hero and section entrances use native browser animations with spring curves through `motion/react-mini`. The hero has one parallax layer and a CSS radial-gradient drift.
+- Selected Work maps vertical scrolling to horizontal travel, reversing direction in Arabic. Below 700px viewport height it uses native horizontal scrolling. Reduced motion retains the static project grid. Focus the row to navigate with arrow keys, Home and End.
+- No storage, trackers, forms, backend or WebGL.
+
+## Performance verification
+
+With the production preview running, run `npm run audit:mobile`. Set `CHROME_PATH` to a Chrome installation if auto-detection is unavailable. The script saves both locale reports under the dated `artifacts/` directory (ignored by git). An optional output folder can be supplied after `--`.
+
+`scripts/verify-motion.cjs` is a browser verification function for the connected Playwright runner. It verifies horizontal movement and live reduced-motion cleanup. Measured Lighthouse results, broader browser checks and limitations are recorded in `docs/phase-3-verification.md`.
 
 ## Publishing later
 
-No deployment has been made. A Vercel project can use the standard Next.js build settings when publication is authorized. Before publishing, finish Phases 2 and 3, supply actual contact/project links and a production origin, remove the preview `noindex` metadata, and add canonical URLs, a sitemap, robots policy and organization schema using real business details. No production domain is assumed.
+No deployment has been made. A Vercel project can use the standard Next.js build settings when publication is authorized. Before publishing, supply actual contact/project links and a production origin, remove the preview `noindex` metadata, and add canonical URLs, a sitemap, robots policy and organization schema using real business details. No production domain is assumed.
 
 ## Checkpoint protocol
 

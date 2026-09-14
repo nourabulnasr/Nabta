@@ -4,17 +4,17 @@ export function ServicesContact({ locale }: { locale: Locale }) {
   const pending = !content.contact.emailUrl || !content.contact.whatsappUrl;
   return (
     <section id="contact" className="section-shell section-contact page-gutter" aria-labelledby="contact-title">
-      <h2 id="contact-title">{content.sections.contact.title[locale]}</h2>
-      <div className="contact-identity">
+      <h2 id="contact-title" data-reveal>{content.sections.contact.title[locale]}</h2>
+      <div className="contact-identity" data-reveal>
         <h3 className="contact-brand">{content.brand.name[locale]}</h3>
         <p>{content.sections.contact.body[locale]}</p>
       </div>
-      <dl className="service-list">
+      <dl className="service-list" data-reveal>
         {content.contact.services.map((service) => (
           <div key={service.title.en}><dt>{service.title[locale]}</dt><dd>{service.body[locale]}</dd></div>
         ))}
       </dl>
-      <div className="contact-details">
+      <div className="contact-details" data-reveal>
         <p className="contact-invitation">{content.contact.invitation[locale]}</p>
         <dl className="contact-channels">
           <div><dt>{content.contact.emailLabel[locale]}</dt><dd>

@@ -8,6 +8,8 @@ import { WhatNabtaDoes } from "@/components/sections/what-nabta-does";
 import { SelectedWork } from "@/components/sections/selected-work";
 import { Tutoring } from "@/components/sections/tutoring";
 import { ServicesContact } from "@/components/sections/services-contact";
+import { RevealGroup } from "@/components/motion/reveal-group";
+import { PageAccents } from "@/components/motion/page-accents";
 
 type PageProps = { params: Promise<{ locale: string }> };
 
@@ -34,13 +36,14 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
+      <PageAccents />
       <SiteHeader locale={locale} />
       <main id="main-content" tabIndex={-1}>
         <Hero locale={locale} />
-        <WhatNabtaDoes locale={locale} />
+        <RevealGroup><WhatNabtaDoes locale={locale} /></RevealGroup>
         <SelectedWork locale={locale} />
-        <Tutoring locale={locale} />
-        <ServicesContact locale={locale} />
+        <RevealGroup><Tutoring locale={locale} /></RevealGroup>
+        <RevealGroup><ServicesContact locale={locale} /></RevealGroup>
       </main>
       <SiteFooter locale={locale} />
     </>

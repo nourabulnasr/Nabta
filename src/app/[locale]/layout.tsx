@@ -8,7 +8,7 @@ import "../globals.css";
 
 const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" });
-const arabic = Noto_Sans_Arabic({ subsets: ["arabic"], variable: "--font-arabic", display: "swap", preload: false });
+const arabic = Noto_Sans_Arabic({ weight: "400", subsets: ["arabic"], variable: "--font-arabic", display: "swap" });
 
 export const viewport: Viewport = { themeColor: "#0A0C0B", colorScheme: "dark" };
 export const dynamicParams = false;
