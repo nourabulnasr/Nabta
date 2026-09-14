@@ -2,7 +2,7 @@
 
 Nabta (نبتة) is an AI consultancy and portfolio website based in Egypt.
 
-**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phase 1 creates the foundation; section content arrives in Phase 2, motion in Phase 3. Later phases require explicit selection. Local preview only for now.
+**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phase 2 populates the bilingual site; motion is reserved for Phase 3. Later phases require explicit selection. Local preview only for now.
 
 ## Run locally
 
@@ -27,9 +27,13 @@ Development and build scripts explicitly use webpack: the default Turbopack buil
 
 ## Editing content
 
-All authored visitor-facing copy lives in **`src/content.ts`**, including English and Arabic strings, navigation, accessibility labels, metadata, hero copy and section headings. Edit both `en` and `ar` values. The language is encoded in the URL, never browser storage. Section bodies are deliberately empty until Phase 2.
+All authored visitor-facing copy lives in **`src/content.ts`**, including English and Arabic strings, navigation, accessibility labels, metadata, hero copy, service descriptions and project summaries. Edit both `en` and `ar` values. The language is encoded in the URL, never browser storage.
 
-`sectionIds` are stable anchor identifiers. Keep them stable when changing navigation labels. Section components in `src/components/sections/` are ready for their Phase 2 layouts and content.
+`sectionIds` are stable anchor identifiers. Keep them stable when changing navigation labels. Independent section components live in `src/components/sections/`.
+
+Project records live in `content.work.projects`. Supply each `url` to replace its pending-link text with an actual link. Set `content.tutoring.bookingUrl` when booking opens; until then its CTA leads to the contact section with an explanatory note. Update both displayed contact strings and `emailUrl` / `whatsappUrl` together. The current `.example` email and incomplete WhatsApp number are intentionally non-clickable placeholders. Replace the note after connecting both channels.
+
+`src/components/mascot.tsx` currently returns null. Replace its implementation in the explicitly selected mascot phase; the hero already contains its swappable slot.
 
 ## Design foundation
 
@@ -38,7 +42,7 @@ All authored visitor-facing copy lives in **`src/content.ts`**, including Englis
 - Mobile-first spacing and logical CSS properties support both directions.
 - Motion v12 uses `motion/react`, global `reducedMotion="user"` and LazyMotion. Future components should use `m` rather than `motion` inside the strict provider.
 - Phase 3 must additionally gate opacity, color, pointer and scroll-linked animation with `useReducedMotion()`: MotionConfig alone only suppresses transform/layout animation. Global CSS already disables CSS animations and transitions for reduced motion.
-- No storage, trackers, forms, backend, WebGL or animation choreography in Phase 1.
+- No storage, trackers, forms, backend, WebGL or animation choreography in Phases 1–2.
 
 ## Publishing later
 

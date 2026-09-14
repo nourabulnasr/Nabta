@@ -1,4 +1,5 @@
 import { content, type Locale } from "@/content";
+import { Mascot } from "@/components/mascot";
 
 export function Hero({ locale }: { locale: Locale }) {
   return (
@@ -9,7 +10,10 @@ export function Hero({ locale }: { locale: Locale }) {
       </div>
       <div className="hero-body">
         <h1 id="hero-title" className="hero-wordmark">{content.hero.title[locale]}</h1>
-        {content.hero.body[locale] && <p>{content.hero.body[locale]}</p>}
+        <div className="hero-support">
+          <p className="hero-tagline">{content.hero.body[locale]}</p>
+          <div className="mascot-slot"><Mascot /></div>
+        </div>
       </div>
       <div className="hero-bottom">
         <span className="hero-rule" aria-hidden="true" />

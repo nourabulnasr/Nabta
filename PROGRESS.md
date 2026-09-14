@@ -1,11 +1,11 @@
-last completed: Phase 1
+last completed: Phase 2
 
 # Nabta build progress
 
 ## Checkpoints
 
 - [x] DONE — Phase 1: Foundation + bilingual content system.
-- [ ] TODO — Phase 2: Populate Hero, What Nabta Does, Selected Work, Tutoring, Services + Contact.
+- [x] DONE — Phase 2: Populate Hero, What Nabta Does, Selected Work, Tutoring, Services + Contact.
 - [ ] TODO — Phase 3: Motion and Capitolium feel with Motion/CSS; mobile Lighthouse report. Site complete and shippable after this phase.
 
 ## Future phases — pick one at a time
@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 1 only. Local preview only; no deployment. Empty structured section bodies are intentional. Phase 2 content, mascot slot, animation choreography, and WebGL are deferred.
+Phase 2 is complete. Local preview only; no deployment. Phase 3 motion and all later work remain deferred until the next explicit go-ahead.
 
 ## Decisions — 2026-09-13
 
@@ -56,4 +56,19 @@ Phase 1 only. Local preview only; no deployment. Empty structured section bodies
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phase 1 is complete. Wait for Nour to say "continue" before beginning Phase 2. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phase 2 is complete. Wait for Nour's next go-ahead before beginning Phase 3. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+
+## Phase 2 result — 2026-09-14
+
+- Exact EN/AR hero taglines added, with a swappable `Mascot` component that returns null.
+- Consultancy explanation covers opportunity diagnosis, paid builds, reusable products and a free audit for the first three clients.
+- Seven projects populated from a bilingual data array. Six descriptions use local READMEs; Legato uses the supplied Egyptian labour-law scope. No invented performance claims or deployment claims.
+- Selected Work uses an asymmetric two-column desktop grid and a single-column mobile list. Horizontal-scroll motion remains Phase 3 work.
+- Tutoring identifies Egyptian secondary-school Programming & AI and includes a Book a session CTA with a booking-soon note.
+- Services/contact prominently names Nabta and explains its services and Cairo location. Contact details are explicit, non-clickable placeholders. Booking and audit CTAs currently lead to this section.
+- Build and `npm run check` succeeded. Both locales tested at 320, 390, 768 and 1440 px with no horizontal overflow, seven project entries and valid anchors. Final CTA, empty mascot, no-JavaScript, reduced-motion and storage checks succeeded. No browser page errors.
+- A booking-note CSS specificity issue was corrected and verified at 13px. OneDrive caused another transient rebuild cleanup error; unchanged retry succeeded.
+- Verification and source notes: `docs/phase-2-notes.md`. Screenshots in `artifacts/2026-09-13/phase-2-*` were captured during the session before the date changed; local artifacts remain ignored by git.
+- Phase 2 commit message: `Phase 2: Populate bilingual content and sections`.
+- Preview left running at `http://127.0.0.1:3000/en` and `/ar`. Visual appearance awaits Nour's review.
+- Outstanding destinations: seven project links, booking URL, email, WhatsApp, GitHub remote and eventual production domain. These do not block the requested placeholder scope. No push or deployment performed.
