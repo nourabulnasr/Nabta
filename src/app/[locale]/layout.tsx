@@ -10,7 +10,7 @@ const display = Fraunces({ subsets: ["latin"], variable: "--font-display", displ
 const body = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 const arabic = Noto_Sans_Arabic({ weight: "400", subsets: ["arabic"], variable: "--font-arabic", display: "swap" });
 
-export const viewport: Viewport = { themeColor: "#0A0C0B", colorScheme: "dark" };
+export const viewport: Viewport = { themeColor: "#050e1e", colorScheme: "dark" };
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -33,3 +33,4 @@ export default async function LocaleLayout({ children, params }: {
     </html>
   );
 }
+

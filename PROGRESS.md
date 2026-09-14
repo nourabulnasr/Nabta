@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 4 is complete. The SVG mascot uses Motion with no WebGL. Local preview only; no deployment. Phase 5+ remains deferred until Nour explicitly selects one. Latest verification: `docs/phase-4-verification.md`.
+Phase 4 is complete and revised to use Nour's supplied robot mascot and matching navy/cyan/lime palette. No WebGL. Local preview only; no deployment. Phase 5+ remains deferred until Nour explicitly selects one. Latest verification: `docs/brand-revision.md`.
 
 ## Decisions — 2026-09-13
 
@@ -94,3 +94,14 @@ Read this file first, then `docs/build-brief.md`. Inspect git status and the las
 - Fresh mobile Lighthouse EN94/AR92, accessibility100/best-practices100, CLS0. LCP2.9s/3.1s remains above2.5s; SEO50 remains preview-related. Lab variation means the Arabic score increase is not attributed to the mascot.
 - Screenshots: `artifacts/2026-09-14/phase-4-{en,ar}-{390,1440}.png`. Reports: `artifacts/2026-09-14/phase-4/`. See `docs/phase-4-verification.md`.
 - Visual review remains Nour's. Commit message: `Phase 4: Add animated SVG sprout mascot`. Local preview remains running. No remote for pushing; no deployment. Phase 5+ untouched.
+
+## Phase 4 brand correction — 2026-09-14
+
+- Nour supplied the actual robot mascot sheet, Facebook profile image and cover. The first image governs mascot identity; the other two are supporting brand references.
+- Replaced the invented SVG sprout with an isolated raster asset based on the large upper-left robot from the first sheet. Preserves the navy sphere, cyan eyes, single leaf, luminous ear ring and orbit spheres. Asset saved under `public/images/2026-09-14/nabta-mascot.png`, rendered through next/image.
+- Applied midnight navy, cool white, cyan and lime throughout shared tokens, hero atmosphere, browser theme and favicon. This explicit brand correction supersedes the earlier green-neutral palette.
+- Mascot enters with a gentle spring float/tilt. Reduced motion and no-JavaScript versions remain static. No 3D or Phase 5 work.
+- Build, lint and TypeScript succeeded. EN/AR at320/390/768/1440px verified without overlap or horizontal overflow; image loaded in every case. Verified active animation, live reduced cleanup and no-JavaScript image.
+- Latest mobile Lighthouse EN92/AR81, accessibility100/best-practices100, CLS0. LCP3.1s/3.4s. Arabic remains below target; run-to-run variance is substantial. Do not reuse older scores as current results.
+- Screenshots: `artifacts/2026-09-14/brand-{en,ar}-{390,1440}.png`. Reports in `artifacts/2026-09-14/brand/`. Prompt and verification: `docs/brand-revision.md`.
+- Commit message: `Phase 4: Match supplied mascot and brand palette`. Visual identity/cutout approval remains Nour's. No remote configured, no deployment.

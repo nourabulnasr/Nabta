@@ -33,11 +33,11 @@ All authored visitor-facing copy lives in **`src/content.ts`**, including Englis
 
 Project records live in `content.work.projects`. Supply each `url` to replace its pending-link text with an actual link. Set `content.tutoring.bookingUrl` when booking opens; until then its CTA leads to the contact section with an explanatory note. Update both displayed contact strings and `emailUrl` / `whatsappUrl` together. The current `.example` email and incomplete WhatsApp number are intentionally non-clickable placeholders. Replace the note after connecting both channels.
 
-`src/components/mascot.tsx` contains the Phase 4 decorative SVG sprout: a shaded seed, two leaves and a quiet expression. Its crown unfurls once using a native spring animation. Reduced motion and no JavaScript display the complete static character. It sits beside the tagline on mobile and beside the wordmark on desktop, within the existing swappable slot. No added dependency, remote asset or WebGL is needed.
+`src/components/mascot.tsx` displays the robot mascot supplied by Nour, isolated from the first reference sheet into `public/images/2026-09-14/nabta-mascot.png`. Next.js optimizes its responsive image sizes. A gentle spring float/tilt introduces it; reduced motion and no JavaScript show the complete static character. It sits beside the tagline on mobile and beside the wordmark on desktop. No WebGL or new dependency. The second and third references inform the brand palette; they are not added as page content.
 
 ## Design foundation
 
-- Near-black, warm off-white, sprout green and desaturated cyan through OKLCH tokens in `src/app/globals.css`.
+- Midnight navy, cool off-white, lime and cyan matching the supplied brand artwork through OKLCH tokens in `src/app/globals.css`.
 - Fraunces display and Manrope body, with Noto Sans Arabic for Arabic. Fonts are served by Next.js through `next/font`; a first build needs access to Google Fonts.
 - Mobile-first spacing and logical CSS properties support both directions.
 - Motion v12 uses `motion/react`, global `reducedMotion="user"` and LazyMotion. Future components should use `m` rather than `motion` inside the strict provider.
@@ -59,3 +59,4 @@ No deployment has been made. A Vercel project can use the standard Next.js build
 ## Checkpoint protocol
 
 After each phase, update `PROGRESS.md`, verify the work, run `git add -A`, and commit `Phase N: <what>`. Stop for Nour's go-ahead. Do not add attribution trailers. There is currently no GitHub remote configured; local commits cannot be pushed until a destination is supplied.
+
