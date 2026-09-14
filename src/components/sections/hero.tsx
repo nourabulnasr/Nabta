@@ -1,16 +1,27 @@
 "use client";
 
-import { m, useScroll, useTransform } from "motion/react";
+import { m, useInView, useScroll, useTransform } from "motion/react";
 import { useAnimate } from "motion/react-mini";
 import { spring } from "motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { HeroBackground } from "@/components/motion/hero-background";
 import { content, type Locale } from "@/content";
 import { Mascot } from "@/components/mascot";
 import { useMotionEnabled } from "@/components/motion/use-media-query";
 
 export function Hero({ locale }: { locale: Locale }) {
   const [scope, animate] = useAnimate<HTMLElement>();
-  const enabled = useMotionEnabled();
+  const prefersMotion = useMotionEnabled();
+  const [paused, setPaused] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const inView = useInView(scope);
+  const enabled = prefersMotion && !paused;
+  const active = enabled && inView && visible;
+  useEffect(() => {
+    const update = () => setVisible(!document.hidden);
+    document.addEventListener("visibilitychange", update);
+    return () => document.removeEventListener("visibilitychange", update);
+  }, []);
   const { scrollYProgress } = useScroll({ target: scope, offset: ["start start", "end start"] });
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.91]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.15]);
@@ -25,9 +36,9 @@ export function Hero({ locale }: { locale: Locale }) {
   }, [enabled, animate]);
 
   return (
-    <section ref={scope} className="hero page-gutter" aria-labelledby="hero-title">
+    <section ref={scope} className="hero page-gutter" aria-labelledby="hero-title" data-hero-active={active}>
       <m.div className="hero-atmosphere" data-motion="parallax" aria-hidden="true" style={{ y: enabled ? backgroundY : 0 }}>
-        <div className="hero-glow" />
+        <HeroBackground enabled={prefersMotion} active={active} />
       </m.div>
       <div className="hero-intro">
         <span className="hero-descriptor">{content.brand.descriptor[locale]}</span>
@@ -37,10 +48,13 @@ export function Hero({ locale }: { locale: Locale }) {
         <h1 id="hero-title" className="hero-wordmark" data-motion="entrance">{content.hero.title[locale]}</h1>
         <div className="hero-support">
           <p className="hero-tagline">{content.hero.body[locale]}</p>
-          <div className="mascot-slot" data-motion="entrance"><Mascot /></div>
+          <div className="mascot-slot" data-motion="entrance"><Mascot active={active} /></div>
         </div>
       </m.div>
       <div className="hero-bottom">
+        {prefersMotion && <button className="animation-control" type="button" onClick={() => setPaused(!paused)} aria-pressed={paused}>
+          {paused ? content.hero.resume[locale] : content.hero.pause[locale]}
+        </button>}
         <span className="hero-rule" aria-hidden="true" />
         <a href="#about" className="explore-link">
           {content.hero.explore[locale]} <span aria-hidden="true">↓</span>

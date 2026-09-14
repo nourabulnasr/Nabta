@@ -19,7 +19,7 @@ type Content = {
   metadata: { title: LocalizedText; description: LocalizedText };
   accessibility: { skipToContent: LocalizedText; mainNavigation: LocalizedText; home: LocalizedText };
   language: { label: LocalizedText; switchLabel: LocalizedText };
-  hero: { title: LocalizedText; body: LocalizedText; explore: LocalizedText };
+  hero: { title: LocalizedText; body: LocalizedText; explore: LocalizedText; pause: LocalizedText; resume: LocalizedText };
   sections: Record<SectionId, SectionContent>;
   about: { steps: EditorialItem[]; offer: LocalizedText; cta: LocalizedText };
   work: { projects: Project[]; view: LocalizedText; pending: LocalizedText; scrollHint: LocalizedText; navigationLabel: LocalizedText };
@@ -55,6 +55,8 @@ export const content: Content = {
     title: { en: "Nabta", ar: "نبتة" },
     body: { en: "AI solutions that grow your business", ar: "حلول ذكاء اصطناعي بتنمّي شغلك" },
     explore: { en: "Explore Nabta", ar: "اكتشف نبتة" },
+    pause: { en: "Pause animation", ar: "إيقاف الحركة" },
+    resume: { en: "Resume animation", ar: "تشغيل الحركة" },
   },
   sections: {
     about: {

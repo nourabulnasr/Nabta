@@ -217,3 +217,9 @@ html[lang="ar"] .contact-brand { font-family: var(--font-arabic), sans-serif; le
   }
 }
 
+.hero-shader { position: absolute; inset: 0; opacity: 0.85; }
+.hero[data-hero-active="false"] .hero-glow { animation-play-state: paused; }
+.animation-control { flex-shrink: 0; border: 1px solid var(--rule); border-radius: 2rem; background: var(--ground); color: var(--muted); font: inherit; font-size: 0.75rem; min-height: 44px; padding: 0.5rem 0.875rem; cursor: pointer; }
+.animation-control:hover { color: var(--mist); border-color: var(--mist); }
+.animation-control:focus-visible { outline: 2px solid var(--sprout); outline-offset: 4px; }
+@media (max-width: 30rem) { .hero-bottom { gap: 0.75rem; } }

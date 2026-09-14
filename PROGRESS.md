@@ -1,4 +1,4 @@
-last completed: Phase 4
+last completed: Phase 5
 
 # Nabta build progress
 
@@ -11,7 +11,7 @@ last completed: Phase 4
 ## Future phases — pick one at a time
 
 - [x] DONE — Phase 4: Animated SVG mascot (2D Motion, not 3D).
-- [ ] TODO — Phase 5: Liquid-glass / shader gradient hero background (React Three Fiber).
+- [x] DONE — Phase 5: Liquid-glass / shader gradient hero background (React Three Fiber).
 - [ ] TODO — Phase 6: WebGL particle system accent.
 - [ ] TODO — Phase 7: R3F 3D hero object and scroll-driven 3D.
 - [ ] TODO — Phase 8: Hero-to-navbar logo morph / shared-element transitions.
@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 4 is complete and revised to use Nour's supplied robot mascot and matching navy/cyan/lime palette. No WebGL. Local preview only; no deployment. Phase 5+ remains deferred until Nour explicitly selects one. Latest verification: `docs/brand-revision.md`.
+Phase 5 is complete: desktop shader ribbon and continuously floating supplied mascot. Local preview only; no deployment. Phase 6+ remains deferred until Nour explicitly selects one. Latest verification: `docs/phase-5-verification.md`.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,7 @@ Phase 4 is complete and revised to use Nour's supplied robot mascot and matching
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–4 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–5 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
 
 ## Phase 2 result — 2026-09-14
 
@@ -105,3 +105,14 @@ Read this file first, then `docs/build-brief.md`. Inspect git status and the las
 - Latest mobile Lighthouse EN92/AR81, accessibility100/best-practices100, CLS0. LCP3.1s/3.4s. Arabic remains below target; run-to-run variance is substantial. Do not reuse older scores as current results.
 - Screenshots: `artifacts/2026-09-14/brand-{en,ar}-{390,1440}.png`. Reports in `artifacts/2026-09-14/brand/`. Prompt and verification: `docs/brand-revision.md`.
 - Commit message: `Phase 4: Match supplied mascot and brand palette`. Visual identity/cutout approval remains Nour's. No remote configured, no deployment.
+
+## Phase 5 result — 2026-09-14
+
+- Nour explicitly selected Phase 5 and reiterated that the supplied mascot must animate. Added a slow navy/cyan glass-like shader ribbon on desktop and repeating gentle spring float/tilt for the mascot.
+- Shader is one deferred React Three Fiber plane, pixel ratio1, at most30 render requests/second. Phones below768px retain CSS background. No particles or 3D mascot/model.
+- Bilingual pause/resume freezes hero effects. Mascot and shader scheduling stop offscreen/hidden tab. Reduced motion disables all choreography and removes WebGL. CSS fallback remains for no-JS, load failure, unsupported WebGL and context loss.
+- React/React DOM aligned to19.2.8 because Fiber9.7.0 declares peer React>=19<19.3; Next16.3.5 supports this. Installed Three0.184.0. No forced peer overrides; npm audit reported0 vulnerabilities at install.
+- Build, lint and TypeScript succeeded. Verified canvas presence only on desktop, EN/AR320/390/768/1440 layout, repeating mascot, pause/resume, offscreen stop, live reduced motion, context loss and no-JS fallback. Fixed pause initially triggering false context-loss fallback.
+- Final mobile Lighthouse EN95/AR95, accessibility100/best-practices100, CLS0. LCP2.9s both remains above2.5s; SEO50 is preview-related. Mobile results measure the lighter CSS fallback, not desktop WebGL performance.
+- Local screenshots `artifacts/2026-09-14/phase-5-{en,ar}-{390,1440}.png`; reports in `artifacts/2026-09-14/phase-5/`. Detailed verification: `docs/phase-5-verification.md`.
+- Commit message: `Phase 5: Add shader hero and continuous mascot motion`. Visual review remains Nour's. Preview left running. No remote for push, no deployment. Phase6+ untouched.

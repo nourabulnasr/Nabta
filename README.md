@@ -33,7 +33,7 @@ All authored visitor-facing copy lives in **`src/content.ts`**, including Englis
 
 Project records live in `content.work.projects`. Supply each `url` to replace its pending-link text with an actual link. Set `content.tutoring.bookingUrl` when booking opens; until then its CTA leads to the contact section with an explanatory note. Update both displayed contact strings and `emailUrl` / `whatsappUrl` together. The current `.example` email and incomplete WhatsApp number are intentionally non-clickable placeholders. Replace the note after connecting both channels.
 
-`src/components/mascot.tsx` displays the robot mascot supplied by Nour, isolated from the first reference sheet into `public/images/2026-09-14/nabta-mascot.png`. Next.js optimizes its responsive image sizes. A gentle spring float/tilt introduces it; reduced motion and no JavaScript show the complete static character. It sits beside the tagline on mobile and beside the wordmark on desktop. No WebGL or new dependency. The second and third references inform the brand palette; they are not added as page content.
+`src/components/mascot.tsx` displays the robot mascot supplied by Nour, isolated from the first reference sheet into `public/images/2026-09-14/nabta-mascot.png`. Next.js optimizes its responsive image sizes. A repeating spring float/tilt keeps it animated while the hero is visible; reduced motion and no JavaScript show the complete static character. It sits beside the tagline on mobile and beside the wordmark on desktop. Phase 5 adds a separate desktop WebGL background; the mascot remains a lightweight image. The second and third references inform the brand palette; they are not added as page content.
 
 ## Design foundation
 
@@ -44,7 +44,9 @@ Project records live in `content.work.projects`. Supply each `url` to replace it
 - A live media-query hook gates opacity, pointer and scroll-linked animation as well as transforms. Global CSS disables animations and transitions for reduced motion. The site remains readable without JavaScript.
 - Hero and section entrances use native browser animations with spring curves through `motion/react-mini`. The hero has one parallax layer and a CSS radial-gradient drift.
 - Selected Work maps vertical scrolling to horizontal travel, reversing direction in Arabic. Below 700px viewport height it uses native horizontal scrolling. Reduced motion retains the static project grid. Focus the row to navigate with arrow keys, Home and End.
-- No storage, trackers, forms, backend or WebGL.
+- Phase 5 uses one deferred React Three Fiber shader plane on desktop, capped at 30 render requests per second and device pixel ratio 1. Mobile, reduced motion, load failures and unavailable WebGL retain the CSS gradient. Pause/resume controls the hero effects and mascot. Offscreen and hidden-tab animation work stops.
+- React/React DOM use 19.2.8 for compatibility with React Three Fiber 9.7.0. Next.js supports this version. No forced peer overrides.
+- No storage, trackers, forms or backend.
 
 ## Performance verification
 
