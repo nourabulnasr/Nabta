@@ -1,4 +1,4 @@
-last completed: Phase 3
+last completed: Phase 4
 
 # Nabta build progress
 
@@ -10,7 +10,7 @@ last completed: Phase 3
 
 ## Future phases — pick one at a time
 
-- [ ] TODO — Phase 4: Animated SVG mascot (2D Motion, not 3D).
+- [x] DONE — Phase 4: Animated SVG mascot (2D Motion, not 3D).
 - [ ] TODO — Phase 5: Liquid-glass / shader gradient hero background (React Three Fiber).
 - [ ] TODO — Phase 6: WebGL particle system accent.
 - [ ] TODO — Phase 7: R3F 3D hero object and scroll-driven 3D.
@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 3 is complete. Motion/CSS only, local preview only; no deployment. Phase 4+ remains deferred until Nour explicitly selects one. Implementation and verification: `docs/phase-3-plan.md` and `docs/phase-3-verification.md`.
+Phase 4 is complete. The SVG mascot uses Motion with no WebGL. Local preview only; no deployment. Phase 5+ remains deferred until Nour explicitly selects one. Latest verification: `docs/phase-4-verification.md`.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,7 @@ Phase 3 is complete. Motion/CSS only, local preview only; no deployment. Phase 4
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–3 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–4 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
 
 ## Phase 2 result — 2026-09-14
 
@@ -84,3 +84,13 @@ Read this file first, then `docs/build-brief.md`. Inspect git status and the las
 - Reports and screenshots: `artifacts/2026-09-14/`; final reports in `final/`. Visual appearance awaits Nour's review.
 - Commit message: `Phase 3: Add bilingual scroll choreography and motion`.
 - Preview remains local at `http://127.0.0.1:3000/en` and `/ar`. No remote exists for pushing. Phase 4+ was not started.
+
+## Phase 4 result — 2026-09-14
+
+- Nour explicitly selected the animated SVG mascot. Replaced the null component with a decorative seed character, two asymmetric leaves, quiet expression and directional green shading.
+- One native spring unfurl joins the existing hero entrance. No perpetual mascot animation, new package, remote asset or WebGL. Reduced motion and no JavaScript retain the complete static character.
+- Mobile placement is beside the tagline; desktop placement uses the open space beside the wordmark. Corrected a desktop placement issue found in screenshot review.
+- Production build, lint and TypeScript succeeded. Browser checks covered EN/AR at 320/390/768/1440px, no text overlap or page overflow, live motion cleanup, active leaf motion and no-JavaScript visibility.
+- Fresh mobile Lighthouse EN94/AR92, accessibility100/best-practices100, CLS0. LCP2.9s/3.1s remains above2.5s; SEO50 remains preview-related. Lab variation means the Arabic score increase is not attributed to the mascot.
+- Screenshots: `artifacts/2026-09-14/phase-4-{en,ar}-{390,1440}.png`. Reports: `artifacts/2026-09-14/phase-4/`. See `docs/phase-4-verification.md`.
+- Visual review remains Nour's. Commit message: `Phase 4: Add animated SVG sprout mascot`. Local preview remains running. No remote for pushing; no deployment. Phase 5+ untouched.

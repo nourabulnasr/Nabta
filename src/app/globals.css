@@ -81,7 +81,11 @@ p { max-inline-size: 60ch; }
 .hero-bottom { display: flex; align-items: center; gap: 1.5rem; }
 .hero-support { display: flex; justify-content: space-between; align-items: center; margin-block-start: 1.5rem; }
 .hero-tagline { max-inline-size: 24ch; font-size: clamp(1.25rem, 2.5vw, 2rem); line-height: 1.45; letter-spacing: -0.035em; }
-.mascot-slot:empty { display: none; }
+.mascot-slot { flex: 0 0 clamp(5rem, 20vw, 12rem); }
+.nabta-mascot { --mascot-shadow: oklch(44% 0.075 145); display: block; inline-size: 100%; block-size: auto; overflow: visible; }
+.mascot-crown { transform-box: view-box; transform-origin: 51% 50%; }
+.hero-support { gap: 1rem; }
+.hero-tagline { min-inline-size: 0; }
 .hero-rule { flex: 1; block-size: 1px; background: var(--rule); position: relative; }
 .hero-rule::before { content: ""; display: block; inline-size: 3rem; block-size: 1px; background: var(--sprout); }
 .explore-link { display: inline-flex; align-items: center; gap: 1.5rem; min-block-size: 44px; font-size: 0.8125rem; }
@@ -174,7 +178,8 @@ html[lang="ar"] .contact-brand { font-family: var(--font-arabic), sans-serif; le
   .hero { min-block-size: calc(92svh - 108px); padding-block-start: 3rem; }
   .hero-intro { flex-direction: row; justify-content: space-between; }
   .hero-location { color: var(--mist); }
-  .hero-body { padding-block: 4rem; }
+  .hero-body { position: relative; padding-block: 4rem; }
+  .mascot-slot { position: absolute; inset-inline-end: 0; inset-block-start: 5rem; inline-size: clamp(5rem, 16vw, 12rem); }
   .hero-wordmark { font-size: clamp(12rem, 25.5vw, 30rem); }
   .section-shell { grid-template-columns: 1fr 1fr; padding-block: 5rem; min-block-size: 19rem; }
   .section-about { padding-block-start: 6rem; }

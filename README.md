@@ -33,7 +33,7 @@ All authored visitor-facing copy lives in **`src/content.ts`**, including Englis
 
 Project records live in `content.work.projects`. Supply each `url` to replace its pending-link text with an actual link. Set `content.tutoring.bookingUrl` when booking opens; until then its CTA leads to the contact section with an explanatory note. Update both displayed contact strings and `emailUrl` / `whatsappUrl` together. The current `.example` email and incomplete WhatsApp number are intentionally non-clickable placeholders. Replace the note after connecting both channels.
 
-`src/components/mascot.tsx` currently returns null. Replace its implementation in the explicitly selected mascot phase; the hero already contains its swappable slot.
+`src/components/mascot.tsx` contains the Phase 4 decorative SVG sprout: a shaded seed, two leaves and a quiet expression. Its crown unfurls once using a native spring animation. Reduced motion and no JavaScript display the complete static character. It sits beside the tagline on mobile and beside the wordmark on desktop, within the existing swappable slot. No added dependency, remote asset or WebGL is needed.
 
 ## Design foundation
 
