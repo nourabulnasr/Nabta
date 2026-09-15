@@ -2,7 +2,7 @@
 
 Nabta (نبتة) is an AI consultancy and portfolio website based in Egypt.
 
-**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phases 1–3 provide the populated bilingual site and Motion/CSS choreography. Later phases require explicit selection. Local preview only for now.
+**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phases 1–6 provide the bilingual site, supplied mascot, desktop shader/particles and playful opening sequence. Later phases require explicit selection. Local preview only for now.
 
 ## Run locally
 
@@ -62,3 +62,11 @@ No deployment has been made. A Vercel project can use the standard Next.js build
 
 After each phase, update `PROGRESS.md`, verify the work, run `git add -A`, and commit `Phase N: <what>`. Stop for Nour's go-ahead. Do not add attribution trailers. There is currently no GitHub remote configured; local commits cannot be pushed until a destination is supplied.
 
+
+## Opening sequence
+
+Phase 6 opens with the supplied mascot and oversized bilingual Nabta lettering. After key font/image readiness (with a bounded wait), a short particle gust clears the lettering and the mascot flies to its measured hero position. Skip intro and Escape reveal the page immediately. Reduced motion and no JavaScript bypass the overlay. A resize dismisses the flight to avoid stale landing coordinates. The introduction runs on a fresh page load; no browser storage is used.
+
+The desktop shader contains 28 sparse motes in its existing canvas. The short intro gust uses 24 lightweight elements so phones do not need WebGL. Existing hero pause/reduced-motion behavior applies after landing. This brings the mascot landing transition forward; the future hero-to-navbar wordmark morph remains deferred.
+
+Run `node scripts/verify-intro.mjs` with the production server running to verify the opening sequence in local Chrome. Set CHROME_PATH if necessary. See `docs/phase-6-verification.md` for measured results and limitations.

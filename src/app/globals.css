@@ -25,7 +25,7 @@
 }
 
 * { box-sizing: border-box; }
-html { background: var(--ground); scroll-padding-block-start: 2rem; }
+html { background: var(--ground); scroll-padding-block-start: 2rem; scrollbar-gutter: stable; }
 body {
   margin: 0;
   background: var(--ground);
@@ -223,3 +223,32 @@ html[lang="ar"] .contact-brand { font-family: var(--font-arabic), sans-serif; le
 .animation-control:hover { color: var(--mist); border-color: var(--mist); }
 .animation-control:focus-visible { outline: 2px solid var(--sprout); outline-offset: 4px; }
 @media (max-width: 30rem) { .hero-bottom { gap: 0.75rem; } }
+html[data-brand-intro="true"] .mascot-slot .nabta-mascot { visibility: hidden; transform: none !important; }
+.brand-intro { position: fixed; inset: 0; z-index: 100; overflow: hidden; isolation: isolate; direction: ltr; }
+.intro-curtain { position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 68% 45%, oklch(25% 0.075 245), transparent 55%), var(--ground); }
+.intro-meta { position: absolute; inset-inline: var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 2rem; color: var(--muted); font-size: 0.8125rem; z-index: 4; }
+.intro-top { top: 2rem; }
+.intro-top button { border: 1px solid var(--rule); background: var(--ground); color: var(--ink); padding: 0.65rem 1.2rem; min-height: 44px; border-radius: 2rem; font: inherit; cursor: pointer; white-space: nowrap; }
+.intro-top button:focus-visible { outline: 2px solid var(--mist); outline-offset: 5px; }
+.intro-bottom { bottom: 2rem; }
+.intro-loading-line { width: 28%; height: 1px; background: var(--rule); overflow: hidden; }
+.intro-loading-line::after { content: ''; display: block; height: 100%; width: 45%; background: var(--mist); animation: intro-loading 1.2s ease-in-out infinite alternate; }
+.intro-wordmark { position: absolute; inset-inline-start: 7vw; top: 32%; font-family: var(--font-display), serif; font-size: clamp(7rem, 24vw, 25rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.08em; color: var(--ink); }
+.intro-wordmark span { display: block; margin-block-start: 2rem; font-family: var(--font-body), var(--font-arabic), sans-serif; font-size: clamp(1rem, 2vw, 1.75rem); letter-spacing: -0.02em; color: var(--mist); }
+.intro-robot { position: absolute; left: 73%; top: 44%; width: clamp(180px, 28vw, 360px); transform: translate(-50%, -50%); transform-origin: top left; z-index: 3; will-change: transform; }
+.intro-robot img { display: block; width: 100%; height: auto; }
+.intro-gust { position: absolute; left: 61%; top: 52%; z-index: 2; }
+.intro-particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--mist); opacity: 0; box-shadow: 0 0 14px var(--mist); }
+.intro-particle:nth-child(4n) { background: var(--sprout); width: 9px; height: 3px; box-shadow: 0 0 14px var(--sprout); }
+html[lang="ar"] .intro-wordmark { font-family: var(--font-arabic), sans-serif; letter-spacing: 0; font-size: clamp(7rem, 20vw, 22rem); }
+html[lang="ar"] .intro-wordmark span { font-family: var(--font-arabic), sans-serif; }
+@keyframes intro-loading { to { transform: translateX(130%); } }
+@media (max-width: 767px) {
+  .intro-wordmark { top: 53%; inset-inline-start: 8%; font-size: 26vw; }
+  .intro-wordmark span { margin-block-start: 1.5rem; font-size: 1rem; }
+  .intro-robot { left: 61%; top: 32%; width: 220px; }
+  .intro-gust { left: 44%; top: 37%; }
+  .intro-top { top: 1.5rem; }
+  .intro-top > span { max-width: 40%; }
+  html[lang="ar"] .intro-wordmark { font-size: 25vw; }
+}

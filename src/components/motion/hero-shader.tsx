@@ -22,6 +22,17 @@ void main(){
   vec3 color=navy+cyan*body*0.24;
   color+=mix(cyan,lime,smoothstep(0.6,1.0,p.x))*edge*light*0.22;
   color*=0.7+0.3*smoothstep(0.0,0.5,p.x);
+  // Sparse, deterministic motes share the existing canvas and render budget.
+  for(int i=0;i<28;i++){
+    float seed=float(i);
+    float x=fract(sin(seed*12.9898+1.0)*43758.5453);
+    float y=fract(sin(seed*7.233+4.0)*19341.313);
+    vec2 point=vec2(fract(x+uTime*(0.006+0.002*sin(seed))),y+0.025*sin(uTime*0.3+seed));
+    float radius=length((p-point)*vec2(1.6,1.0));
+    float glow=exp(-radius*radius*90000.0);
+    float pulse=0.4+0.3*sin(uTime*0.6+seed*2.0);
+    color+=mix(cyan,lime,step(0.8,x))*glow*pulse;
+  }
   gl_FragColor=vec4(color,1.0);
 }`;
 

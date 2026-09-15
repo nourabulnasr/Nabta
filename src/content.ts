@@ -15,6 +15,7 @@ type EditorialItem = { title: LocalizedText; body: LocalizedText };
 export type Project = { id: string; title: LocalizedText; category: LocalizedText; summary: LocalizedText; url: string | null };
 
 type Content = {
+  intro: { label: LocalizedText; skip: LocalizedText; statement: LocalizedText };
   brand: { name: LocalizedText; descriptor: LocalizedText; location: LocalizedText };
   metadata: { title: LocalizedText; description: LocalizedText };
   accessibility: { skipToContent: LocalizedText; mainNavigation: LocalizedText; home: LocalizedText };
@@ -30,6 +31,11 @@ type Content = {
 
 // Edit both languages here. Null URLs render pending states until real destinations are supplied.
 export const content: Content = {
+  intro: {
+    label: { en: "Preparing something that grows", ar: "بنجهّز حاجة تكبر معاك" },
+    skip: { en: "Skip intro", ar: "تخطّي المقدمة" },
+    statement: { en: "Small beginnings. Real growth.", ar: "بداية صغيرة. نمو حقيقي." },
+  },
   brand: {
     name: { en: "Nabta", ar: "نبتة" },
     descriptor: { en: "AI consultancy", ar: "استشارات الذكاء الاصطناعي" },

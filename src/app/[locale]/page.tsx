@@ -9,6 +9,7 @@ import { SelectedWork } from "@/components/sections/selected-work";
 import { Tutoring } from "@/components/sections/tutoring";
 import { ServicesContact } from "@/components/sections/services-contact";
 import { RevealGroup } from "@/components/motion/reveal-group";
+import { BrandIntro } from "@/components/motion/brand-intro";
 import { PageAccents } from "@/components/motion/page-accents";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -36,6 +37,7 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
+      <BrandIntro locale={locale} />
       <PageAccents />
       <SiteHeader locale={locale} />
       <main id="main-content" tabIndex={-1}>

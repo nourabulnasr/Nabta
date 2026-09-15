@@ -1,4 +1,4 @@
-last completed: Phase 5
+last completed: Phase 6
 
 # Nabta build progress
 
@@ -12,7 +12,7 @@ last completed: Phase 5
 
 - [x] DONE — Phase 4: Animated SVG mascot (2D Motion, not 3D).
 - [x] DONE — Phase 5: Liquid-glass / shader gradient hero background (React Three Fiber).
-- [ ] TODO — Phase 6: WebGL particle system accent.
+- [x] DONE — Phase 6: WebGL particle accent plus the selected playful mascot introduction and landing.
 - [ ] TODO — Phase 7: R3F 3D hero object and scroll-driven 3D.
 - [ ] TODO — Phase 8: Hero-to-navbar logo morph / shared-element transitions.
 
@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 5 is complete: desktop shader ribbon and continuously floating supplied mascot. Local preview only; no deployment. Phase 6+ remains deferred until Nour explicitly selects one. Latest verification: `docs/phase-5-verification.md`.
+Phase 6 is complete: full-screen playful mascot introduction, gust reveal, hero landing and sparse desktop WebGL particles. Local preview only; no deployment. Phase 7 and the remaining Phase 8 wordmark morph are deferred. Latest verification: `docs/phase-6-verification.md`.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,7 @@ Phase 5 is complete: desktop shader ribbon and continuously floating supplied ma
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–5 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–6 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
 
 ## Phase 2 result — 2026-09-14
 
@@ -116,3 +116,13 @@ Read this file first, then `docs/build-brief.md`. Inspect git status and the las
 - Final mobile Lighthouse EN95/AR95, accessibility100/best-practices100, CLS0. LCP2.9s both remains above2.5s; SEO50 is preview-related. Mobile results measure the lighter CSS fallback, not desktop WebGL performance.
 - Local screenshots `artifacts/2026-09-14/phase-5-{en,ar}-{390,1440}.png`; reports in `artifacts/2026-09-14/phase-5/`. Detailed verification: `docs/phase-5-verification.md`.
 - Commit message: `Phase 5: Add shader hero and continuous mascot motion`. Visual review remains Nour's. Preview left running. No remote for push, no deployment. Phase6+ untouched.
+
+## Phase 6 result — 2026-09-15
+
+- Nour selected the playful loading reveal: supplied mascot swoops, a cyan/lime gust clears oversized bilingual lettering, then it flies into its measured hero position and keeps floating. This explicitly extends Phase6 to include the intro/landing; remaining Phase7 and Phase8 wordmark work stays deferred.
+- Added 28 sparse WebGL motes to the existing desktop shader/canvas. The brief intro uses24 lightweight particles on all viewport sizes. No extra rendering dependency or browser storage.
+- Bounded font/image readiness, Skip/Escape, keyboard focus containment, inert background, scroll restoration, resize exit, live reduced-motion bypass and no-JavaScript readability implemented. Intro includes a6.5s failsafe rather than blocking indefinitely.
+- Production build/lint/TypeScript succeeded. Puppeteer checks verified complete English desktop/Arabic mobile gust and landing, restored usable page, ongoing mascot float, mobile Skip, live reduced-motion cleanup and no-JavaScript content. Refined lettering continuity and gust direction after screenshot review.
+- Latest mobile Lighthouse EN92/AR90, accessibility100/best-practices100, SEO50. LCP3.1s/3.4s remains above target; CLS0.058 remains within0.1. Reserving scrollbar space did not eliminate the measured shift, so do not claim zero CLS. No audit warnings.
+- Screenshots and browser results in `artifacts/2026-09-15/`; final reports in `phase-6-final/`. Verification: `docs/phase-6-verification.md`.
+- Commit message: `Phase 6: Add playful mascot intro and particle reveal`. Visual review remains Nour's. Local preview left running. No remote configured for pushing; no deployment.
