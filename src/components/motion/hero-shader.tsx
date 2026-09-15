@@ -2,6 +2,8 @@
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Component, useEffect, useMemo, type ReactNode } from "react";
+import type { MotionValue } from "motion/react";
+import { SculptedLeaf } from "./sculpted-leaf";
 
 const vertex = `varying vec2 vUv;
 void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}`;
@@ -54,7 +56,7 @@ function Surface({ active, onLost }: { active: boolean; onLost: () => void }) {
     // eslint-disable-next-line react-hooks/immutability
     if (active) uniforms.uTime.value += Math.min(delta, 0.05);
   });
-  return <mesh><planeGeometry args={[2, 2]} /><shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} depthTest={false} depthWrite={false} /></mesh>;
+  return <mesh renderOrder={-1}><planeGeometry args={[2, 2]} /><shaderMaterial vertexShader={vertex} fragmentShader={fragment} uniforms={uniforms} depthTest={false} depthWrite={false} /></mesh>;
 }
 
 class ShaderBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
@@ -63,7 +65,13 @@ class ShaderBoundary extends Component<{ children: ReactNode }, { failed: boolea
   render() { return this.state.failed ? null : this.props.children; }
 }
 
-export default function HeroShader({ active, onLost }: { active: boolean; onLost: () => void }) {
+export default function HeroShader({ active, onLost, progress, rtl }: { active: boolean; onLost: () => void; progress: MotionValue<number>; rtl: boolean }) {
   return <ShaderBoundary><Canvas frameloop="demand" dpr={1} gl={{ antialias: false, alpha: false, powerPreference: "low-power" }}
-    fallback={<span />}><Surface active={active} onLost={onLost} /></Canvas></ShaderBoundary>;
+    fallback={<span />}>
+    <Surface active={active} onLost={onLost} />
+    <ambientLight intensity={0.8} />
+    <directionalLight position={[-3, 4, 5]} intensity={3} color="#98dce8" />
+    <directionalLight position={[4, 2, 2]} intensity={2} color="#b5df7e" />
+    <SculptedLeaf active={active} progress={progress} rtl={rtl} />
+  </Canvas></ShaderBoundary>;
 }

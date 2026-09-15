@@ -1,4 +1,4 @@
-last completed: Phase 6
+last completed: Phase 7
 
 # Nabta build progress
 
@@ -13,14 +13,14 @@ last completed: Phase 6
 - [x] DONE — Phase 4: Animated SVG mascot (2D Motion, not 3D).
 - [x] DONE — Phase 5: Liquid-glass / shader gradient hero background (React Three Fiber).
 - [x] DONE — Phase 6: WebGL particle accent plus the selected playful mascot introduction and landing.
-- [ ] TODO — Phase 7: R3F 3D hero object and scroll-driven 3D.
+- [x] DONE — Phase 7: R3F sculpted leaf and scroll-driven 3D.
 - [ ] TODO — Phase 8: Hero-to-navbar logo morph / shared-element transitions.
 
 Do not start another phase without Nour's explicit go-ahead. Future phases are individually selected, one per session. At each completed phase, update this file, run `git add -A`, commit `Phase N: <what>`, report the checkpoint, and stop. No attribution trailers in commits or project files.
 
 ## Active scope
 
-Phase 6 is complete. Nour subsequently authorized launch preparation: configurable production SEO and a transform-only mascot landing are implemented. Real contact/booking/project links, domain and GitHub destination remain pending. Local preview only; no deployment. Phase7 and the remaining Phase8 wordmark morph are deferred. Latest verification: `docs/launch-preparation.md`.
+Phase7 is complete: Nour selected the sculpted leaf behind the supplied mascot. Desktop scroll-driven 3D shares the existing canvas; mobile/reduced motion use a static illustration. Phase8 remains deferred. Launch configuration is prepared, but real contact/booking/project links, domain and GitHub destination remain pending. Local preview only. Latest verification: `docs/phase-7-verification.md`.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,15 @@ Phase 6 is complete. Nour subsequently authorized launch preparation: configurab
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md` and `docs/launch-preparation.md`. Inspect git status and the last commit before changing anything. Phases1–6 and the independent launch-preparation checkpoint are implemented. Connect real launch details when Nour supplies them; indexing defaults off. Future visual phases still require explicit selection. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port3000).
+Read this file first, then `docs/build-brief.md` and the latest verification record. Inspect git status and the last commit before changing anything. Phases1–7 and the independent launch-preparation checkpoint are implemented. Connect real launch details when Nour supplies them; indexing defaults off. Phase8 requires the next explicit go-ahead. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port3000).
+
+## Phase7 result — 2026-09-15
+
+- Nour selected option1: sculpted glossy navy leaf, cyan/lime edges, behind the existing mascot. Added custom curved geometry, central vein and rim tubes, lit in the existing R3F canvas. Scroll controls its turn, with smooth convergence and mirrored Arabic placement.
+- Reuses desktop render budget, pause and visibility controls. Static SVG fallback for phones/reduced motion/noJS or unavailable WebGL, through next/image. No new runtime dependency; added matching Three.js TypeScript definitions.
+- Build, lint and TypeScript succeeded. Both language desktop/mobile screenshots reviewed; GPU draw instrumentation verified pause, reduced motion removed canvas, mobile had no canvas or horizontal overflow. Existing intro verification succeeded, including live reduced motion and noJS content.
+- Mobile Lighthouse EN90/AR90, accessibility100/best-practices100, SEO63, CLS0, LCP3.5s/3.4s. LCP remains above target. Mobile scores cover the static fallback, not desktop GPU performance.
+- Verification: `docs/phase-7-verification.md`; artifacts: `artifacts/2026-09-15/phase-7/`. Visual approval remains Nour's. No remote/push or deployment; Phase8 not started.
 
 ## Launch preparation result — 2026-09-15
 

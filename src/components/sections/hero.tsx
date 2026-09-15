@@ -38,7 +38,7 @@ export function Hero({ locale }: { locale: Locale }) {
   return (
     <section ref={scope} className="hero page-gutter" aria-labelledby="hero-title" data-hero-active={active}>
       <m.div className="hero-atmosphere" data-motion="parallax" aria-hidden="true" style={{ y: enabled ? backgroundY : 0 }}>
-        <HeroBackground enabled={prefersMotion} active={active} />
+        <HeroBackground enabled={prefersMotion} active={active} progress={scrollYProgress} rtl={locale === "ar"} />
       </m.div>
       <div className="hero-intro">
         <span className="hero-descriptor">{content.brand.descriptor[locale]}</span>

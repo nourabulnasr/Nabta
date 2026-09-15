@@ -2,7 +2,7 @@
 
 Nabta (نبتة) is an AI consultancy and portfolio website based in Egypt.
 
-**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phases 1–6 provide the bilingual site, supplied mascot, desktop shader/particles and playful opening sequence. Later phases require explicit selection. Local preview only for now.
+**Read `PROGRESS.md` before continuing development.** This is a checkpointed build. Phases1–7 provide the bilingual site, supplied mascot, desktop shader/particles, playful opening sequence and sculpted 3D leaf. Phase8 requires the next go-ahead. Local preview only for now.
 
 ## Run locally
 
@@ -47,6 +47,7 @@ Project records live in `content.work.projects`. Supply each `url` to replace it
 - Phase 5 uses one deferred React Three Fiber shader plane on desktop, capped at 30 render requests per second and device pixel ratio 1. Mobile, reduced motion, load failures and unavailable WebGL retain the CSS gradient. Pause/resume controls the hero effects and mascot. Offscreen and hidden-tab animation work stops.
 - React/React DOM use 19.2.8 for compatibility with React Three Fiber 9.7.0. Next.js supports this version. No forced peer overrides.
 - No storage, trackers, forms or backend.
+- Phase7 adds a glossy sculpted leaf behind the mascot in the existing desktop canvas. Scroll turns it, Arabic mirrors its placement, and hero pause/visibility controls stop drawing. Mobile/reduced motion/noJS use a static SVG through next/image. Run `node scripts/verify-leaf.mjs` for browser checks; see `docs/phase-7-verification.md` for results.
 
 ## Performance verification
 

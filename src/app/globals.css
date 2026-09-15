@@ -252,3 +252,8 @@ html[lang="ar"] .intro-wordmark span { font-family: var(--font-arabic), sans-ser
   .intro-top > span { max-width: 40%; }
   html[lang="ar"] .intro-wordmark { font-size: 25vw; }
 }
+
+.hero-leaf-fallback { position: absolute; inset-inline-end: 5%; top: 15%; width: 32%; height: 65%; object-fit: contain; opacity: 0.48; transform: rotate(18deg); }
+@media (max-width: 767px) { .hero-leaf-fallback { width: 44%; top: 28%; height: 42%; opacity: 0.25; } }
+
+.hero-atmosphere:has(.hero-shader canvas) .hero-leaf-fallback { visibility: hidden; }
