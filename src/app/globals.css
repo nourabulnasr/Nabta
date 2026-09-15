@@ -257,3 +257,17 @@ html[lang="ar"] .intro-wordmark span { font-family: var(--font-arabic), sans-ser
 @media (max-width: 767px) { .hero-leaf-fallback { width: 44%; top: 28%; height: 42%; opacity: 0.25; } }
 
 .hero-atmosphere:has(.hero-shader canvas) .hero-leaf-fallback { visibility: hidden; }
+
+/* Phase8: keep real text accessible while a decorative copy travels between it. */
+.site-header { position: sticky; top: 0; z-index: 30; background: var(--ground); }
+.brand-wordmark { font-family: var(--font-display), Georgia, serif; font-size: 1.75rem; font-weight: 400; font-variation-settings: "SOFT" 20, "WONK" 1; letter-spacing: -0.085em; line-height: 1.04; }
+.travelling-wordmark { position: fixed; left: 0; top: 0; width: max-content; z-index: 31; pointer-events: none; visibility: hidden; transform-origin: top left; font-family: var(--font-display), Georgia, serif; font-weight: 400; font-variation-settings: "SOFT" 20, "WONK" 1; color: var(--ink); }
+html[data-wordmark="moving"] .hero-wordmark,
+html[data-wordmark="docked"] .hero-wordmark,
+html[data-wordmark="moving"] .brand-wordmark { opacity: 0; }
+html[lang="ar"] .brand-wordmark, html[lang="ar"] .travelling-wordmark { font-family: var(--font-arabic), sans-serif; letter-spacing: 0; }
+html { scroll-padding-block-start: 9rem; }
+.skip-link { z-index: 50; }
+html[lang="ar"] .brand-wordmark { line-height: 1.45; }
+.travelling-wordmark { z-index: 29; }
+.scroll-progress { z-index: 35; }

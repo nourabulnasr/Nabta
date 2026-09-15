@@ -8,7 +8,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <header className="site-header page-gutter">
       <a className="brand-link" href="#top" aria-label={content.accessibility.home[locale]}>
         <span className="brand-seed" aria-hidden="true" />
-        <span>{content.brand.name[locale]}</span>
+        <span className="brand-wordmark">{content.brand.name[locale]}</span>
       </a>
       <nav className="main-nav" aria-label={content.accessibility.mainNavigation[locale]}>
         {sectionIds.map((id) => (

@@ -13,6 +13,7 @@ import { ServicesContact } from "@/components/sections/services-contact";
 import { RevealGroup } from "@/components/motion/reveal-group";
 import { BrandIntro } from "@/components/motion/brand-intro";
 import { PageAccents } from "@/components/motion/page-accents";
+import { WordmarkTransition } from "@/components/motion/wordmark-transition";
 import { getSiteConfig, languageUrls } from "@/lib/site-config";
 
 type PageProps = { params: Promise<{ locale: string }> };
@@ -72,6 +73,7 @@ export default async function HomePage({ params }: PageProps) {
       <BrandIntro locale={locale} />
       <PageAccents />
       <SiteHeader locale={locale} />
+      <WordmarkTransition locale={locale} />
       <main id="main-content" tabIndex={-1}>
         <Hero locale={locale} />
         <RevealGroup><WhatNabtaDoes locale={locale} /></RevealGroup>

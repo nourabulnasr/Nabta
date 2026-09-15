@@ -1,4 +1,4 @@
-last completed: Phase 7
+last completed: Phase 8
 
 # Nabta build progress
 
@@ -14,13 +14,13 @@ last completed: Phase 7
 - [x] DONE — Phase 5: Liquid-glass / shader gradient hero background (React Three Fiber).
 - [x] DONE — Phase 6: WebGL particle accent plus the selected playful mascot introduction and landing.
 - [x] DONE — Phase 7: R3F sculpted leaf and scroll-driven 3D.
-- [ ] TODO — Phase 8: Hero-to-navbar logo morph / shared-element transitions.
+- [x] DONE — Phase 8: Hero-to-navbar wordmark transfer and sticky navigation.
 
 Do not start another phase without Nour's explicit go-ahead. Future phases are individually selected, one per session. At each completed phase, update this file, run `git add -A`, commit `Phase N: <what>`, report the checkpoint, and stop. No attribution trailers in commits or project files.
 
 ## Active scope
 
-Phase7 is complete: Nour selected the sculpted leaf behind the supplied mascot. Desktop scroll-driven 3D shares the existing canvas; mobile/reduced motion use a static illustration. Phase8 remains deferred. Launch configuration is prepared, but real contact/booking/project links, domain and GitHub destination remain pending. Local preview only. Latest verification: `docs/phase-7-verification.md`.
+All eight planned visual phases are implemented. Phase8 adds a reversible hero-to-navbar wordmark transfer and sticky navigation. Launch configuration is prepared, but real contact/booking/project links, domain and GitHub destination remain pending. Local preview only. Latest verification: `docs/phase-8-verification.md`. Visual approval remains Nour's; loading performance still needs improvement.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,14 @@ Phase7 is complete: Nour selected the sculpted leaf behind the supplied mascot. 
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md` and the latest verification record. Inspect git status and the last commit before changing anything. Phases1–7 and the independent launch-preparation checkpoint are implemented. Connect real launch details when Nour supplies them; indexing defaults off. Phase8 requires the next explicit go-ahead. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port3000).
+Read this file first, then `docs/build-brief.md` and the latest verification record. Inspect git status and the last commit before changing anything. Phases1–8 and the independent launch-preparation checkpoint are implemented. Await Nour's review or connect real launch details when supplied; indexing defaults off. No further visual phase is predefined. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port3000).
+
+## Phase8 result — 2026-09-15
+
+- Added scroll-linked decorative wordmark transfer from hero to navbar, matching typography and mirrored Arabic text. Sticky header, reversible home navigation, unobscured menu links and anchor clearance. Original heading and home link remain accessible; reduced motion/noJS show static text.
+- Build/lint/types succeeded. Browser verified both locales at390/1440px: moving/docked/home states, navigation clearance, return home, reduced-motion cleanup and no overflow. Intro regression checks succeeded. Corrected mobile overlap and preserved progress-line stacking.
+- Final mobile Lighthouse EN92/AR89, accessibility100/best-practices100, SEO63, CLS0. LCP3.3s/3.5s, TBT60ms/150ms. LCP remains above2.5s and Arabic below90; local scores vary. No field-performance claim.
+- Reports: `artifacts/2026-09-15/phase-8/final/`; screenshots and verification described in `docs/phase-8-verification.md`. No deployment or remote push. All planned phases implemented; final visual/content review and real launch destinations remain outstanding.
 
 ## Phase7 result — 2026-09-15
 
