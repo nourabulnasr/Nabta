@@ -56,7 +56,11 @@ With the production preview running, run `npm run audit:mobile`. Set `CHROME_PAT
 
 ## Publishing later
 
-No deployment has been made. A Vercel project can use the standard Next.js build settings when publication is authorized. Before publishing, supply actual contact/project links and a production origin, remove the preview `noindex` metadata, and add canonical URLs, a sitemap, robots policy and organization schema using real business details. No production domain is assumed.
+No deployment has been made. Before publishing, supply actual contact/project links and the production domain. Copy `.env.example` to `.env.local` for local configuration, or set the equivalent deployment variables. `SITE_URL` accepts the confirmed HTTPS origin only (no path, credentials, query or port). `SITE_INDEXABLE` defaults to false; set it to `true` only for the reviewed public deployment. **Rebuild after changing either variable:** the pages and metadata routes are generated at build time. Leave preview deployments non-indexable.
+
+Canonical URLs, English/Arabic/x-default language links and mascot social images use the configured origin. Both pages include Organization and WebSite JSON-LD without placeholder contacts or invented business details. `/robots.txt` blocks crawling and `/sitemap.xml` contains no URLs until indexing is enabled with a valid origin. Production settings generate an English/Arabic sitemap and allow crawling. No production domain is assumed.
+
+Run `node --experimental-strip-types scripts/verify-site-config.mjs` for configuration checks, and `node scripts/verify-seo.mjs` against the local production preview. `node scripts/verify-publication.mjs` starts an isolated dev server on port3001 using the reserved example.com domain solely as a test fixture, checks publication metadata and stops it. Do not run this while measuring Lighthouse because compilation can affect timings.
 
 ## Checkpoint protocol
 

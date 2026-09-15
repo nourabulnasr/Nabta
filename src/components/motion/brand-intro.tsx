@@ -68,16 +68,13 @@ export function BrandIntro({ locale }: { locale: Locale }) {
       scope.current.dataset.stage = "landing";
       const target = document.querySelector<HTMLElement>(".mascot-slot .nabta-mascot");
       if (!target) { finish(); return; }
-      const from = robot.getBoundingClientRect();
       const to = target.getBoundingClientRect();
-      // Snapshot the current pose before switching from centered layout to a viewport flight.
-      robot.style.left = `${from.left}px`;
-      robot.style.top = `${from.top}px`;
-      robot.style.width = `${from.width}px`;
-      robot.style.transform = "none";
+      // Keep the layout box fixed: fly entirely with transforms to avoid a layout shift.
+      const startTransform = getComputedStyle(robot).transform;
+      const destination = `translate(${to.left - robot.offsetLeft}px, ${to.top - robot.offsetTop}px) rotate(0deg) scale(${to.width / robot.offsetWidth})`;
       animate(".intro-curtain", { opacity: 0 }, { duration: 0.65 });
       animate(".intro-meta", { opacity: 0 }, { duration: 0.25 });
-      await animate(robot, { transform: ["translate(0, 0) scale(1)", `translate(${to.left - from.left}px, ${to.top - from.top}px) scale(${to.width / from.width})`] },
+      await animate(robot, { transform: [startTransform, destination] },
         { type: spring, stiffness: 95, damping: 23, mass: 0.8 });
       if (!cancelled) finish();
     };
@@ -103,7 +100,7 @@ export function BrandIntro({ locale }: { locale: Locale }) {
     <div className="intro-meta intro-top"><span>{content.brand.name[locale]} / {content.brand.descriptor[locale]}</span>
       <button ref={skip} type="button" onClick={() => setFinished(true)}>{content.intro.skip[locale]}</button></div>
     <div className="intro-wordmark" aria-hidden="true">{content.hero.title[locale]}<span>{content.intro.statement[locale]}</span></div>
-    <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.png" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" /></div>
+    <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.png" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" /></div>
     <div className="intro-gust" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i className="intro-particle" key={i} />)}</div>
     <div className="intro-meta intro-bottom"><span>{content.intro.label[locale]}</span><span className="intro-loading-line" aria-hidden="true" /></div>
   </div>;

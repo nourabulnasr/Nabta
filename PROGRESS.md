@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-Phase 6 is complete: full-screen playful mascot introduction, gust reveal, hero landing and sparse desktop WebGL particles. Local preview only; no deployment. Phase 7 and the remaining Phase 8 wordmark morph are deferred. Latest verification: `docs/phase-6-verification.md`.
+Phase 6 is complete. Nour subsequently authorized launch preparation: configurable production SEO and a transform-only mascot landing are implemented. Real contact/booking/project links, domain and GitHub destination remain pending. Local preview only; no deployment. Phase7 and the remaining Phase8 wordmark morph are deferred. Latest verification: `docs/launch-preparation.md`.
 
 ## Decisions — 2026-09-13
 
@@ -56,7 +56,14 @@ Phase 6 is complete: full-screen playful mascot introduction, gust reveal, hero 
 
 ## Resume
 
-Read this file first, then `docs/build-brief.md`. Inspect git status and the last commit before changing anything. Phases 1–6 are complete. Wait for Nour to explicitly select a future phase. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port 3000).
+Read this file first, then `docs/build-brief.md` and `docs/launch-preparation.md`. Inspect git status and the last commit before changing anything. Phases1–6 and the independent launch-preparation checkpoint are implemented. Connect real launch details when Nour supplies them; indexing defaults off. Future visual phases still require explicit selection. Do not restart the scaffold. Run `npm start` if the local preview is no longer running; use `npm run dev` when editing (stop the production preview first if it occupies port3000).
+
+## Launch preparation result — 2026-09-15
+
+- Added validated build-time origin/indexing settings, canonical/hreflang/social metadata, Organization/WebSite JSON-LD, robots and bilingual sitemap. Local preview stays non-indexable; no real domain supplied.
+- Removed layout changes during mascot flight, added early responsive image loading. Final intro browser checks and both SEO modes verified; production build/lint/TypeScript succeeded.
+- Final mobile Lighthouse EN90/AR88, accessibility100/best-practices100, SEO63. CLS0; LCP3.5s/3.7s remains above target. No claim of improved loading speed or launch readiness.
+- Source, verification commands, remaining prerequisites and reports recorded in `docs/launch-preparation.md`. User visual review pending. No Phase7/8, remote/push or deployment.
 
 ## Phase 2 result — 2026-09-14
 
