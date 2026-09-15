@@ -20,7 +20,7 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
-All eight planned visual phases are implemented. Phase8 adds a reversible hero-to-navbar wordmark transfer and sticky navigation. Launch configuration is prepared, but real contact/booking/project links, domain and GitHub destination remain pending. Local preview only. Latest verification: `docs/phase-8-verification.md`. Visual approval remains Nour's; loading performance still needs improvement.
+All eight planned visual phases are implemented. On September16 Nour supplied real contact details (now connected), requested the Powered by Nour Abulnasr credit (added), and expanded scope to a consultancy booking system, paid recordings/course access, founder headshot/about section and navigation refinement. Those new systems are not yet built. Read `docs/next-scope-2026-09-16.md` before continuing. Generated Vercel domain accepted; actual deployment/repository URLs and project links remain pending. Local preview only. Visual approval remains Nour's; loading performance still needs improvement.
 
 ## Decisions — 2026-09-13
 

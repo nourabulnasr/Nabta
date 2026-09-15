@@ -26,7 +26,7 @@ type Content = {
   work: { projects: Project[]; view: LocalizedText; pending: LocalizedText; scrollHint: LocalizedText; navigationLabel: LocalizedText };
   tutoring: { subject: LocalizedText; details: LocalizedText[]; cta: LocalizedText; note: LocalizedText; bookingUrl: string | null };
   contact: { services: EditorialItem[]; invitation: LocalizedText; emailLabel: LocalizedText; whatsappLabel: LocalizedText; email: LocalizedText; whatsapp: LocalizedText; emailUrl: string | null; whatsappUrl: string | null; placeholderNote: LocalizedText };
-  footer: { copyright: LocalizedText; backToTop: LocalizedText };
+  footer: { copyright: LocalizedText; credit: LocalizedText; backToTop: LocalizedText };
 };
 
 // Edit both languages here. Null URLs render pending states until real destinations are supplied.
@@ -129,14 +129,15 @@ export const content: Content = {
     invitation: { en: "What could we grow together?", ar: "إيه اللي ممكن نكبره سوا؟" },
     emailLabel: { en: "Email", ar: "البريد الإلكتروني" },
     whatsappLabel: { en: "WhatsApp", ar: "واتساب" },
-    email: { en: "hello@nabta.example", ar: "hello@nabta.example" },
-    whatsapp: { en: "+20 1XX XXX XXXX", ar: "+20 1XX XXX XXXX" },
-    emailUrl: null,
-    whatsappUrl: null,
+    email: { en: "nourabulnasr@gmail.com", ar: "nourabulnasr@gmail.com" },
+    whatsapp: { en: "+20 106 904 6666", ar: "+20 106 904 6666" },
+    emailUrl: "mailto:nourabulnasr@gmail.com",
+    whatsappUrl: "https://wa.me/201069046666",
     placeholderNote: { en: "Contact details are placeholders for this preview. Email and WhatsApp are not connected yet.", ar: "بيانات التواصل مؤقتة للمعاينة. البريد الإلكتروني وواتساب لسه مش متوصلين." },
   },
   footer: {
     copyright: { en: "© 2026 Nabta", ar: "© ٢٠٢٦ نبتة" },
+    credit: { en: "Powered by Nour Abulnasr", ar: "Powered by Nour Abulnasr" },
     backToTop: { en: "Back to top", ar: "العودة للأعلى" },
   },
 };
