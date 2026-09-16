@@ -58,7 +58,7 @@ With the production preview running, run `npm run audit:mobile`. Set `CHROME_PAT
 
 ## Publishing later
 
-No deployment has been made. Before publishing, supply actual contact/project links and the production domain. Copy `.env.example` to `.env.local` for local configuration, or set the equivalent deployment variables. `SITE_URL` accepts the confirmed HTTPS origin only (no path, credentials, query or port). `SITE_INDEXABLE` defaults to false; set it to `true` only for the reviewed public deployment. **Rebuild after changing either variable:** the pages and metadata routes are generated at build time. Leave preview deployments non-indexable.
+No deployment has been made. Before publishing, supply actual contact/project links and the production domain. Copy `.env.example` to `.env.local` for local configuration, or set the equivalent deployment variables. `SITE_URL` accepts the confirmed HTTPS origin only (no path, credentials, query or port). `SITE_INDEXABLE` defaults to false; set it to `true` only for the reviewed public deployment. **Rebuild after changing either variable:** metadata routes are generated at build time; nonce-bearing pages render dynamically. Leave preview deployments non-indexable.
 
 Canonical URLs, English/Arabic/x-default language links and mascot social images use the configured origin. Both pages include Organization and WebSite JSON-LD without placeholder contacts or invented business details. `/robots.txt` blocks crawling and `/sitemap.xml` contains no URLs until indexing is enabled with a valid origin. Production settings generate an English/Arabic sitemap and allow crawling. No production domain is assumed.
 
@@ -73,6 +73,12 @@ After each phase, update `PROGRESS.md`, verify the work, run `git add -A`, and c
 
 Phase 6 opens with the supplied mascot and oversized bilingual Nabta lettering. After key font/image readiness (with a bounded wait), a short particle gust clears the lettering and the mascot flies to its measured hero position. Skip intro and Escape reveal the page immediately. Reduced motion and no JavaScript bypass the overlay. A resize dismisses the flight to avoid stale landing coordinates. The introduction runs on a fresh page load; no browser storage is used.
 
-The desktop shader contains 28 sparse motes in its existing canvas. The short intro gust uses 24 lightweight elements so phones do not need WebGL. Existing hero pause/reduced-motion behavior applies after landing. This brings the mascot landing transition forward; the future hero-to-navbar wordmark morph remains deferred.
+The desktop shader contains 28 sparse motes in its existing canvas. The short intro gust uses 24 lightweight elements so phones do not need WebGL. Existing hero pause/reduced-motion behavior applies after landing. The hero-to-navbar wordmark transfer was subsequently completed in Phase 8.
 
 Run `node scripts/verify-intro.mjs` with the production server running to verify the opening sequence in local Chrome. Set CHROME_PATH if necessary. See `docs/phase-6-verification.md` for measured results and limitations.
+
+## Deployment checklist checkpoint
+
+Read `docs/deployment-checklist-audit.md` for implemented controls and remaining owner/hosting gates, and `docs/release-runbook.md` for publishing and recovery. The future booking, paid-learning and founder scope remains in `docs/next-scope-2026-09-16.md`.
+
+Production HTML uses a fresh CSP nonce and is not shared-cacheable. Static assets remain cacheable. Script execution is restricted; inline styles support Motion/Three. Run `node scripts/verify-deployment.mjs` against the running production build, and `npm run security:scan -- --require-build` for the redacted local-history/browser-asset baseline. GitHub CI and Dependabot activate after the remote repository is connected.

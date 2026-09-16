@@ -271,3 +271,10 @@ html { scroll-padding-block-start: 9rem; }
 html[lang="ar"] .brand-wordmark { line-height: 1.45; }
 .travelling-wordmark { z-index: 29; }
 .scroll-progress { z-index: 35; }
+
+/* First paint can show the intro image before hydration; CSS still guarantees an exit. */
+.brand-intro { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .brand-intro { display: block; animation: intro-timeout 0s linear 7s forwards; }
+}
+@keyframes intro-timeout { to { visibility: hidden; pointer-events: none; } }

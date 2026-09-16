@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getImageProps } from "next/image";
 import { preload } from "react-dom";
 import { notFound } from "next/navigation";
+import { headers } from "next/headers";
 import { content, isLocale } from "@/content";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -20,7 +21,7 @@ type PageProps = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  if (!isLocale(locale)) notFound();
+  if (!isLocale(locale)) return { title: `${content.notFound.title.en} | Nabta`, robots: { index: false, follow: false } };
   const title = content.metadata.title[locale];
   const description = content.metadata.description[locale];
   const { origin, indexable } = getSiteConfig();
@@ -29,7 +30,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    icons: { icon: "/icon.svg" },
+    icons: { icon: "/icon.svg", apple: "/apple-touch-icon.png" },
+    manifest: "/manifest.webmanifest",
     metadataBase: origin ? new URL(origin) : undefined,
     robots: { index: indexable, follow: indexable },
     alternates: origin ? { canonical: `${origin}/${locale}`, languages: languageUrls(origin) } : undefined,
@@ -45,6 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function HomePage({ params }: PageProps) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { origin } = getSiteConfig();
@@ -59,8 +62,13 @@ export default async function HomePage({ params }: PageProps) {
     "@graph": [
       { "@type": "Organization", name: content.brand.name[locale],
         description: content.metadata.description[locale],
-        ...(origin ? { "@id": `${origin}/#organization`, url: origin } : {}),
+        email: content.contact.email[locale], telephone: "+201069046666",
+        ...(origin ? { "@id": `${origin}/#organization`, url: origin, logo: `${origin}/icon.svg` } : {}),
       },
+      ...content.contact.services.map((service, index) => ({
+        "@type": "Service", name: service.title[locale], description: service.body[locale],
+        ...(origin ? { "@id": `${origin}/#service-${index + 1}`, provider: { "@id": `${origin}/#organization` } } : {}),
+      })),
       { "@type": "WebSite", name: content.brand.name[locale], inLanguage: ["en", "ar"],
         ...(origin ? { "@id": `${origin}/#website`, url: origin, publisher: { "@id": `${origin}/#organization` } } : {}),
       },
@@ -69,7 +77,7 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+      <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <BrandIntro locale={locale} />
       <PageAccents />
       <SiteHeader locale={locale} />

@@ -20,6 +20,8 @@ Do not start another phase without Nour's explicit go-ahead. Future phases are i
 
 ## Active scope
 
+September16 deployment-checklist checkpoint: Nour requested saving the discussion and prioritizing the uploaded PDF. Added nonce CSP/security headers, protected preview indexing, manifest/icon and Service schema, recoverable bilingual 404s, dependency pinning/CI/Dependabot, history/browser-asset scanning, and initial-HTML intro rendering. Build/lint/types, audit (0 known vulnerabilities), security, SEO, mascot, leaf and wordmark checks completed. Fresh Lighthouse could not finish; Windows reported memory exhaustion, so performance remains unverified for this build. See `docs/deployment-checklist-audit.md`, `docs/checklist-verification-2026-09-16.md` and `docs/release-runbook.md`. Booking/course/founder expansion stays deferred in the saved scope below. No remote, push or deployment is available yet.
+
 All eight planned visual phases are implemented. On September16 Nour supplied real contact details (now connected), requested the Powered by Nour Abulnasr credit (added), and expanded scope to a consultancy booking system, paid recordings/course access, founder headshot/about section and navigation refinement. Those new systems are not yet built. Read `docs/next-scope-2026-09-16.md` before continuing. Generated Vercel domain accepted; actual deployment/repository URLs and project links remain pending. Local preview only. Visual approval remains Nour's; loading performance still needs improvement.
 
 ## Decisions — 2026-09-13

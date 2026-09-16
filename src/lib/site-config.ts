@@ -1,6 +1,7 @@
 /** Build-time publication settings. Missing or malformed configuration stays non-indexable. */
-export function getSiteConfig(env: { SITE_URL?: string; SITE_INDEXABLE?: string } = {
+export function getSiteConfig(env: { SITE_URL?: string; SITE_INDEXABLE?: string; VERCEL_ENV?: string } = {
   SITE_URL: process.env.SITE_URL, SITE_INDEXABLE: process.env.SITE_INDEXABLE,
+  VERCEL_ENV: process.env.VERCEL_ENV,
 }) {
   let origin: string | undefined;
   try {
@@ -11,7 +12,8 @@ export function getSiteConfig(env: { SITE_URL?: string; SITE_INDEXABLE?: string 
       origin = url.origin;
     }
   } catch { /* An unset domain is expected during local preparation. */ }
-  return { origin, indexable: Boolean(origin && env.SITE_INDEXABLE === "true") };
+  const preview = env.VERCEL_ENV === "preview" || env.VERCEL_ENV === "development";
+  return { origin, indexable: Boolean(origin && env.SITE_INDEXABLE === "true" && !preview) };
 }
 
 export function languageUrls(origin: string) {

@@ -15,6 +15,7 @@ type EditorialItem = { title: LocalizedText; body: LocalizedText };
 export type Project = { id: string; title: LocalizedText; category: LocalizedText; summary: LocalizedText; url: string | null };
 
 type Content = {
+  notFound: { title: LocalizedText; body: LocalizedText; home: LocalizedText; navigation: string };
   intro: { label: LocalizedText; skip: LocalizedText; statement: LocalizedText };
   brand: { name: LocalizedText; descriptor: LocalizedText; location: LocalizedText };
   metadata: { title: LocalizedText; description: LocalizedText };
@@ -31,6 +32,12 @@ type Content = {
 
 // Edit both languages here. Null URLs render pending states until real destinations are supplied.
 export const content: Content = {
+  notFound: {
+    title: { en: "Page not found", ar: "الصفحة غير موجودة" },
+    body: { en: "This address does not lead to a page. Return to Nabta to explore our work or get in touch.", ar: "الصفحة دي مش موجودة. ارجع لنبتة عشان تشوف أعمالنا أو تتواصل معانا." },
+    home: { en: "Nabta in English", ar: "نبتة بالعربية" },
+    navigation: "Return to Nabta / العودة لنبتة",
+  },
   intro: {
     label: { en: "Preparing something that grows", ar: "بنجهّز حاجة تكبر معاك" },
     skip: { en: "Skip intro", ar: "تخطّي المقدمة" },

@@ -30,7 +30,8 @@ try {
     assert.equal(data.robots, published ? "index, follow" : "noindex, nofollow");
     assert.equal(data.canonical, origin ? `${origin}/${locale}` : undefined);
     assert.equal(data.schema["@graph"][0]["@type"], "Organization");
-    assert.equal(data.schema["@graph"][1]["@type"], "WebSite");
+    assert.ok(data.schema["@graph"].some(entity => entity["@type"] === "WebSite"));
+    assert.equal(data.schema["@graph"].filter(entity => entity["@type"] === "Service").length, 3);
     assert.ok(!JSON.stringify(data.schema).includes("hello@nabta.example"));
     if (origin) {
       assert.deepEqual(data.languages, [["en", `${origin}/en`], ["ar", `${origin}/ar`], ["x-default", `${origin}/en`]]);

@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer-core";
 import { mkdir, writeFile } from "node:fs/promises";
 
-const output = "artifacts/2026-09-15";
+const output = "artifacts/2026-09-16/checklist";
 await mkdir(output, { recursive: true });
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH ?? "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
 const results = [];
@@ -33,7 +33,7 @@ try {
     await page.waitForSelector(".brand-intro", { hidden: true });
     await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
     await page.reload();
-    const reduced = await page.evaluate(() => ({ intro: !!document.querySelector(".brand-intro"), canvas: !!document.querySelector("canvas"), animations: document.getAnimations().length }));
+    const reduced = await page.evaluate(() => ({ intro: !!document.querySelector(".brand-intro") && getComputedStyle(document.querySelector(".brand-intro")).display !== "none", canvas: !!document.querySelector("canvas"), animations: document.getAnimations().length }));
     if (reduced.intro || reduced.canvas || reduced.animations) throw new Error(JSON.stringify(reduced));
     results.push({ locale, width, restored, escapeSkip: true, reduced });
     await page.close();
@@ -51,8 +51,9 @@ try {
   const unlocked = await edge.evaluate(() => !document.querySelector("main").inert && document.documentElement.style.overflow !== "hidden");
   if (!unlocked) throw new Error("Live preference change left the page locked");
   await edge.setJavaScriptEnabled(false);
+  await edge.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "no-preference" }]);
   await edge.reload();
-  const noJs = await edge.evaluate(() => ({ intro: !!document.querySelector(".brand-intro"), projects: document.querySelectorAll(".project-entry").length }));
+  const noJs = await edge.evaluate(() => ({ intro: !!document.querySelector(".brand-intro") && getComputedStyle(document.querySelector(".brand-intro")).display !== "none", projects: document.querySelectorAll(".project-entry").length }));
   if (noJs.intro || noJs.projects !== 7) throw new Error(JSON.stringify(noJs));
   results.push({ mobileSkip: true, liveReducedUnlock: unlocked, noJs });
   console.log(JSON.stringify(results));

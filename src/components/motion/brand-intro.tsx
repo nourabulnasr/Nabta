@@ -94,8 +94,8 @@ export function BrandIntro({ locale }: { locale: Locale }) {
     };
   }, [show, animate, locale, scope]);
 
-  if (!show) return null;
-  return <div ref={scope} className="brand-intro" role="dialog" aria-modal="true" aria-label={content.intro.label[locale]} data-stage="loading">
+  if (finished) return null;
+  return <><noscript><style>{`.brand-intro{display:none!important}`}</style></noscript><div ref={scope} className="brand-intro" role="dialog" aria-modal="true" aria-label={content.intro.label[locale]} data-stage="loading">
     <div className="intro-curtain" />
     <div className="intro-meta intro-top"><span>{content.brand.name[locale]} / {content.brand.descriptor[locale]}</span>
       <button ref={skip} type="button" onClick={() => setFinished(true)}>{content.intro.skip[locale]}</button></div>
@@ -103,5 +103,5 @@ export function BrandIntro({ locale }: { locale: Locale }) {
     <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.png" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" /></div>
     <div className="intro-gust" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i className="intro-particle" key={i} />)}</div>
     <div className="intro-meta intro-bottom"><span>{content.intro.label[locale]}</span><span className="intro-loading-line" aria-hidden="true" /></div>
-  </div>;
+  </div></>;
 }
