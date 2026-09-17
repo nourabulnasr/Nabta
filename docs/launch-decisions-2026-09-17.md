@@ -49,6 +49,8 @@ Actual GitHub username verified as nourabulnasr; the trailing 't' in the message
 
 ## Implementation and research references
 
+Verification: local build/lint/types/config/browser-security/SEO checks completed. Commit `54b5747` pushed to repository main. Fresh mobile Lighthouse EN69/AR74 performance, LCP4.1s both, CLS0.003 both, accessibility/best-practices100. Reports in `artifacts/2026-09-17/launch/`; performance tuning remains open. Production deployment remains blocked on Netlify account authentication.
+
 - Updated current bilingual consultancy/tutoring copy and portfolio links; automatic booking, payments, accounts and recording delivery remain unbuilt.
 - Prepared Netlify build configuration, preview noindex guards and hosted security behavior. Public build settings are explicitly inlined because Netlify build-only environment variables are not automatically available to runtime functions. No secret belongs in next.config env.
 - https://vercel.com/legal/terms
