@@ -1,5 +1,7 @@
 # Requested expansion — 2026-09-16
 
+**Updated September 17:** Read `launch-decisions-2026-09-17.md` first. It resolves the booking end time/notice, free consultancy, session price, founder biography, portfolio links and repository. Netlify Free is authorized if Vercel requires a commercial paid plan. The historical questions below are superseded where answered in that document.
+
 Nour supplied public email nourabulnasr@gmail.com and Egyptian mobile01069046666. International WhatsApp destination:201069046666. These are now connected in content.ts. Added the requested public footer credit, Powered by Nour Abulnasr, in both language versions. This is the user's brand credit, not tool attribution.
 
 Nour accepts the actual generated Vercel domain and will create a GitHub repository for this website. Neither URL is available yet. Do not invent them. Previous domain/contact blockers are superseded accordingly.

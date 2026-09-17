@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  SITE_INDEXABLE = "false"
+
+[context.production.environment]
+  SITE_INDEXABLE = "true"
+
+[context.deploy-preview.environment]
+  SITE_INDEXABLE = "false"
+
+[context.branch-deploy.environment]
+  SITE_INDEXABLE = "false"
+
+# Netlify automatically installs its Next.js adapter. Do not deploy .next as
+# plain static files: nonce-based HTML and image optimization need that adapter.

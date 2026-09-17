@@ -10,3 +10,5 @@ npm-debug.log*
 .npm-cache/
 artifacts/
 .playwright-mcp/
+.netlify/
+.vercel/

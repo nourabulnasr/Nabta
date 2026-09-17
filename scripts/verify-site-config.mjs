@@ -10,6 +10,10 @@ assert.equal(getSiteConfig({ SITE_URL: "https://example.com", SITE_INDEXABLE: "t
 assert.equal(getSiteConfig({ SITE_URL: "https://example.com", SITE_INDEXABLE: "false" }).indexable, false);
 assert.equal(getSiteConfig({ SITE_URL: "https://example.com", SITE_INDEXABLE: "true", VERCEL_ENV: "preview" }).indexable, false);
 assert.equal(getSiteConfig({ SITE_URL: "https://example.com", SITE_INDEXABLE: "true", VERCEL_ENV: "production" }).indexable, true);
+for (const NETLIFY_CONTEXT of ["deploy-preview", "branch-deploy", "dev"]) {
+  assert.equal(getSiteConfig({ SITE_URL: "https://example.com", SITE_INDEXABLE: "true", NETLIFY_CONTEXT }).indexable, false);
+}
+assert.equal(getSiteConfig({ SITE_URL: "https://example.com", SITE_INDEXABLE: "true", NETLIFY_CONTEXT: "production" }).indexable, true);
 assert.deepEqual(languageUrls("https://example.com"), {
   en: "https://example.com/en", ar: "https://example.com/ar", "x-default": "https://example.com/en",
 });

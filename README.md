@@ -58,6 +58,8 @@ With the production preview running, run `npm run audit:mobile`. Set `CHROME_PAT
 
 ## Publishing later
 
+September17 update: the source repository is https://github.com/nourabulnasr/Nabta. Netlify Free is the approved hosting fallback because the connected Vercel team is on Hobby and this is a commercial site. `netlify.toml` configures the Next.js build and production/preview indexing. Netlify account sign-in is pending (Nour is remote). Import the repository using the Next.js adapter, not a plain static-folder upload. The actual Netlify `URL` becomes the canonical origin unless `SITE_URL` is explicitly supplied. Public deployment settings are inlined at build time, so rebuild after changes. Private credentials must never enter `next.config.ts` env.
+
 No deployment has been made. Before publishing, supply actual contact/project links and the production domain. Copy `.env.example` to `.env.local` for local configuration, or set the equivalent deployment variables. `SITE_URL` accepts the confirmed HTTPS origin only (no path, credentials, query or port). `SITE_INDEXABLE` defaults to false; set it to `true` only for the reviewed public deployment. **Rebuild after changing either variable:** metadata routes are generated at build time; nonce-bearing pages render dynamically. Leave preview deployments non-indexable.
 
 Canonical URLs, English/Arabic/x-default language links and mascot social images use the configured origin. Both pages include Organization and WebSite JSON-LD without placeholder contacts or invented business details. `/robots.txt` blocks crawling and `/sitemap.xml` contains no URLs until indexing is enabled with a valid origin. Production settings generate an English/Arabic sitemap and allow crawling. No production domain is assumed.

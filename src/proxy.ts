@@ -4,7 +4,7 @@ import { getSiteConfig } from "@/lib/site-config";
 export function proxy(request: NextRequest) {
   const { origin, indexable } = getSiteConfig();
   // Redirect only on the actual hosting platform, never during local fixture tests.
-  if (process.env.VERCEL === "1" && indexable && origin && request.nextUrl.host !== new URL(origin).host) {
+  if (process.env.NABTA_HOSTED === "true" && indexable && origin && request.nextUrl.host !== new URL(origin).host) {
     return NextResponse.redirect(new URL(request.nextUrl.pathname + request.nextUrl.search, origin), 301);
   }
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
@@ -16,7 +16,7 @@ export function proxy(request: NextRequest) {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob:", "font-src 'self'", "connect-src 'self'",
     "object-src 'none'", "base-uri 'none'", "form-action 'self'", "frame-ancestors 'none'",
-    ...(process.env.VERCEL === "1" ? ["upgrade-insecure-requests"] : []),
+    ...(process.env.NABTA_HOSTED === "true" ? ["upgrade-insecure-requests"] : []),
   ].join("; ");
   const headers = new Headers(request.headers);
   headers.set("x-nonce", nonce);
