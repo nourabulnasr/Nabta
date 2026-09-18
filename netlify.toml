@@ -8,6 +8,7 @@
 
 [context.production.environment]
   SITE_INDEXABLE = "true"
+  SITE_URL = "https://nabta-ai-nour.netlify.app"
 
 [context.deploy-preview.environment]
   SITE_INDEXABLE = "false"
