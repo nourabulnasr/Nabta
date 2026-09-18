@@ -158,3 +158,7 @@ Read this file first, then `docs/build-brief.md` and the latest verification rec
 - Latest mobile Lighthouse EN92/AR90, accessibility100/best-practices100, SEO50. LCP3.1s/3.4s remains above target; CLS0.058 remains within0.1. Reserving scrollbar space did not eliminate the measured shift, so do not claim zero CLS. No audit warnings.
 - Screenshots and browser results in `artifacts/2026-09-15/`; final reports in `phase-6-final/`. Verification: `docs/phase-6-verification.md`.
 - Commit message: `Phase 6: Add playful mascot intro and particle reveal`. Visual review remains Nour's. Local preview left running. No remote configured for pushing; no deployment.
+
+## Completion checkpoint — 2026-09-18
+
+User excluded deployment and requested all remaining responsibilities plus immediate work. Added EN/AR founder story, accessible compact mobile navigation and mobile swipe portfolio; eager hero leaf; bounded build workers. Details/current responsibilities: docs/completion-checklist-2026-09-18.md. Initial build/browser/intro checks succeeded. Audit exposed a header hydration layout shift; corrected server-rendered mobile layout. Final lint passed, but rebuild/re-audit after that correction is blocked by Windows virtual-memory exhaustion (~440MB free). Do not claim final performance or full completion. Portrait and actual booking/student/payment/video infrastructure remain pending inputs/services. No deployment.

@@ -22,7 +22,7 @@ export function HeroBackground({ enabled, active, progress, rtl }: { enabled: bo
   }, [enabled, desktop, active]);
   return <>
     <div className="hero-glow" />
-    <Image className="hero-leaf-fallback" src="/images/sculpted-leaf.svg" alt="" width={400} height={600} />
+    <Image className="hero-leaf-fallback" src="/images/sculpted-leaf.svg" alt="" width={400} height={600} loading="eager" />
     {enabled && desktop && ready && !lost && <div className="hero-shader"><Suspense fallback={null}>
       <Shader active={active} onLost={() => setLost(true)} progress={progress} rtl={rtl} />
     </Suspense></div>}

@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Hero } from "@/components/sections/hero";
 import { WhatNabtaDoes } from "@/components/sections/what-nabta-does";
+import { Founder } from "@/components/sections/founder";
 import { SelectedWork } from "@/components/sections/selected-work";
 import { Tutoring } from "@/components/sections/tutoring";
 import { ServicesContact } from "@/components/sections/services-contact";
@@ -85,6 +86,7 @@ export default async function HomePage({ params }: PageProps) {
       <main id="main-content" tabIndex={-1}>
         <Hero locale={locale} />
         <RevealGroup><WhatNabtaDoes locale={locale} /></RevealGroup>
+        <RevealGroup><Founder locale={locale} /></RevealGroup>
         <SelectedWork locale={locale} />
         <RevealGroup><Tutoring locale={locale} /></RevealGroup>
         <RevealGroup><ServicesContact locale={locale} /></RevealGroup>

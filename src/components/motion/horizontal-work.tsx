@@ -8,7 +8,7 @@ type Props = { children: ReactNode; heading: ReactNode; hint: string; label: str
 
 export function HorizontalWork({ children, heading, hint, label, rtl }: Props) {
   const enabled = useMotionEnabled();
-  const tallEnough = useMediaQuery("(min-height: 700px)");
+  const tallEnough = useMediaQuery("(min-width: 768px) and (min-height: 700px)");
   const pinned = enabled && tallEnough;
   const section = useRef<HTMLElement>(null);
   const viewport = useRef<HTMLDivElement>(null);

@@ -27,3 +27,7 @@ Nour authorized launch essentials after the Phase6 checkpoint. This work does no
 Real email, WhatsApp number, booking URL, seven project destinations, confirmed production domain and GitHub repository. These were requested and remain pending. Contact placeholders are still visibly marked and non-clickable. Public content/visual review, further loading optimization and a deployment check against the real domain remain outstanding. No remote exists for pushing and no deployment was performed.
 
 Metadata implementation follows the [Next.js sitemap](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap) and [robots](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots) conventions. Rebuild when publication variables change.
+
+## Current status
+
+The historical launch checklist above is superseded by `docs/completion-checklist-2026-09-18.md` and `docs/launch-decisions-2026-09-17.md`. Real contact details, repository and ten project destinations are now supplied; COD agent remains unlinked. Do not treat the earlier placeholder list as current.

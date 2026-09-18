@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileNavigation } from "./mobile-navigation";
 import { content, sectionIds, type Locale } from "@/content";
 
 export function SiteHeader({ locale }: { locale: Locale }) {
@@ -10,11 +11,11 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         <span className="brand-seed" aria-hidden="true" />
         <span className="brand-wordmark">{content.brand.name[locale]}</span>
       </a>
-      <nav className="main-nav" aria-label={content.accessibility.mainNavigation[locale]}>
+      <MobileNavigation label={content.accessibility.mainNavigation[locale]} menu={locale === "en" ? "Menu" : "القائمة"}>
         {sectionIds.map((id) => (
           <a key={id} href={`#${id}`}>{content.sections[id].navigation[locale]}</a>
         ))}
-      </nav>
+      </MobileNavigation>
       <Link
         className="language-link"
         href={`/${alternateLocale}`}

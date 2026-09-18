@@ -2,7 +2,7 @@ export const locales = ["en", "ar"] as const;
 export type Locale = (typeof locales)[number];
 export type LocalizedText = Record<Locale, string>;
 
-export const sectionIds = ["about", "work", "tutoring", "contact"] as const;
+export const sectionIds = ["about", "founder", "work", "tutoring", "contact"] as const;
 export type SectionId = (typeof sectionIds)[number];
 
 type SectionContent = {
@@ -23,6 +23,7 @@ type Content = {
   language: { label: LocalizedText; switchLabel: LocalizedText };
   hero: { title: LocalizedText; body: LocalizedText; explore: LocalizedText; pause: LocalizedText; resume: LocalizedText };
   sections: Record<SectionId, SectionContent>;
+  founder: { paragraphs: LocalizedText[]; cta: LocalizedText };
   about: { steps: EditorialItem[]; offer: LocalizedText; cta: LocalizedText };
   work: { projects: Project[]; view: LocalizedText; pending: LocalizedText; scrollHint: LocalizedText; navigationLabel: LocalizedText };
   tutoring: { subject: LocalizedText; details: LocalizedText[]; cta: LocalizedText; note: LocalizedText; bookingUrl: string | null };
@@ -72,6 +73,11 @@ export const content: Content = {
     resume: { en: "Resume animation", ar: "تشغيل الحركة" },
   },
   sections: {
+    founder: {
+      title: { en: "The person behind Nabta", ar: "مين ورا نبتة" },
+      navigation: { en: "Founder", ar: "المؤسس" },
+      body: { en: "I'm Noureldin — an AI engineer who builds real systems, not demos.", ar: "أنا نورالدين — مهندس ذكاء اصطناعي ببني أنظمة حقيقية، مش مجرد عروض تجريبية." },
+    },
     about: {
       title: { en: "What Nabta does", ar: "ماذا تقدم نبتة" },
       navigation: { en: "About", ar: "عن نبتة" },
@@ -92,6 +98,14 @@ export const content: Content = {
       navigation: { en: "Contact", ar: "تواصل" },
       body: { en: "AI consultancy and software development for businesses, with private tutoring for the next generation of builders. Based in Cairo, Egypt.", ar: "استشارات ذكاء اصطناعي وتطوير برمجيات للشركات، ودروس خصوصية للجيل الجاي من المبرمجين. من القاهرة، مصر." },
     },
+  },
+  founder: {
+    paragraphs: [
+      { en: "I hold Anthropic's Claude Certified Architect – Professional certification and a Computer Science degree specializing in AI, and I've shipped everything from a fully local legal-AI platform to autonomous agents and production ML tools.", ar: "حاصل على شهادة Claude Certified Architect – Professional من Anthropic، ودرجة في علوم الحاسب بتخصص الذكاء الاصطناعي. طوّرت مشاريع من منصة ذكاء اصطناعي قانونية بتشتغل محليًا بالكامل، لوكلاء مستقلين وأدوات تعلم آلي للاستخدام الفعلي." },
+      { en: "Through Nabta, I help businesses find the highest-leverage place AI can actually move their numbers — then I build it: custom AI systems, agents, automations, web and mobile apps. And because I believe the best way to understand technology is to teach it, I also tutor students in programming and AI, including Egypt's new secondary-school curriculum.", ar: "من خلال نبتة، بساعد الشركات تحدد فين الذكاء الاصطناعي يقدر يعمل أكبر فرق في نتائجها، وبعدها ببني الحل: أنظمة مخصصة، ووكلاء، وأتمتة، وتطبيقات ويب وموبايل. ولأني مؤمن إن تدريس التكنولوجيا من أفضل الطرق لفهمها، بقدم كمان دروس في البرمجة والذكاء الاصطناعي، ومنها المنهج المصري الجديد للمرحلة الثانوية." },
+      { en: "Whether you're a business looking to grow with AI or a student trying to master it, the goal is the same: something real, built well, that works.", ar: "سواء عندك شركة وعايز تكبرها بالذكاء الاصطناعي، أو طالب عايز تتقنه، الهدف واحد: حاجة حقيقية، مبنية صح، وبتشتغل." },
+    ],
+    cta: { en: "Let's talk about your next step", ar: "نتكلم عن خطوتك الجاية" },
   },
   about: {
     steps: [

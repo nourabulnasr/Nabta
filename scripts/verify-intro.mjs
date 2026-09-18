@@ -1,7 +1,8 @@
 import puppeteer from "puppeteer-core";
 import { mkdir, writeFile } from "node:fs/promises";
 
-const output = "artifacts/2026-09-16/checklist";
+const output = process.env.VERIFY_OUTPUT ?? "artifacts/2026-09-16/checklist";
+const base = process.env.VERIFY_BASE_URL ?? "http://127.0.0.1:3000";
 await mkdir(output, { recursive: true });
 const browser = await puppeteer.launch({ executablePath: process.env.CHROME_PATH ?? "C:/Program Files/Google/Chrome/Application/chrome.exe", headless: true });
 const results = [];
@@ -11,7 +12,7 @@ try {
     await page.setViewport({ width, height: 900 });
     const errors = [];
     page.on("pageerror", error => errors.push(error.message));
-    await page.goto(`http://127.0.0.1:3000/${locale}`, { waitUntil: "domcontentloaded" });
+    await page.goto(`${base}/${locale}`, { waitUntil: "domcontentloaded" });
     await page.waitForSelector(".brand-intro");
     await page.screenshot({ path: `${output}/intro-${locale}-loading.png` });
     await page.waitForFunction(() => document.querySelector(".brand-intro")?.dataset.stage === "gust");
@@ -40,7 +41,7 @@ try {
   }
   const edge = await browser.newPage();
   await edge.setViewport({ width: 320, height: 700 });
-  await edge.goto("http://127.0.0.1:3000/en", { waitUntil: "domcontentloaded" });
+  await edge.goto(`${base}/en`, { waitUntil: "domcontentloaded" });
   await edge.waitForSelector(".intro-top button");
   await edge.click(".intro-top button");
   await edge.waitForSelector(".brand-intro", { hidden: true });
