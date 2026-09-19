@@ -45,3 +45,7 @@ Audit found mobile header hydration caused CLS0.277 (EN performance66, LCP3.8s, 
 Final changed-source ESLint run succeeded with node --jitless. Final rebuild/audit remains unverified: Windows reported FreeVirtualMemory449672KB despite roughly4GB free physical RAM; repeated Node workers failed allocating memory. No personal applications were terminated or system settings changed. Rebuild, rerun scripts/verify-completion.mjs and verify-intro.mjs, and audit both locales when virtual memory is available. Performance is still open. The final CSS correction has not received browser or visual approval.
 
 Headshot, calendar, payments, student login/library/admin, recording delivery and final policies remain incomplete as listed above. No deployment attempted.
+
+## Deployment and verification update — 19 September 2026
+
+The marketing website is now published on Netlify Free at https://nabta-ai-nour.netlify.app/en and /ar. Fresh build/checks and independent live security, SEO and responsive verification succeeded (GitHub Actions run 35432595233). This supersedes the previous build-memory blocker and no-deployment statement. Founder narrative/mobile menu/portfolio changes are implemented and browser-verified. Final visual approval and production performance measurements remain open. The owner inputs and booking/student/payment/video implementation above still apply.

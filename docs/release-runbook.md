@@ -1,5 +1,7 @@
 # Nabta release and recovery runbook
 
+Current hosting is Netlify Free, not Vercel. See `netlify-deployment-2026-09-19.md` for the production project, GitHub connection and live verification. Historical Vercel-specific instructions below must be adapted to Netlify; do not enable paid controls without authorization.
+
 ## Before publishing
 
 - Connect an owner-controlled GitHub repository and Vercel project. Enable MFA and review collaborators/integrations. Push the recorded commit and confirm CI actually ran.
@@ -24,7 +26,7 @@ Review Dependabot updates weekly and urgent advisories immediately. Use the late
 
 ## Backup and restore
 
-Current persistent asset is source code: push to the owner's remote and retain original media. No remote is configured yet, so local commits are not an off-device backup. Test recovery by cloning the remote to a fresh directory, installing from the lockfile and building. Store credentials in the provider's secret store, not Git.
+Current persistent asset is source code: push to the owner's remote and retain original media. The origin remote is https://github.com/nourabulnasr/Nabta.git; pushed main commits are the off-device source backup. Test recovery by cloning the remote to a fresh directory, installing from the lockfile and building. Store credentials in the provider's secret store, not Git.
 
 When a database and paid media exist, define retention and recovery objectives, enable provider backups/versioning, and perform a restore into an isolated environment before launch. Check bookings, orders, entitlements and media after restoration; protect backup access with least privilege.
 

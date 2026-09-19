@@ -162,3 +162,11 @@ Read this file first, then `docs/build-brief.md` and the latest verification rec
 ## Completion checkpoint — 2026-09-18
 
 User excluded deployment and requested all remaining responsibilities plus immediate work. Added EN/AR founder story, accessible compact mobile navigation and mobile swipe portfolio; eager hero leaf; bounded build workers. Details/current responsibilities: docs/completion-checklist-2026-09-18.md. Initial build/browser/intro checks succeeded. Audit exposed a header hydration layout shift; corrected server-rendered mobile layout. Final lint passed, but rebuild/re-audit after that correction is blocked by Windows virtual-memory exhaustion (~440MB free). Do not claim final performance or full completion. Portrait and actual booking/student/payment/video infrastructure remain pending inputs/services. No deployment.
+
+## Production published — 2026-09-19
+
+Nabta is live at https://nabta-ai-nour.netlify.app/en and /ar on the existing Netlify Free Legacy plan. GitHub main is connected with a read-only deploy key and push webhook; cloud builds use the explicitly pinned Next.js adapter. Published application commit d1c109a, deploy 6aadfeb846245400080e1f28. Optional public Netlify badge disabled through its supported setting; CSP unchanged.
+
+Fresh local build/checks succeeded, superseding the earlier memory-related build blocker. Final independent production workflow 35432595233 succeeded: real EN/AR HTTP responses, security headers/nonces, blocked injection and legitimate hydration, six real 404s, image restrictions, SEO/canonical/hreflang/schema/robots/sitemap, responsive menu/founder/portfolio at 320/390/768/1440, reduced motion and no-JavaScript navigation. Local network still times out on Netlify CDN, so live verification used GitHub's runner. Production Lighthouse/field performance remains unmeasured; do not claim full performance completion.
+
+Booking, student accounts, payment approval and protected recordings remain unconnected; portrait, course/access terms and provider accounts are pending. See docs/netlify-deployment-2026-09-19.md and docs/completion-checklist-2026-09-18.md.
