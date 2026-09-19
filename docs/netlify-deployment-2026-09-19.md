@@ -27,3 +27,9 @@ Push reviewed changes to main; Netlify's repository webhook starts a cloud build
 
 No booking service, student accounts, online payments, paid recording access or database are operating yet. The public page directs customers to email/WhatsApp. Remaining owner inputs and implementation are in completion-checklist-2026-09-18.md.
 
+
+## Access incident — 19 September 2026
+
+Owner confirmed the public URL fails on both Wi-Fi and mobile data. Local HTTPS connections time out while DNS resolves to 35.157.26.135 and 63.176.8.218; Netlify main website/dashboard and GitHub remain reachable. Netlify API still reports published deploy ready with no error. External workflow success is not proof of Egyptian visitor reachability.
+
+Reports with matching symptoms across Egyptian providers continue through September 12: https://answers.netlify.com/t/netlify-sites-unreachable-from-egypt-without-vpn/164174 . This supports a regional routing/connectivity diagnosis, but does not independently establish the precise ISP failure for Nabta. Do not describe the site as launch-ready for Egypt. No code rollback or DNS change made: neither is supported by present evidence. Evaluate a free alternative host, first testing reachability from the owner's networks and Next.js runtime/free-tier compatibility. Cloudflare is a candidate, not yet provisioned or verified; owner account access needed before permanent deployment. Do not require visitors to use a VPN.
