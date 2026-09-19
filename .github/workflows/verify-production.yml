@@ -23,4 +23,6 @@ jobs:
       - run: npm ci
       - run: node scripts/verify-deployment.mjs
       - run: node scripts/verify-seo.mjs
+        if: ${{ !cancelled() }}
       - run: node scripts/verify-completion.mjs
+        if: ${{ !cancelled() }}

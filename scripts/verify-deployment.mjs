@@ -46,7 +46,7 @@ try {
     page.on("pageerror", e => errors.push(e.message));
     await page.evaluateOnNewDocument(() => {
       window.cspViolations = [];
-      document.addEventListener("securitypolicyviolation", event => window.cspViolations.push(event.effectiveDirective));
+      document.addEventListener("securitypolicyviolation", event => window.cspViolations.push({ directive: event.effectiveDirective, blockedURI: event.blockedURI, sourceFile: event.sourceFile, line: event.lineNumber }));
     });
     await page.goto(`${base}/${locale}`);
     await page.waitForFunction(() => !document.querySelector(".brand-intro") || getComputedStyle(document.querySelector(".brand-intro")).display === "none", { timeout: 10000 });
