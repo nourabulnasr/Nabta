@@ -1,0 +1,12 @@
+name: Check Cloudflare connectivity
+on:
+  workflow_dispatch:
+permissions: {}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Verify public test Worker over HTTPS
+        run: |
+          curl --fail --show-error --verbose --connect-timeout 15 --max-time 30 https://nabta-connectivity-check.nourabulnasr.workers.dev
