@@ -12,3 +12,7 @@ artifacts/
 .playwright-mcp/
 .netlify/
 .vercel/
+.vinext/
+.wrangler/
+
+reference-inputs-local/

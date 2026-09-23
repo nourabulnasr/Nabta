@@ -10,15 +10,22 @@
     "audit:mobile": "node scripts/lighthouse.mjs",
     "typecheck": "next typegen && tsc --noEmit",
     "check": "npm run lint && npm run typecheck",
-    "security:scan": "node scripts/security-scan.mjs"
+    "security:scan": "node scripts/security-scan.mjs",
+    "dev:vinext": "vinext dev --port 3001",
+    "build:vinext": "vinext build",
+    "start:vinext": "wrangler dev --config dist/server/wrangler.json",
+    "deploy:vinext": "vinext-cloudflare deploy --config dist/server/wrangler.json"
   },
   "dependencies": {
     "@react-three/fiber": "9.7.0",
+    "@vinext/cloudflare": "1.0.0-beta.8",
     "motion": "12.43.0",
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "three": "0.184.0"
+    "react-server-dom-webpack": "19.2.8",
+    "three": "0.184.0",
+    "vinext": "1.0.0-beta.10"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "5.15.13",
@@ -35,5 +42,6 @@
   },
   "engines": {
     "node": "22.x"
-  }
+  },
+  "type": "module"
 }
