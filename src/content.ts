@@ -140,9 +140,11 @@ export const content: Content = {
     details: [
       { en: "Programming & AI for Secondary 2 students in the Egyptian Baccalaureate. EGP 250 per session.", ar: "البرمجة والذكاء الاصطناعي لطلاب الصف الثاني الثانوي بنظام البكالوريا المصرية. سعر الحصة ٢٥٠ جنيه." },
       { en: "Clear explanations, guided practice, and time to ask the questions you couldn't ask in class.", ar: "شرح واضح، وتطبيق خطوة بخطوة، ووقت تسأل فيه عن كل حاجة مافهمتهاش في الفصل." },
+      { en: "Live tutoring and recorded lessons are separate learning options. Recorded lessons are planned to run for 1–2 hours, with lifetime access to purchased recordings.", ar: "الدروس المباشرة والدروس المسجلة خياران منفصلان للتعلم. مدة الدرس المسجل المخططة من ساعة لساعتين، مع وصول دائم للتسجيلات التي تشتريها." },
+      { en: "Coming soon: a 20-lesson recorded course. EGP 250 per recorded lesson, or EGP 4,500 for the complete course instead of EGP 5,000 — save EGP 500. Recordings are in preparation and are not available for purchase yet.", ar: "قريبًا: كورس مسجل من ٢٠ حصة. الحصة المسجلة بـ٢٥٠ جنيه، أو الكورس كاملًا بـ٤٥٠٠ جنيه بدلًا من ٥٠٠٠ — وفر ٥٠٠ جنيه. التسجيلات قيد الإعداد وليست متاحة للشراء بعد." },
     ],
     cta: { en: "Arrange a session", ar: "رتّب حصتك" },
-    note: { en: "Contact us by WhatsApp or email to arrange your session. Online payment and recording access are not available yet.", ar: "تواصل معانا على واتساب أو البريد الإلكتروني لترتيب حصتك. الدفع الإلكتروني والدخول للتسجيلات لسه مش متاحين." },
+    note: { en: "Arrange live tutoring by WhatsApp or email. The consultancy calendar is for business AI consultations only. Recorded-course access will open when the lessons and student library are ready.", ar: "رتّب دروسك المباشرة على واتساب أو البريد الإلكتروني. تقويم الاستشارات مخصص لاستشارات الذكاء الاصطناعي للشركات فقط. الدخول للكورس المسجل هيفتح لما الدروس ومكتبة الطالب تكون جاهزة." },
     bookingUrl: null,
   },
   contact: {

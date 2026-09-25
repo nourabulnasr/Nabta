@@ -1,4 +1,5 @@
 import { content, type Locale } from "@/content";
+import { consultancyBookingUrl } from "@/lib/business-links";
 
 export function ServicesContact({ locale }: { locale: Locale }) {
   const pending = !content.contact.emailUrl || !content.contact.whatsappUrl;
@@ -16,6 +17,7 @@ export function ServicesContact({ locale }: { locale: Locale }) {
       </dl>
       <div className="contact-details" data-reveal>
         <p className="contact-invitation">{content.contact.invitation[locale]}</p>
+        <p><a className="text-link" href={consultancyBookingUrl}>{locale === "ar" ? "احجز استشارة ذكاء اصطناعي مجانية — ٣٠ دقيقة" : "Book a free AI consultation — 30 minutes"} ↗</a></p>
         <dl className="contact-channels">
           <div><dt>{content.contact.emailLabel[locale]}</dt><dd>
             {content.contact.emailUrl ? <a href={content.contact.emailUrl}><bdi>{content.contact.email[locale]}</bdi></a> : <bdi>{content.contact.email[locale]}</bdi>}

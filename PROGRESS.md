@@ -176,3 +176,6 @@ Nour requested pause and local handover. START-HERE-HANDOVER.md records all curr
 
 ## Resumed independent work — 2026-09-25
 Cloudflare build dependencies completed; fixed server/client image-preload compatibility; generated hosting outputs excluded from checks. Build, lint/types, local Workers security/SEO/responsive/mascot suites succeeded. Mascot WebP delivery89% smaller, original retained. Local mobile performance75/74 and LCP4.7/4.8s remain below target. CLI unauthenticated; no deployment. Detailed checkpoint docs/cloudflare-checkpoint-2026-09-25.md.
+# 25 September 2026 — booking links and course pricing
+
+Wired supplied Cal.com link to free consultancy only and supplied InstaPay link to confirmed tutoring payments. Added bilingual upcoming 20-recording course pricing (EGP250 each / EGP4,500 bundle), 1–2 hour duration and lifetime access. No premature recording sales or automatic unlock claims. Source checks, production build and local Workers deployment/security checks succeeded. Cloudflare OAuth returned to sign-in; owner authorization is pending, so this update is not publicly deployed. See docs/business-update-2026-09-25.md.

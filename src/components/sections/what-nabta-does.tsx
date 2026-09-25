@@ -1,5 +1,6 @@
 import { content, type Locale } from "@/content";
 import { SectionShell } from "./section-shell";
+import { consultancyBookingUrl } from "@/lib/business-links";
 
 export function WhatNabtaDoes({ locale }: { locale: Locale }) {
   return (
@@ -14,7 +15,7 @@ export function WhatNabtaDoes({ locale }: { locale: Locale }) {
       </ol>
       <aside className="audit-offer">
         <p>{content.about.offer[locale]}</p>
-        <a className="text-link" href="#contact">{content.about.cta[locale]} <span aria-hidden="true">↗</span></a>
+        <a className="text-link" href={consultancyBookingUrl}>{content.about.cta[locale]} <span aria-hidden="true">↗</span></a>
       </aside>
     </SectionShell>
   );
