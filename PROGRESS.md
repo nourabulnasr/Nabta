@@ -186,3 +186,6 @@ Wired supplied Cal.com link to free consultancy only and supplied InstaPay link 
 Published after Nour's explicit visual approval: Cloudflare ade415a9-ad65-47b0-98d1-2c1be11b11f4. Live four-locale/viewport interaction cases and SEO succeeded. Cal.com public configuration mismatch discovered (Cal Video, weekday daytime availability); account login required to fix. Prior review-candidate statement below is historical.
 
 Implemented owner-selected Work dropdown, seven software projects, four website homepage previews, bilingual AI Visuals destination and image/video data structure awaiting real work. Four unique supplied founder photos, black-and-white first, manual animated carousel with swipe and reduced-motion. Source/build, four responsive interaction cases, security and intro regression checks succeeded. Candidate awaiting Nour's visual review, not deployed. See docs/work-founder-2026-09-25.md.
+
+## Cal.com setup completed,25 September2026
+Saved consultancy-only settings, dedicated seven-day evening schedule,24-hour notice, Google Meet and required business questions. Verified public calendar/form; no appointment submitted. See docs/calcom-setup-2026-09-25.md.
