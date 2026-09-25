@@ -1,5 +1,7 @@
 # Nabta — account migration handover
 
+Newest local review candidate: `docs/work-founder-2026-09-25.md`. Founder headshots are now supplied and implemented as a four-image carousel, black-and-white first. Work dropdown splits software, websites with captured homepages, and an AI Visuals collection awaiting actual media. This candidate has not replaced the live deployment below.
+
 Latest state: Nabta is deployed at https://nabta.nourabulnasr.workers.dev/en and /ar. Read `docs/business-update-2026-09-25.md` for the deployment and business update; this supersedes older Cloudflare authorization blockers below. Cal.com and InstaPay are linked. Recorded-course pricing is EGP250 per lesson / EGP4,500 for 20; recordings remain upcoming. Deploy updates with `npm run deploy:vinext`; GitHub pushes alone do not deploy Cloudflare.
 
 Saved 24 September 2026; resumed 25 September at Nour's request to complete work not requiring owner actions. See `docs/cloudflare-checkpoint-2026-09-25.md` for the latest build and verification state; older unverified-build statements below describe the previous checkpoint.

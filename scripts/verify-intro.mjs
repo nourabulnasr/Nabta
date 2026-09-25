@@ -54,7 +54,7 @@ try {
   await edge.setJavaScriptEnabled(false);
   await edge.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "no-preference" }]);
   await edge.reload();
-  const noJs = await edge.evaluate(() => ({ intro: !!document.querySelector(".brand-intro") && getComputedStyle(document.querySelector(".brand-intro")).display !== "none", projects: document.querySelectorAll(".project-entry").length }));
+  const noJs = await edge.evaluate(() => ({ intro: !!document.querySelector(".brand-intro") && getComputedStyle(document.querySelector(".brand-intro")).display !== "none", projects: document.querySelectorAll(".project-entry, .website-entry").length }));
   if (noJs.intro || noJs.projects !== 11) throw new Error(JSON.stringify(noJs));
   results.push({ mobileSkip: true, liveReducedUnlock: unlocked, noJs });
   console.log(JSON.stringify(results));

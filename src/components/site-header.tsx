@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { MobileNavigation } from "./mobile-navigation";
+import { WorkNavigation } from "./work-navigation";
 import { content, sectionIds, type Locale } from "@/content";
 
 export function SiteHeader({ locale }: { locale: Locale }) {
@@ -13,7 +14,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
       </a>
       <MobileNavigation label={content.accessibility.mainNavigation[locale]} menu={locale === "en" ? "Menu" : "القائمة"}>
         {sectionIds.map((id) => (
-          <a key={id} href={`#${id}`}>{content.sections[id].navigation[locale]}</a>
+          id === "work" ? <WorkNavigation key={id} locale={locale} /> : <a key={id} href={`#${id}`}>{content.sections[id].navigation[locale]}</a>
         ))}
       </MobileNavigation>
       <Link
