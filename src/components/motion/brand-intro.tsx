@@ -100,7 +100,7 @@ export function BrandIntro({ locale }: { locale: Locale }) {
     <div className="intro-meta intro-top"><span>{content.brand.name[locale]} / {content.brand.descriptor[locale]}</span>
       <button ref={skip} type="button" onClick={() => setFinished(true)}>{content.intro.skip[locale]}</button></div>
     <div className="intro-wordmark" aria-hidden="true">{content.hero.title[locale]}<span>{content.intro.statement[locale]}</span></div>
-    <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.png" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" /></div>
+    <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.webp" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" /></div>
     <div className="intro-gust" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i className="intro-particle" key={i} />)}</div>
     <div className="intro-meta intro-bottom"><span>{content.intro.label[locale]}</span><span className="intro-loading-line" aria-hidden="true" /></div>
   </div></>;

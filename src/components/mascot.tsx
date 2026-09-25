@@ -22,7 +22,7 @@ export function Mascot({ active = true }: { active?: boolean }) {
   }, [enabled, active, animate, scope]);
   return (
     <div ref={scope} className="nabta-mascot" data-motion="mascot" aria-hidden="true">
-      <Image src="/images/2026-09-14/nabta-mascot.png" alt="" width={1254} height={1254}
+      <Image src="/images/2026-09-14/nabta-mascot.webp" alt="" width={1254} height={1254}
         sizes="(min-width: 1200px) 240px, (min-width: 768px) 18vw, 104px" preload />
     </div>
   );

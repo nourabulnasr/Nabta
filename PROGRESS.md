@@ -173,3 +173,6 @@ Booking, student accounts, payment approval and protected recordings remain unco
 
 ## Paused for account migration — 2026-09-24
 Nour requested pause and local handover. START-HERE-HANDOVER.md records all current requirements, hosting incidents, owner inputs and next implementation steps. Cloudflare has only a Hello World connectivity test; parallel vinext config/dependency changes are preserved as unverified WIP. Do not deploy or resume implementation until requested. Original available reference inputs copied to ignored reference-inputs-local/.
+
+## Resumed independent work — 2026-09-25
+Cloudflare build dependencies completed; fixed server/client image-preload compatibility; generated hosting outputs excluded from checks. Build, lint/types, local Workers security/SEO/responsive/mascot suites succeeded. Mascot WebP delivery89% smaller, original retained. Local mobile performance75/74 and LCP4.7/4.8s remain below target. CLI unauthenticated; no deployment. Detailed checkpoint docs/cloudflare-checkpoint-2026-09-25.md.

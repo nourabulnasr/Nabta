@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getImageProps } from "next/image";
-import { preload } from "react-dom";
+import { MascotPreload } from "@/components/mascot-preload";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { content, isLocale } from "@/content";
@@ -52,12 +51,6 @@ export default async function HomePage({ params }: PageProps) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const { origin } = getSiteConfig();
-  const { props: introImage } = getImageProps({
-    src: "/images/2026-09-14/nabta-mascot.png", alt: "", width: 1254, height: 1254,
-    sizes: "(max-width: 767px) 220px, 360px",
-  });
-  preload(introImage.src, { as: "image", imageSrcSet: introImage.srcSet, imageSizes: introImage.sizes,
-    fetchPriority: "high", media: "(prefers-reduced-motion: no-preference)" });
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -78,6 +71,7 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
+      <MascotPreload />
       <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <BrandIntro locale={locale} />
       <PageAccents />

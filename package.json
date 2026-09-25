@@ -28,17 +28,22 @@
     "vinext": "1.0.0-beta.10"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "1.60.1",
     "@netlify/plugin-nextjs": "5.15.13",
     "@tailwindcss/postcss": "4.3.3",
     "@types/node": "22.20.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@types/three": "0.184.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "@vitejs/plugin-rsc": "0.5.35",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.5",
     "lighthouse": "13.4.1",
     "tailwindcss": "4.3.3",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vite": "8.3.1",
+    "wrangler": "4.140.0"
   },
   "engines": {
     "node": "22.x"

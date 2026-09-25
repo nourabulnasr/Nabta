@@ -1,6 +1,6 @@
 # Nabta — account migration handover
 
-Saved 24 September 2026. **Work paused at Nour's request. Do not deploy or continue implementation until asked to resume.**
+Saved 24 September 2026; resumed 25 September at Nour's request to complete work not requiring owner actions. See `docs/cloudflare-checkpoint-2026-09-25.md` for the latest build and verification state; older unverified-build statements below describe the previous checkpoint.
 
 ## Open this project on the same laptop
 
