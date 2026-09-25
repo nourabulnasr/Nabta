@@ -1,6 +1,6 @@
 # Nabta — account migration handover
 
-Newest local review candidate: `docs/work-founder-2026-09-25.md`. Founder headshots are now supplied and implemented as a four-image carousel, black-and-white first. Work dropdown splits software, websites with captured homepages, and an AI Visuals collection awaiting actual media. This candidate has not replaced the live deployment below.
+Newest deployed update: `docs/work-founder-2026-09-25.md`. Nour approved the design and it is live on Cloudflare (version ade415a9-ad65-47b0-98d1-2c1be11b11f4). Founder headshots are implemented as a four-image carousel, black-and-white first. Work dropdown splits software, websites with captured homepages, and AI Visuals awaiting actual media. Public Cal.com inspection found Cal Video and weekday 9am–5pm slots, not the agreed settings; Cal.com login is needed to correct them.
 
 Latest state: Nabta is deployed at https://nabta.nourabulnasr.workers.dev/en and /ar. Read `docs/business-update-2026-09-25.md` for the deployment and business update; this supersedes older Cloudflare authorization blockers below. Cal.com and InstaPay are linked. Recorded-course pricing is EGP250 per lesson / EGP4,500 for 20; recordings remain upcoming. Deploy updates with `npm run deploy:vinext`; GitHub pushes alone do not deploy Cloudflare.
 
