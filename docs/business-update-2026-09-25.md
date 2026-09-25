@@ -14,4 +14,10 @@ Implemented bilingual marketing copy and links. Student accounts, payment verifi
 
 Verification: source lint/typecheck and Cloudflare production build succeeded; the existing deployment/security suite succeeded against the local Workers runtime. Built English HTML contains both exact links, package price and unavailable-for-purchase disclosure.
 
-Deployment remains pending. Wrangler is unauthenticated; the browser OAuth flow returns to Cloudflare sign-in. Owner must complete sign-in and authorize Workers deployment access. No real Nabta Worker was deployed in this update. Production origin/indexability and live checks must be completed after authorization. The existing Cloudflare connectivity-check Worker is not the website.
+Cloudflare authorization subsequently succeeded through the owner browser flow. Nabta is now deployed at https://nabta.nourabulnasr.workers.dev/en and /ar. Production version: a29073ec-6234-456b-a0d5-edd526225e20. No paid plan was activated. Public origin/indexing settings are baked into the reproducible `npm run deploy:vinext` command via scripts/deploy-cloudflare.mjs. Stop local Wrangler dev before rebuilding: its open state directory can cause EBUSY on Windows.
+
+Live production SEO and deployment/security suites succeeded, including canonical URLs, bilingual metadata/schema, robots/sitemap, nonce/hydration and malicious script checks. Responsive verification succeeded at eight locale/viewport combinations, with keyboard navigation, no-JavaScript fallback and mobile portfolio checks. The site also loaded in the in-app browser. The owner should still check their own phone/network. Performance targets and real-user metrics remain outstanding; the local performance findings in the Cloudflare checkpoint are not production measurements.
+
+GitHub changes are on codex/nabta-phase-1. Publishing Cloudflare currently uses the local deployment command; GitHub auto-deployment is not configured. Old main/Netlify deployment is separate.
+
+Live mascot verification also succeeded: intro landing restores scrolling, mascot continues animating, Escape/mobile Skip work, reduced-motion disables animation and unlocks the page, and no-JavaScript content remains accessible.

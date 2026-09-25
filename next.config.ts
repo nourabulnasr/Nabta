@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const hosted = process.env.VERCEL === "1" || process.env.NETLIFY === "true";
+const hosted = process.env.VERCEL === "1" || process.env.NETLIFY === "true" || process.env.NABTA_CLOUDFLARE === "true";
 const nextConfig: NextConfig = {
   // Only public deployment settings are inlined. Never add credentials here.
   // Netlify build-context variables are not automatically available at runtime.

@@ -1,6 +1,6 @@
 # Nabta — account migration handover
 
-Latest business update: read `docs/business-update-2026-09-25.md`. Cal.com and InstaPay links are now supplied and wired into the bilingual website. Recorded-course pricing is EGP250 per lesson / EGP4,500 for 20; recordings remain upcoming. Cloudflare sign-in and deployment authorization are still required; no real Nabta Worker is live yet.
+Latest state: Nabta is deployed at https://nabta.nourabulnasr.workers.dev/en and /ar. Read `docs/business-update-2026-09-25.md` for the deployment and business update; this supersedes older Cloudflare authorization blockers below. Cal.com and InstaPay are linked. Recorded-course pricing is EGP250 per lesson / EGP4,500 for 20; recordings remain upcoming. Deploy updates with `npm run deploy:vinext`; GitHub pushes alone do not deploy Cloudflare.
 
 Saved 24 September 2026; resumed 25 September at Nour's request to complete work not requiring owner actions. See `docs/cloudflare-checkpoint-2026-09-25.md` for the latest build and verification state; older unverified-build statements below describe the previous checkpoint.
 
