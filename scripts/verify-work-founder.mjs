@@ -6,9 +6,9 @@ const page=await browser.newPage(); await page.setViewport({width,height:1000});
 await page.waitForNetworkIdle({idleTime:500,timeout:20000});
 assert.equal(await page.$eval('html',el=>el.scrollWidth<=innerWidth),true);
 if(width<768)await page.click('.menu-toggle');await page.click('.work-navigation summary');assert.equal(await page.$eval('.work-navigation',el=>el.open),true);assert.equal(await page.$$('.work-dropdown a').then(a=>a.length),3);await page.click('.work-dropdown a[href="#websites"]');assert.equal(await page.$eval('.work-navigation',el=>el.open),false);
-await page.$eval('#founder',el=>el.scrollIntoView());assert.equal(await page.$eval('.portrait-controls span',el=>el.textContent),'1 / 4');await page.click('.portrait-controls button:last-child');assert.equal(await page.$eval('.portrait-controls span',el=>el.textContent),'2 / 4');await page.click('.portrait-controls button:first-child');assert.equal(await page.$eval('.portrait-controls span',el=>el.textContent),'1 / 4');
+assert.equal(await page.$$eval("#founder img",els=>els.length),1);assert.ok(await page.$eval("#founder img",el=>el.getAttribute("src").includes("portrait-1")));assert.equal(await page.$(".portrait-controls"),null);
 assert.equal(await page.$$('.website-preview img').then(a=>a.length),4);assert.equal(await page.$$('.project-entry').then(a=>a.length),7);
-await page.screenshot({path:'artifacts/founder-'+locale+'-'+width+'.png'});await page.close(); console.log(locale+' '+width+': navigation, founder controls, categorization verified');
+await page.screenshot({path:'artifacts/founder-'+locale+'-'+width+'.png'});await page.close(); console.log(locale+' '+width+': navigation, single founder portrait, categorization verified');
 }}finally{await browser.close();}
 
 

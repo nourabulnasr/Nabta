@@ -85,3 +85,5 @@ Finish usable free hosting and production performance measurements; add headshot
 GitHub is a code backup, not a backup of ignored screenshots, original references, credentials or the entire conversation. Keep the full local project folder for those local files. Since this folder is under OneDrive, use Windows Explorer's “Always keep on this device” if offline availability is needed; OneDrive sync/offline status has not been certified here.
 
 Cal.com update: configured and publicly verified consultancy Google Meet, daily evening slots17:00–23:30 Cairo,24-hour notice and required bilingual business intake. Read docs/calcom-setup-2026-09-25.md. Login/configuration blocker is resolved; real booking/email/Meet delivery remains untested.
+
+26 September: read docs/github-portrait-2026-09-26.md. All six GitHub links anonymously resolve200 and already match API canonical names. Founder simplified to first black-and-white image only at owner's request; carousel and other public portrait assets removed.

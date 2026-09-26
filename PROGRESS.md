@@ -189,3 +189,6 @@ Implemented owner-selected Work dropdown, seven software projects, four website 
 
 ## Cal.com setup completed,25 September2026
 Saved consultancy-only settings, dedicated seven-day evening schedule,24-hour notice, Google Meet and required business questions. Verified public calendar/form; no appointment submitted. See docs/calcom-setup-2026-09-25.md.
+
+##26 September2026 — GitHub checks and single portrait
+All6public GitHub project links returned200 and match exact canonical API names. NoURLchanges required. Published only first founder portrait, removedcarousel/otherpublicportraits. Source/build and4live responsive checks succeeded; Cloudflare9850ffba-dbf8-4a24-b2c7-8bc6c5ebdfd1. See docs/github-portrait-2026-09-26.md.
