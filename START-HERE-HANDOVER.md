@@ -1,6 +1,6 @@
 # Nabta — account migration handover
 
-Newest deployed update: `docs/work-founder-2026-09-25.md`. Nour approved the design and it is live on Cloudflare (version ade415a9-ad65-47b0-98d1-2c1be11b11f4). Founder headshots are implemented as a four-image carousel, black-and-white first. Work dropdown splits software, websites with captured homepages, and AI Visuals awaiting actual media. Public Cal.com inspection found Cal Video and weekday 9am–5pm slots, not the agreed settings; Cal.com login is needed to correct them.
+Newest deployed update: docs/portfolio-additions-2026-09-28.md. MAS Heavy Equipment and El Amal added: six website previews total. Founder has only the first black-and-white portrait; carousel removed at Nour's request. Cal.com is configured for Google Meet, daily 5pm-midnight Cairo and 24-hour notice; only a real booking/email/conflict end-to-end test remains. See docs/calcom-setup-2026-09-25.md. This replaces the historical carousel and calendar-login notes below.
 
 Latest state: Nabta is deployed at https://nabta.nourabulnasr.workers.dev/en and /ar. Read `docs/business-update-2026-09-25.md` for the deployment and business update; this supersedes older Cloudflare authorization blockers below. Cal.com and InstaPay are linked. Recorded-course pricing is EGP250 per lesson / EGP4,500 for 20; recordings remain upcoming. Deploy updates with `npm run deploy:vinext`; GitHub pushes alone do not deploy Cloudflare.
 
@@ -14,7 +14,7 @@ Open this folder as a project in Codex after signing into the new account. The s
 
 Suggested first message in the new account:
 
-> Open the Nabta project. Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and the referenced completion/deployment records. Summarize the saved state and outstanding work before making changes. Do not restart the design or treat the Cloudflare migration as complete.
+> Open the Nabta project. Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and the referenced completion/deployment records. Summarize the saved state and outstanding work before making changes. Do not restart the design. Cloudflare is live; use the newest dated records for remaining work.
 
 ## What's in this folder
 

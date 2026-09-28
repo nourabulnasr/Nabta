@@ -192,3 +192,6 @@ Saved consultancy-only settings, dedicated seven-day evening schedule,24-hour no
 
 ##26 September2026 — GitHub checks and single portrait
 All6public GitHub project links returned200 and match exact canonical API names. NoURLchanges required. Published only first founder portrait, removedcarousel/otherpublicportraits. Source/build and4live responsive checks succeeded; Cloudflare9850ffba-dbf8-4a24-b2c7-8bc6c5ebdfd1. See docs/github-portrait-2026-09-26.md.
+
+## 28 September 2026 — Two website additions
+Published MAS Heavy Equipment and El Amal with actual page previews and bilingual copy. Six websites, seven software entries, one founder portrait. Live EN/AR mobile/desktop and intro/reduced-motion/no-JavaScript checks succeeded. Cloudflare version fdd26270-892d-49bd-a184-cfd55304ada2. See docs/portfolio-additions-2026-09-28.md.
