@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { content, type Locale } from "@/content";
+import type { Locale } from "@/content";
 import { useMotionEnabled } from "./use-media-query";
 
 /** A decorative copy bridges the two real, accessible wordmarks. */
-export function WordmarkTransition({ locale }: { locale: Locale }) {
+export function WordmarkTransition({ locale, title }: { locale: Locale; title:string }) {
   const enabled = useMotionEnabled();
   const copy = useRef<HTMLSpanElement>(null);
   useEffect(() => {
@@ -59,5 +59,5 @@ export function WordmarkTransition({ locale }: { locale: Locale }) {
       destination.style.removeProperty("opacity");
     };
   }, [enabled, locale]);
-  return enabled ? <span ref={copy} className="travelling-wordmark" aria-hidden="true">{content.hero.title[locale]}</span> : null;
+  return enabled ? <span ref={copy} className="travelling-wordmark" aria-hidden="true">{title}</span> : null;
 }

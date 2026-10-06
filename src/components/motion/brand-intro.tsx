@@ -4,10 +4,10 @@ import Image from "@/components/responsive-image";
 import { useEffect, useRef, useState } from "react";
 import { useAnimate } from "motion/react-mini";
 import { spring } from "motion";
-import { content, type Locale } from "@/content";
+import type { Locale } from "@/content";
 import { useMotionEnabled } from "./use-media-query";
 
-export function BrandIntro({ locale }: { locale: Locale }) {
+export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"label"|"name"|"descriptor"|"skip"|"title"|"statement",string> }) {
   const allowed = useMotionEnabled();
   const [finished, setFinished] = useState(false);
   const [scope, animate] = useAnimate<HTMLDivElement>();
@@ -95,13 +95,13 @@ export function BrandIntro({ locale }: { locale: Locale }) {
   }, [show, animate, locale, scope]);
 
   if (finished) return null;
-  return <><noscript><style>{`.brand-intro{display:none!important}`}</style></noscript><div ref={scope} className="brand-intro" role="dialog" aria-modal="true" aria-label={content.intro.label[locale]} data-stage="loading">
+  return <><noscript><style>{`.brand-intro{display:none!important}`}</style></noscript><div ref={scope} className="brand-intro" role="dialog" aria-modal="true" aria-label={copy.label} data-stage="loading">
     <div className="intro-curtain" />
-    <div className="intro-meta intro-top"><span>{content.brand.name[locale]} / {content.brand.descriptor[locale]}</span>
-      <button ref={skip} type="button" onClick={() => setFinished(true)}>{content.intro.skip[locale]}</button></div>
-    <div className="intro-wordmark" aria-hidden="true">{content.hero.title[locale]}<span>{content.intro.statement[locale]}</span></div>
+    <div className="intro-meta intro-top"><span>{copy.name} / {copy.descriptor}</span>
+      <button ref={skip} type="button" onClick={() => setFinished(true)}>{copy.skip}</button></div>
+    <div className="intro-wordmark" aria-hidden="true">{copy.title}<span>{copy.statement}</span></div>
     <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.webp" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" /></div>
     <div className="intro-gust" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i className="intro-particle" key={i} />)}</div>
-    <div className="intro-meta intro-bottom"><span>{content.intro.label[locale]}</span><span className="intro-loading-line" aria-hidden="true" /></div>
+    <div className="intro-meta intro-bottom"><span>{copy.label}</span><span className="intro-loading-line" aria-hidden="true" /></div>
   </div></>;
 }

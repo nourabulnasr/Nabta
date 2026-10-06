@@ -380,3 +380,7 @@ html[lang="ar"] .brand-wordmark { line-height: 1.45; }
 .footer-links { display:flex; flex-wrap:wrap; gap:1.25rem; }
 
 
+
+.consultation-profile { display:flex; align-items:center; gap:1rem; margin-block:1.5rem; }
+.consultation-profile img { inline-size:72px; block-size:88px; object-fit:cover; border:1px solid var(--rule); flex-shrink:0; }
+.consultation-profile > div { min-inline-size:0; }

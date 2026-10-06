@@ -25,7 +25,7 @@ try {
       }
     });
     await page.setViewport({ width: 1440, height: 900 });
-    await page.goto(`http://127.0.0.1:3000/${locale}`);
+    await page.goto((process.env.VERIFY_BASE_URL ?? "http://127.0.0.1:3000") + "/" + locale);
     await page.waitForSelector(".brand-intro", { hidden: true, timeout: 10000 });
     await page.waitForSelector("canvas");
     await setTimeout(600);
@@ -42,7 +42,7 @@ try {
     assert.equal(await page.evaluate(() => window.leafDrawCount), before, "Pause must stop GPU drawing");
     await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "reduce" }]);
     await page.waitForSelector("canvas", { hidden: true });
-    assert.ok(await page.$eval(".hero-leaf-fallback", image => image.complete && image.naturalWidth > 0));
+    assert.ok(await page.$eval(".hero-leaf-fallback", image => image.tagName.toLowerCase() === "svg" && image.querySelectorAll("path").length === 2 && image.getBoundingClientRect().height > 0 && getComputedStyle(image).visibility === "visible"));
     await page.setViewport({ width: 390, height: 844 });
     await page.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "no-preference" }]);
     await page.reload();

@@ -75,12 +75,12 @@ export default async function HomePage({ params }: PageProps) {
     <>
       <MascotPreload />
       <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
-      <BrandIntro locale={locale} />
+      <BrandIntro locale={locale} copy={{label:content.intro.label[locale],name:content.brand.name[locale],descriptor:content.brand.descriptor[locale],skip:content.intro.skip[locale],title:content.hero.title[locale],statement:content.intro.statement[locale]}} />
       <PageAccents />
       <SiteHeader locale={locale} />
-      <WordmarkTransition locale={locale} />
+      <WordmarkTransition locale={locale} title={content.hero.title[locale]} />
       <main id="main-content" tabIndex={-1}>
-        <Hero locale={locale} /><IntroductionVideo locale={locale} />
+        <Hero locale={locale} copy={{descriptor:content.brand.descriptor[locale],location:content.brand.location[locale],title:content.hero.title[locale],body:content.hero.body[locale],resume:content.hero.resume[locale],pause:content.hero.pause[locale],explore:content.hero.explore[locale]}} /><IntroductionVideo locale={locale} />
         <RevealGroup><WhatNabtaDoes locale={locale} /></RevealGroup>
         <RevealGroup><Founder locale={locale} /></RevealGroup>
         <SelectedWork locale={locale} />

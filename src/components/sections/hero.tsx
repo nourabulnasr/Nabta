@@ -5,11 +5,11 @@ import { useAnimate } from "motion/react-mini";
 import { spring } from "motion";
 import { useEffect, useState } from "react";
 import { HeroBackground } from "@/components/motion/hero-background";
-import { content, type Locale } from "@/content";
+import type { Locale } from "@/content";
 import { Mascot } from "@/components/mascot";
 import { useMotionEnabled } from "@/components/motion/use-media-query";
 
-export function Hero({ locale }: { locale: Locale }) {
+export function Hero({ locale, copy }: { locale: Locale; copy: Record<"descriptor"|"location"|"title"|"body"|"resume"|"pause"|"explore",string> }) {
   const [scope, animate] = useAnimate<HTMLElement>();
   const prefersMotion = useMotionEnabled();
   const [paused, setPaused] = useState(false);
@@ -41,23 +41,23 @@ export function Hero({ locale }: { locale: Locale }) {
         <HeroBackground enabled={prefersMotion} active={active} progress={scrollYProgress} rtl={locale === "ar"} />
       </m.div>
       <div className="hero-intro">
-        <span className="hero-descriptor">{content.brand.descriptor[locale]}</span>
-        <span className="hero-location">{content.brand.location[locale]}</span>
+        <span className="hero-descriptor">{copy.descriptor}</span>
+        <span className="hero-location">{copy.location}</span>
       </div>
       <m.div className="hero-body" data-motion="hero" style={{ scale: enabled ? scale : 1, opacity: enabled ? opacity : 1 }}>
-        <h1 id="hero-title" className="hero-wordmark" data-motion="entrance">{content.hero.title[locale]}</h1>
+        <h1 id="hero-title" className="hero-wordmark" data-motion="entrance">{copy.title}</h1>
         <div className="hero-support">
-          <p className="hero-tagline">{content.hero.body[locale]}</p>
+          <p className="hero-tagline">{copy.body}</p>
           <div className="mascot-slot" data-motion="entrance"><Mascot active={active} /></div>
         </div>
       </m.div>
       <div className="hero-bottom">
         {prefersMotion && <button className="animation-control" type="button" onClick={() => setPaused(!paused)} aria-pressed={paused}>
-          {paused ? content.hero.resume[locale] : content.hero.pause[locale]}
+          {paused ? copy.resume : copy.pause}
         </button>}
         <span className="hero-rule" aria-hidden="true" />
         <a href="#about" className="explore-link">
-          {content.hero.explore[locale]} <span aria-hidden="true">↓</span>
+          {copy.explore} <span aria-hidden="true">↓</span>
         </a>
       </div>
     </section>

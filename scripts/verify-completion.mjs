@@ -33,6 +33,8 @@ try {
       }
       await page.$eval('#founder', el => el.scrollIntoView());
       await page.screenshot({ path: `${output}/founder-${locale}-${width}.png` });
+      await page.$eval('#contact', el => el.scrollIntoView());
+      await page.waitForFunction(() => { const img=document.querySelector('.consultation-profile img'); return img?.complete && img.naturalWidth > 0; });
       assert.deepEqual(errors, []);
       results.push({ locale, width, layout: true, founder: true, menu: true, errors });
       await page.close();
