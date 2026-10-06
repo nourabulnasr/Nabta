@@ -9,7 +9,7 @@ No paid hosting/storage changes or new domains without Nour's authorization.
 3. Set SITE_URL to the production origin, SITE_INDEXABLE=true, NABTA_CLOUDFLARE=true, CONTEXT=production.
 4. Build with npm run build:vinext. On this low-memory Windows host use RAYON_NUM_THREADS=1, GOMAXPROCS=1 and NODE_OPTIONS=--max-old-space-size=512.
 5. Serve dist/server/wrangler.json locally on port3001. Local preview must not redirect to production or upgrade local image requests to HTTPS.
-6. With VERIFY_BASE_URL=http://127.0.0.1:3001, VERIFY_SITE_URL set to production and VERIFY_INDEXABLE=true run verify-deployment.mjs, verify-seo.mjs, verify-completion.mjs, verify-work-founder.mjs, verify-intro.mjs and verify-learning-pages.mjs.
+6. With VERIFY_BASE_URL=http://127.0.0.1:3001, VERIFY_SITE_URL set to production and VERIFY_INDEXABLE=true run verify-deployment.mjs, verify-seo.mjs, verify-completion.mjs, verify-work-founder.mjs, verify-section-navigation.mjs, verify-intro.mjs and verify-learning-pages.mjs.
 7. Run npm run security:scan -- --require-build. Review the exact advisory exception; never claim zero audit findings if it is used.
 8. Deploy with npm run deploy:vinext (builds again) or upload an already checked build using node node_modules/wrangler/bin/wrangler.js deploy --config dist/server/wrangler.json --keep-vars. Retain existing Worker secrets.
 9. Repeat HTTPS header/SEO/browser checks against the real URL. Run mobile Lighthouse with npm run audit:mobile and save both reports. Confirm real reachability from Nour's network.

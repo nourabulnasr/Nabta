@@ -387,3 +387,19 @@ html[lang="ar"] .brand-wordmark { line-height: 1.45; }
 
 /* Programmatic landmark focus after the intro is semantic, not an interactive control. */
 main[tabindex="-1"]:focus { outline:none; }
+
+/* Let the browser defer off-screen layout while preserving search and keyboard access. */
+.founder-section, .website-entry, .section-tutoring, .section-contact {
+  content-visibility: auto;
+  contain-intrinsic-block-size: auto 700px;
+}
+.website-entry { contain-intrinsic-block-size: auto 450px; }
+.founder-section { contain-intrinsic-block-size: auto 1100px; }
+@media (min-width: 768px) {
+  .founder-section { contain-intrinsic-block-size: auto 800px; }
+  .website-entry { contain-intrinsic-block-size: auto 580px; }
+}
+@media print {
+  .founder-section, .website-entry, .section-tutoring, .section-contact { content-visibility: visible; }
+}
+.website-preview:focus-visible { outline-offset: -4px; }

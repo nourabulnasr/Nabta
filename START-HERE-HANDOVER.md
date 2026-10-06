@@ -1,5 +1,5 @@
 # Nabta — current handover
-Updated 6 October 2026. This replaces contradictory status statements in older dated documents.
+Updated 7 October 2026. This replaces contradictory status statements in older dated documents.
 
 ## Where everything is
 Laptop folder: C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta

@@ -1,10 +1,10 @@
-# Nabta current progress — 6 October 2026
+# Nabta current progress — 7 October 2026
 Authoritative continuation: START-HERE-HANDOVER.md.
 Older phase-by-phase history is preserved in docs/progress-history-through-2026-09-28.md.
 
 ## Current deployment
 Cloudflare Worker nabta, https://nabta.nourabulnasr.workers.dev/en and /ar.
-Version 93e254b3-cd1e-4eac-ab86-216e764c3a1d.
+Version 41925737-9eaf-4a7c-afb3-cde060e1deed.
 Source branch codex/nabta-phase-1. Main is historical.
 Public FAQ/privacy/terms/library notice and responsive image improvements are deployed.
 Source also retains future dashboard variables with Wrangler keep_vars=true.
@@ -17,7 +17,7 @@ Mascot intro/landing/continuing animation, skip/Escape, reduced motion and no-Ja
 12 bilingual library/privacy/terms viewport checks; disabled learning API rejects use and cross-origin writes.
 Six GitHub project URLs returned200 again.
 Known-pattern source/history/client asset scan reported no matches or public source maps.
-Independent mobile audit: English 85 / Arabic 93 performance, with 100 accessibility, best practices and SEO in both. The final font optimization awaits its independent measurement. See docs/release-2026-10-06.md for exact conditions and stricter target limitations.
+Repeated fresh-browser audit before the latest off-screen rendering change: English 75 / Arabic 74 median performance, with 100 accessibility, best practices and SEO. The new rendering optimization awaits its repeated independent measurement. See docs/release-2026-10-06.md for exact conditions and stricter target limitations.
 
 ## Prepared but inactive
 Real student-library implementation: Supabase email OTP/Turnstile, owner MFA, RLS, manual InstaPay approval/revocation, private streaming and optional R2, lesson publishing and paginated orders.
