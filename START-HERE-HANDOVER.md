@@ -20,7 +20,7 @@ Node22 and npm ci restore dependencies. Use OneDrive's Always keep on this devic
 ## Completed public website
 English/Arabic, responsive menu with Work → AI & Software / Websites / AI Visuals.
 Animated supplied mascot, opening gust/flight/landing, continuing float, desktop shader/leaf and reduced-motion/no-JS fallbacks.
-Only the first black-and-white founder portrait remains.
+Only the first black-and-white founder portrait remains; the same portrait also appears beside the consultation link.
 Six website previews, including MAS Heavy Equipment and El Amal, plus seven software entries. Six supplied GitHub destinations have verified canonical names; COD has no supplied URL.
 Free consultancy Cal.com link, InstaPay link for confirmed purchases, contact links and Powered by Nour Abulnasr.
 New FAQ, privacy and terms, student library preparation page, responsive media, security headers and bilingual search metadata.

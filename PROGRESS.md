@@ -4,7 +4,7 @@ Older phase-by-phase history is preserved in docs/progress-history-through-2026-
 
 ## Current deployment
 Cloudflare Worker nabta, https://nabta.nourabulnasr.workers.dev/en and /ar.
-Versionbf407eed-24fc-442d-9f1c-90c6f1f4d86b.
+Version 93e254b3-cd1e-4eac-ab86-216e764c3a1d.
 Source branch codex/nabta-phase-1. Main is historical.
 Public FAQ/privacy/terms/library notice and responsive image improvements are deployed.
 Source also retains future dashboard variables with Wrangler keep_vars=true.
@@ -17,7 +17,7 @@ Mascot intro/landing/continuing animation, skip/Escape, reduced motion and no-Ja
 12 bilingual library/privacy/terms viewport checks; disabled learning API rejects use and cross-origin writes.
 Six GitHub project URLs returned200 again.
 Known-pattern source/history/client asset scan reported no matches or public source maps.
-Local live Lighthouse and its delivery-path discrepancy are recorded in docs/release-2026-10-06.md; independent CI measurements are recorded in the release report; final startup audit is pending.
+Independent mobile audit: English 85 / Arabic 93 performance, with 100 accessibility, best practices and SEO in both. The final font optimization awaits its independent measurement. See docs/release-2026-10-06.md for exact conditions and stricter target limitations.
 
 ## Prepared but inactive
 Real student-library implementation: Supabase email OTP/Turnstile, owner MFA, RLS, manual InstaPay approval/revocation, private streaming and optional R2, lesson publishing and paginated orders.

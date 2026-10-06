@@ -3,7 +3,7 @@ for(const locale of ["en","ar"]){
  const r=JSON.parse(readFileSync("artifacts/ci-live/lighthouse-"+locale+".json","utf8"));
  const text=JSON.stringify({locale,scores:Object.fromEntries(Object.entries(r.categories).map(([k,v])=>[k,Math.round(v.score*100)])),metrics:Object.fromEntries(["first-contentful-paint","largest-contentful-paint","total-blocking-time","cumulative-layout-shift"].map(k=>[k,r.audits[k].displayValue]))});
  console.log("::notice title=Nabta live "+locale+"::"+text);
- const insights=Object.fromEntries(["document-latency-insight","lcp-breakdown-insight","render-blocking-insight"].map(k=>[k,r.audits[k]?.details]));
+ const insights=Object.fromEntries(["document-latency-insight","lcp-breakdown-insight","render-blocking-insight", "bootup-time", "long-tasks"].map(k=>[k,r.audits[k]?.details]));
  console.log("::notice title=Nabta diagnostics "+locale+"::"+JSON.stringify(insights));
  if(process.env.GITHUB_STEP_SUMMARY)appendFileSync(process.env.GITHUB_STEP_SUMMARY,text+"\n");
 }

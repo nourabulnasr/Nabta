@@ -5,7 +5,7 @@ import { content, isLocale, locales } from "@/content";
 import { MotionProvider } from "@/components/motion-provider";
 import "../globals.css";
 
-const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap", preload: false });
+const display = Fraunces({ weight: "400", subsets: ["latin"], variable: "--font-display", display: "swap", preload: false });
 const body = Manrope({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 const arabic = Noto_Sans_Arabic({ weight: "400", subsets: ["arabic"], variable: "--font-arabic", display: "swap", preload: false });
 
