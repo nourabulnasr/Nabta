@@ -41,8 +41,10 @@ export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"lab
     const run = async () => {
       const robot = scope.current.querySelector<HTMLElement>(".intro-robot")!;
       const asset = robot.querySelector("img")!;
+      const wordmark = container.querySelector<HTMLElement>(".intro-wordmark")!;
+      const introFont = document.fonts.load(getComputedStyle(wordmark).font || "16px sans-serif", copy.title);
       await Promise.all([
-        Promise.race([Promise.all([document.fonts.ready, asset.decode().catch(() => {})]), delay(2500)]),
+        Promise.race([Promise.all([introFont, asset.decode().catch(() => {})]), delay(2500)]),
         delay(700),
       ]);
       if (cancelled) return;
@@ -92,7 +94,7 @@ export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"lab
       if (previousFocus?.isConnected && previousFocus !== document.body) previousFocus.focus({ preventScroll: true });
       else document.querySelector<HTMLElement>("main")?.focus({ preventScroll: true });
     };
-  }, [show, animate, locale, scope]);
+  }, [show, animate, locale, scope, copy.title]);
 
   if (finished) return null;
   return <><noscript><style>{`.brand-intro{display:none!important}`}</style></noscript><div ref={scope} className="brand-intro" role="dialog" aria-modal="true" aria-label={copy.label} data-stage="loading">
@@ -100,7 +102,7 @@ export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"lab
     <div className="intro-meta intro-top"><span>{copy.name} / {copy.descriptor}</span>
       <button ref={skip} type="button" onClick={() => setFinished(true)}>{copy.skip}</button></div>
     <div className="intro-wordmark" aria-hidden="true">{copy.title}<span>{copy.statement}</span></div>
-    <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.webp" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" /></div>
+    <div className="intro-robot" aria-hidden="true"><Image src="/images/2026-09-14/nabta-mascot.webp" alt="" width={1254} height={1254} sizes="(max-width: 767px) 220px, 360px" loading="eager" fetchPriority="high" decoding="sync" /></div>
     <div className="intro-gust" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i className="intro-particle" key={i} />)}</div>
     <div className="intro-meta intro-bottom"><span>{copy.label}</span><span className="intro-loading-line" aria-hidden="true" /></div>
   </div></>;
