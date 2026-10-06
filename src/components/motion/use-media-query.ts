@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import { useMotionReady } from "../motion-provider";
 
 // Static HTML stays readable; enhancements begin only after the browser's preference is known.
 export function useMediaQuery(query: string) {
@@ -14,5 +15,7 @@ export function useMediaQuery(query: string) {
 }
 
 export function useMotionEnabled() {
-  return useMediaQuery("(prefers-reduced-motion: no-preference)");
+  const preferred = useMediaQuery("(prefers-reduced-motion: no-preference)");
+  const ready = useMotionReady();
+  return preferred && ready;
 }
