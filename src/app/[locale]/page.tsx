@@ -1,3 +1,5 @@
+import { Faq } from "@/components/sections/faq";
+import { IntroductionVideo } from "@/components/sections/introduction-video";
 import type { Metadata } from "next";
 import { MascotPreload } from "@/components/mascot-preload";
 import { notFound } from "next/navigation";
@@ -78,14 +80,15 @@ export default async function HomePage({ params }: PageProps) {
       <SiteHeader locale={locale} />
       <WordmarkTransition locale={locale} />
       <main id="main-content" tabIndex={-1}>
-        <Hero locale={locale} />
+        <Hero locale={locale} /><IntroductionVideo locale={locale} />
         <RevealGroup><WhatNabtaDoes locale={locale} /></RevealGroup>
         <RevealGroup><Founder locale={locale} /></RevealGroup>
         <SelectedWork locale={locale} />
         <RevealGroup><Tutoring locale={locale} /></RevealGroup>
-        <RevealGroup><ServicesContact locale={locale} /></RevealGroup>
+        <Faq locale={locale} /><RevealGroup><ServicesContact locale={locale} /></RevealGroup>
       </main>
       <SiteFooter locale={locale} />
     </>
   );
 }
+

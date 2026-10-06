@@ -6,23 +6,24 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
-      VERIFY_BASE_URL: https://nabta-ai-nour.netlify.app
-      VERIFY_SITE_URL: https://nabta-ai-nour.netlify.app
+      VERIFY_BASE_URL: https://nabta.nourabulnasr.workers.dev
+      VERIFY_SITE_URL: https://nabta.nourabulnasr.workers.dev
       VERIFY_INDEXABLE: 'true'
       CHROME_PATH: /usr/bin/google-chrome
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
           cache: npm
       - run: npm ci
       - run: node scripts/verify-deployment.mjs
       - run: node scripts/verify-seo.mjs
-        if: ${{ !cancelled() }}
       - run: node scripts/verify-completion.mjs
-        if: ${{ !cancelled() }}
+      - run: node scripts/verify-work-founder.mjs
+      - run: node scripts/verify-intro.mjs
+

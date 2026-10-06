@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import puppeteer from 'puppeteer-core';
-const browser=await puppeteer.launch({executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+const browser=await puppeteer.launch({executablePath:process.env.CHROME_PATH ?? 'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
 try {for(const locale of ['en','ar']) for(const width of [390,1440]) {
 const page=await browser.newPage(); await page.setViewport({width,height:1000});await page.emulateMediaFeatures([{name:'prefers-reduced-motion',value:'reduce'}]);await page.goto((process.env.VERIFY_BASE_URL ?? 'http://127.0.0.1:3001')+'/'+locale,{waitUntil:'domcontentloaded',timeout:60000});
 await page.waitForNetworkIdle({idleTime:500,timeout:20000});
@@ -19,6 +19,7 @@ for (const url of ['https://mas-heavy-equipment.nourabulnasr.workers.dev', 'http
 }
 await page.screenshot({path:'artifacts/founder-'+locale+'-'+width+'.png'});await page.close(); console.log(locale+' '+width+': navigation, single founder portrait, categorization verified');
 }}finally{await browser.close();}
+
 
 
 

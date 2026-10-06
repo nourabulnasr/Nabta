@@ -4,19 +4,22 @@ import { getSiteConfig } from "@/lib/site-config";
 export function proxy(request: NextRequest) {
   const { origin, indexable } = getSiteConfig();
   // Redirect only on the actual hosting platform, never during local fixture tests.
-  if (process.env.NABTA_HOSTED === "true" && indexable && origin && request.nextUrl.host !== new URL(origin).host) {
+  if (!["localhost", "127.0.0.1"].includes(request.nextUrl.hostname) && process.env.NABTA_HOSTED === "true" && indexable && origin && request.nextUrl.host !== new URL(origin).host) {
     return NextResponse.redirect(new URL(request.nextUrl.pathname + request.nextUrl.search, origin), 301);
   }
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const development = process.env.NODE_ENV === "development";
+  const learningPage = /^\/(en|ar)\/learn\/?$/.test(request.nextUrl.pathname);
   const policy = [
     "default-src 'self'",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${development ? " 'unsafe-eval'" : ""}`,
     // Motion/Three use dynamic style attributes. Script execution remains nonce-only.
     "style-src 'self' 'unsafe-inline'",
-    "img-src 'self' data: blob:", "font-src 'self'", "connect-src 'self'",
-    "object-src 'none'", "base-uri 'none'", "form-action 'self'", "frame-ancestors 'none'",
-    ...(process.env.NABTA_HOSTED === "true" ? ["upgrade-insecure-requests"] : []),
+    "img-src 'self' data: blob:", "font-src 'self'",
+    learningPage ? "connect-src 'self' https://challenges.cloudflare.com" : "connect-src 'self'",
+    learningPage ? "frame-src https://challenges.cloudflare.com" : "frame-src 'none'",
+    "media-src 'self'", "object-src 'none'", "base-uri 'none'", "form-action 'self'", "frame-ancestors 'none'",
+    ...(process.env.NABTA_HOSTED === "true" && !["localhost", "127.0.0.1"].includes(request.nextUrl.hostname) ? ["upgrade-insecure-requests"] : []),
   ].join("; ");
   const headers = new Headers(request.headers);
   headers.set("x-nonce", nonce);
@@ -37,3 +40,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = { matcher: ["/((?!_next/static|_next/image|images/|icon.svg|apple-touch-icon.png).*)"] };
+
+
+
+

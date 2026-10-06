@@ -45,9 +45,11 @@ function scanDirectory(dir) {
     }
   }
 }
-if (existsSync(".next/static")) scanDirectory(".next/static");
+if (existsSync("dist/client")) scanDirectory("dist/client");
+else if (existsSync(".next/static")) scanDirectory(".next/static");
 else if (process.argv.includes("--require-build")) throw new Error("Build before running the release scan");
 if (findings.size) {
   console.error("Security review required (values redacted):\n" + [...findings].join("\n"));
   process.exitCode = 1;
 } else console.log(`No configured secret patterns found: ${tracked.length} tracked files, ${blobs} historical blobs, ${assets} browser assets. No public source maps.`);
+

@@ -1,86 +1,47 @@
 # Nabta
+Bilingual AI consultancy, software/web portfolio and programming/AI tutoring site.
 
-Nabta (نبتة) is an AI consultancy and portfolio website based in Egypt.
+Live: https://nabta.nourabulnasr.workers.dev/en and /ar.
+Source: https://github.com/nourabulnasr/Nabta, branch `codex/nabta-phase-1`.
+Read **START-HERE-HANDOVER.md** for current status; older dated documents are history.
 
-**Read `PROGRESS.md` before continuing development.** All eight planned visual phases are implemented, including the mascot intro, sculpted leaf and hero-to-navbar wordmark transfer. Launch prerequisites remain in PROGRESS.md. Local preview only for now.
+## Develop and verify
+Node 22, npm. Install with `npm ci`; preview with `npm run dev` at localhost:3000/en.
+`npm run check` runs lint and types.
+Cloudflare uses vinext: `npm run build:vinext`, then `npm run start:vinext -- --port 3001`.
+Public build variables: SITE_URL, SITE_INDEXABLE, NABTA_CLOUDFLARE=true and CONTEXT=production.
+Keep preview indexing false. Copy .env.example for local setup; never commit credentials.
 
-## Run locally
+Run `node scripts/audit-dependencies.mjs`, `node scripts/verify-learning-db.mjs`,
+`node scripts/verify-learning-validation.mjs`, and `npm run security:scan -- --require-build`.
+See docs/release-runbook.md for browser checks and deployment.
 
-Requires Node.js 22 or newer and npm.
+## Edit the website
+- src/content.ts: bilingual business copy, AI/software projects, contact details.
+- src/content.ts plus src/components/sections/selected-work.tsx: website entries/previews.
+- src/lib/visual-work.ts: supplied AI images/videos. Empty until real work is supplied.
+- src/lib/introduction-video.ts: homepage founder introduction film; null keeps it hidden.
+- src/lib/site-information.ts: privacy and service terms.
+- public/images/founder/portrait-1.webp: the single approved black-and-white portrait.
+- scripts/prepare-images.mjs: regenerate responsive image assets after changing sources.
+- src/components/responsive-image.tsx: next/image plus static picture sources for adapter compatibility.
+- src/components/motion/: supplied mascot animation, intro, reduced-motion support and desktop 3D.
 
-```sh
-npm ci
-npm run dev
-```
+## Student library
+Prepared at /en/learn and /ar/learn. It deliberately stays closed until the owned services and recordings are ready.
+Supabase email-code auth, owner MFA, PostgreSQL permissions, manual InstaPay requests and private recording delivery.
+Optional R2 storage supports larger recordings. No card processor, public media links or fake lesson sales.
+Read docs/learning-activation.md before enabling it.
 
-Open http://localhost:3000/en or http://localhost:3000/ar. The root URL redirects to English. The server binds to the local computer only.
+## Deploy
+`npm run deploy:vinext` builds and deploys using an authenticated Wrangler session.
+GitHub pushes back up code; they do not automatically deploy the current Cloudflare worker.
+The manual GitHub deployment workflow needs a scoped CLOUDFLARE_API_TOKEN.
+Never copy a broad local OAuth credential into GitHub.
 
-```sh
-npm run check
-npm run build
-npm start
-```
+## Current limitations
+Owner media/accounts are pending. Connected learning flows have not yet been verified against real provider accounts.
+One unpatched build-tool advisory is narrowly documented in docs/security-exception-2026-10-06.md.
+Performance measurements and the exact deployed checkpoint are in docs/release-2026-10-06.md.
+No browser implementation can guarantee prevention of screen recording.
 
-`check` runs ESLint and TypeScript. `build` creates the production build. `start` serves that build; stop a running development server first or choose another port with `npm start -- --port 3001`.
-
-Development and build scripts explicitly use webpack: the default Turbopack build terminated on this Windows host, while webpack completed successfully. This remains a standard Next.js project and needs no custom server.
-
-## Editing content
-
-All authored visitor-facing copy lives in **`src/content.ts`**, including English and Arabic strings, navigation, accessibility labels, metadata, hero copy, service descriptions and project summaries. Edit both `en` and `ar` values. The language is encoded in the URL, never browser storage.
-
-`sectionIds` are stable anchor identifiers. Keep them stable when changing navigation labels. Independent section components live in `src/components/sections/`.
-
-Project records live in `content.work.projects`. Supply each `url` to replace its pending-link text with an actual link. Set `content.tutoring.bookingUrl` when booking opens; until then its CTA leads to the contact section with an explanatory note. Update both displayed contact strings and `emailUrl` / `whatsappUrl` together. The current `.example` email and incomplete WhatsApp number are intentionally non-clickable placeholders. Replace the note after connecting both channels.
-
-`src/components/mascot.tsx` displays the robot mascot supplied by Nour, isolated from the first reference sheet into `public/images/2026-09-14/nabta-mascot.png`. Next.js optimizes its responsive image sizes. A repeating spring float/tilt keeps it animated while the hero is visible; reduced motion and no JavaScript show the complete static character. It sits beside the tagline on mobile and beside the wordmark on desktop. Phase 5 adds a separate desktop WebGL background; the mascot remains a lightweight image. The second and third references inform the brand palette; they are not added as page content.
-
-## Design foundation
-
-- Midnight navy, cool off-white, lime and cyan matching the supplied brand artwork through OKLCH tokens in `src/app/globals.css`.
-- Fraunces display and Manrope body, with Noto Sans Arabic for Arabic. Fonts are served by Next.js through `next/font`; a first build needs access to Google Fonts.
-- Mobile-first spacing and logical CSS properties support both directions.
-- Motion v12 uses `motion/react`, global `reducedMotion="user"` and LazyMotion. Future components should use `m` rather than `motion` inside the strict provider.
-- A live media-query hook gates opacity, pointer and scroll-linked animation as well as transforms. Global CSS disables animations and transitions for reduced motion. The site remains readable without JavaScript.
-- Hero and section entrances use native browser animations with spring curves through `motion/react-mini`. The hero has one parallax layer and a CSS radial-gradient drift.
-- Selected Work maps vertical scrolling to horizontal travel, reversing direction in Arabic. Below 700px viewport height it uses native horizontal scrolling. Reduced motion retains the static project grid. Focus the row to navigate with arrow keys, Home and End.
-- Phase 5 uses one deferred React Three Fiber shader plane on desktop, capped at 30 render requests per second and device pixel ratio 1. Mobile, reduced motion, load failures and unavailable WebGL retain the CSS gradient. Pause/resume controls the hero effects and mascot. Offscreen and hidden-tab animation work stops.
-- React/React DOM use 19.2.8 for compatibility with React Three Fiber 9.7.0. Next.js supports this version. No forced peer overrides.
-- No storage, trackers, forms or backend.
-- Phase8 transfers a decorative copy of the hero wordmark into the sticky navbar as you scroll and reverses on return. Real heading/link semantics remain. Reduced motion and noJS retain normal text. Run `node scripts/verify-wordmark.mjs`; see `docs/phase-8-verification.md`.
-- Phase7 adds a glossy sculpted leaf behind the mascot in the existing desktop canvas. Scroll turns it, Arabic mirrors its placement, and hero pause/visibility controls stop drawing. Mobile/reduced motion/noJS use a static SVG through next/image. Run `node scripts/verify-leaf.mjs` for browser checks; see `docs/phase-7-verification.md` for results.
-
-## Performance verification
-
-With the production preview running, run `npm run audit:mobile`. Set `CHROME_PATH` to a Chrome installation if auto-detection is unavailable. The script saves both locale reports under the dated `artifacts/` directory (ignored by git). An optional output folder can be supplied after `--`.
-
-`scripts/verify-motion.cjs` is a browser verification function for the connected Playwright runner. It verifies horizontal movement and live reduced-motion cleanup. Measured Lighthouse results, broader browser checks and limitations are recorded in `docs/phase-3-verification.md`.
-
-## Publishing later
-
-September17 update: the source repository is https://github.com/nourabulnasr/Nabta. Netlify Free is the approved hosting fallback because the connected Vercel team is on Hobby and this is a commercial site. `netlify.toml` configures the Next.js build and production/preview indexing. Netlify account sign-in is pending (Nour is remote). Import the repository using the Next.js adapter, not a plain static-folder upload. The actual Netlify `URL` becomes the canonical origin unless `SITE_URL` is explicitly supplied. Public deployment settings are inlined at build time, so rebuild after changes. Private credentials must never enter `next.config.ts` env.
-
-No deployment has been made. Before publishing, supply actual contact/project links and the production domain. Copy `.env.example` to `.env.local` for local configuration, or set the equivalent deployment variables. `SITE_URL` accepts the confirmed HTTPS origin only (no path, credentials, query or port). `SITE_INDEXABLE` defaults to false; set it to `true` only for the reviewed public deployment. **Rebuild after changing either variable:** metadata routes are generated at build time; nonce-bearing pages render dynamically. Leave preview deployments non-indexable.
-
-Canonical URLs, English/Arabic/x-default language links and mascot social images use the configured origin. Both pages include Organization and WebSite JSON-LD without placeholder contacts or invented business details. `/robots.txt` blocks crawling and `/sitemap.xml` contains no URLs until indexing is enabled with a valid origin. Production settings generate an English/Arabic sitemap and allow crawling. No production domain is assumed.
-
-Run `node --experimental-strip-types scripts/verify-site-config.mjs` for configuration checks, and `node scripts/verify-seo.mjs` against the local production preview. `node scripts/verify-publication.mjs` starts an isolated dev server on port3001 using the reserved example.com domain solely as a test fixture, checks publication metadata and stops it. Do not run this while measuring Lighthouse because compilation can affect timings.
-
-## Checkpoint protocol
-
-After each phase, update `PROGRESS.md`, verify the work, run `git add -A`, and commit `Phase N: <what>`. Stop for Nour's go-ahead. Do not add attribution trailers. There is currently no GitHub remote configured; local commits cannot be pushed until a destination is supplied.
-
-
-## Opening sequence
-
-Phase 6 opens with the supplied mascot and oversized bilingual Nabta lettering. After key font/image readiness (with a bounded wait), a short particle gust clears the lettering and the mascot flies to its measured hero position. Skip intro and Escape reveal the page immediately. Reduced motion and no JavaScript bypass the overlay. A resize dismisses the flight to avoid stale landing coordinates. The introduction runs on a fresh page load; no browser storage is used.
-
-The desktop shader contains 28 sparse motes in its existing canvas. The short intro gust uses 24 lightweight elements so phones do not need WebGL. Existing hero pause/reduced-motion behavior applies after landing. The hero-to-navbar wordmark transfer was subsequently completed in Phase 8.
-
-Run `node scripts/verify-intro.mjs` with the production server running to verify the opening sequence in local Chrome. Set CHROME_PATH if necessary. See `docs/phase-6-verification.md` for measured results and limitations.
-
-## Deployment checklist checkpoint
-
-Read `docs/deployment-checklist-audit.md` for implemented controls and remaining owner/hosting gates, and `docs/release-runbook.md` for publishing and recovery. The future booking, paid-learning and founder scope remains in `docs/next-scope-2026-09-16.md`.
-
-Production HTML uses a fresh CSP nonce and is not shared-cacheable. Static assets remain cacheable. Script execution is restricted; inline styles support Motion/Three. Run `node scripts/verify-deployment.mjs` against the running production build, and `npm run security:scan -- --require-build` for the redacted local-history/browser-asset baseline. GitHub CI and Dependabot activate after the remote repository is connected.

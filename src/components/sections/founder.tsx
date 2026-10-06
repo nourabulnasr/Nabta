@@ -1,5 +1,5 @@
 import { content, type Locale } from "@/content";
-import Image from "next/image";
+import Image from "@/components/responsive-image";
 
 export function Founder({ locale }: { locale: Locale }) {
   return <section id="founder" className="founder-section page-gutter" aria-labelledby="founder-title">

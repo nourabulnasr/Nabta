@@ -45,9 +45,11 @@ try {
     await page.setJavaScriptEnabled(false);
     await page.reload({ waitUntil: 'networkidle0' });
     assert.equal(await page.$eval('.main-nav', el => getComputedStyle(el).display), 'flex');
-    assert.equal(await page.$$eval('.main-nav a', items => items.length), 5);
+    assert.deepEqual(await page.$$eval('.main-nav a', items => items.map(a=>a.getAttribute('href')).sort()), ['#about', '#founder', '#work', '#websites', '#ai-visuals', '#tutoring', '#contact'].sort());
     await page.close();
   }
   await writeFile(`${output}/browser-results.json`, JSON.stringify(results, null, 2));
   console.log(JSON.stringify({ passed: results.length, noJavaScript: ['en', 'ar'], mobilePortfolioUnpinned: true }));
 } finally { await browser.close(); }
+
+

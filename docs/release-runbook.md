@@ -1,41 +1,41 @@
-# Nabta release and recovery runbook
+# Nabta release and recovery
+Current host: Cloudflare Worker nabta. Origin: https://nabta.nourabulnasr.workers.dev.
+Active source: codex/nabta-phase-1. Main and Netlify are historical; do not deploy the old main branch over this website.
+No paid hosting/storage changes or new domains without Nour's authorization.
 
-Current hosting is Netlify Free, not Vercel. See `netlify-deployment-2026-09-19.md` for the production project, GitHub connection and live verification. Historical Vercel-specific instructions below must be adapted to Netlify; do not enable paid controls without authorization.
+## Release
+1. Review git status and current handover. Install the lockfile with npm ci.
+2. Run npm run check, node scripts/audit-dependencies.mjs, node scripts/verify-learning-db.mjs, node scripts/verify-learning-validation.mjs.
+3. Set SITE_URL to the production origin, SITE_INDEXABLE=true, NABTA_CLOUDFLARE=true, CONTEXT=production.
+4. Build with npm run build:vinext. On this low-memory Windows host use RAYON_NUM_THREADS=1, GOMAXPROCS=1 and NODE_OPTIONS=--max-old-space-size=512.
+5. Serve dist/server/wrangler.json locally on port3001. Local preview must not redirect to production or upgrade local image requests to HTTPS.
+6. With VERIFY_BASE_URL=http://127.0.0.1:3001, VERIFY_SITE_URL set to production and VERIFY_INDEXABLE=true run verify-deployment.mjs, verify-seo.mjs, verify-completion.mjs, verify-work-founder.mjs, verify-intro.mjs and verify-learning-pages.mjs.
+7. Run npm run security:scan -- --require-build. Review the exact advisory exception; never claim zero audit findings if it is used.
+8. Deploy with npm run deploy:vinext (builds again) or upload an already checked build using node node_modules/wrangler/bin/wrangler.js deploy --config dist/server/wrangler.json --keep-vars. Retain existing Worker secrets.
+9. Repeat HTTPS header/SEO/browser checks against the real URL. Run mobile Lighthouse with npm run audit:mobile and save both reports. Confirm real reachability from Nour's network.
+10. Record the Worker version, measured limitations and source commit. Update handover and memory, commit and push codex/nabta-phase-1, verify origin history.
 
-## Before publishing
+## GitHub workflows
+Validate release runs on pushes/PRs and builds Cloudflare output.
+Verify published website is a manual workflow.
+Deploy Cloudflare is manual and expects a bucket-independent, scoped Workers deployment token in the production environment.
+The credential has not been provisioned by this code change. Source pushes do not automatically deploy.
+Do not export a broad personal OAuth token or reuse unrelated account credentials.
 
-- Connect an owner-controlled GitHub repository and Vercel project. Enable MFA and review collaborators/integrations. Push the recorded commit and confirm CI actually ran.
-- Use separate Production and Preview environment scopes. Set SITE_URL to the real canonical HTTPS origin. Set SITE_INDEXABLE=true only in Production. Preview remains nonindexable regardless of this flag. Enable Vercel Authentication for previews; crawler directives are not privacy controls.
-- Install from the lockfile (`npm ci`). Run `npm run check`, `npm audit --audit-level=low`, `npm run build`, then `npm run security:scan -- --require-build`. Review findings without printing secret values. CI scans available Git history; a shallow or incomplete remote checkout reduces coverage.
-- Start the production build and run `node scripts/verify-deployment.mjs`, `node scripts/verify-seo.mjs`, and relevant animation verification scripts. Run mobile Lighthouse on both locales. Record the commit, environment, output and limitations.
-- Inspect the actual deployed HTTPS redirects, security headers, public/private caching, both locale pages, manifest, images, real 404 responses and social previews. Check nonce freshness and legitimate scripts in browser devtools. Deployment-specific headers cannot be certified from localhost.
-- Verify production canonical/hreflang/robots/sitemap URLs against the actual origin; confirm no preview host is indexed. Submit sitemap to Google Search Console and Bing. Generated vercel.app subdomains generally require URL-prefix rather than parent-domain DNS verification.
+## Recovery
+Use wrangler deployments list --name nabta to identify the last known good Worker version. Roll back that specific version after reviewing its settings, then recheck both locales, security headers, assets and metadata.
+Do not roll back database migrations blindly. Disable LEARNING_ENABLED if account/media authorization is uncertain; the marketing site and consultancy link continue to operate.
+Rotate exposed credentials at their provider before removing them from files. Keep personal/payment information out of logs.
 
-## Monitoring and maintenance
+## Learning operations and backups
+Read learning-activation.md. Accounts, real media and connected end-to-end tests are required before taking recording payments.
+Export database roles/schema/data using provider-supported tools and store encrypted owner-controlled copies outside this public repository. Preserve original videos separately.
+Before activation, prove a restore into an isolated database and verify purchases and entitlements.
+Handle data access/deletion requests through the published support email after verifying identity and preserving required financial records.
 
-Configure an external uptime check on the production EN/AR URLs, hosting error notifications, and billing alerts. Establish a Lighthouse baseline and review changes to LCP, CLS and blocking work. Measure field p75 LCP/INP/CLS when sufficient traffic exists; no lab run proves INP compliance. Review search indexing weekly after launch. Choose analytics and consent handling before installing tracking.
+## Maintenance
+The current build-tool advisory exception expires20 October2026. Patch or reassess it before the next release.
+Check dependency/security notifications, Worker errors and free usage allowances.
+No external analytics, uptime provider or billing service was silently enrolled. Configure any optional external monitoring with owner-controlled accounts.
+Search Console/Bing ownership and real-user Web Vitals require the owner's accounts/traffic; lab scores do not establish field INP.
 
-Review Dependabot updates weekly and urgent advisories immediately. Use the latest patched hosting runtime in the supported major; test React/Three peer compatibility before upgrades. Keep production source maps private. No customer data should appear in logs.
-
-## Incident response and rollback
-
-1. Identify the affected route, service, release and time range. Preserve relevant logs with credentials/personal data redacted.
-2. If credentials leak, revoke them at the provider immediately, replace scoped credentials in the correct environment, redeploy and verify the old credential is invalid. Removing a file or rewriting Git history does not revoke a secret. Check provider access logs and rotate dependent sessions where relevant.
-3. For a bad deployment, promote the last verified Vercel deployment, or redeploy the previous Git commit after reviewing configuration changes. Verify headers, both locales and assets. Never blindly roll back a database migration.
-4. Record impact, corrective change, verification and follow-up prevention in PROGRESS.md. Notify affected parties when actually required; do not send external messages during local testing.
-
-## Backup and restore
-
-Current persistent asset is source code: push to the owner's remote and retain original media. The origin remote is https://github.com/nourabulnasr/Nabta.git; pushed main commits are the off-device source backup. Test recovery by cloning the remote to a fresh directory, installing from the lockfile and building. Store credentials in the provider's secret store, not Git.
-
-When a database and paid media exist, define retention and recovery objectives, enable provider backups/versioning, and perform a restore into an isolated environment before launch. Check bookings, orders, entitlements and media after restoration; protect backup access with least privilege.
-
-## Mandatory gates for the deferred platform
-
-Authentication must validate email, restrict redirects, expire reset links/sessions, protect against abuse and require admin MFA. Session identity must drive authorization; never trust a submitted user ID or editable profile role. Centralize server access checks and validate every endpoint's input. Deny anonymous requests and cross-account reads/writes with two real test accounts.
-
-For PostgreSQL enable appropriate RLS with explicit read/insert/update/delete policies, ownership WITH CHECK, protected role/price columns, private schemas, invoker views and safe search_path for necessary definer functions. RLS enabled without an applicable policy denies access by default. Keep privileged service keys server-only.
-
-Bookings need transactional uniqueness for time slots, race-condition tests, Cairo timezone rules and confirmed notice/end-hour rules. Paid access requires provider-signed webhooks, timestamp/replay checks, idempotent processing and server-derived price/entitlements. Deny unpaid access to recordings and test revocation/refunds.
-
-Uploads need authenticated authorization, size/type/content checks, private storage and short-lived authorized delivery. Validate inputs, parameterize queries, prevent arbitrary redirects/proxy URLs, rate-limit costly operations and bound database queries. Add restrictive API CORS only if necessary, Secure/HttpOnly/SameSite cookies and CSRF protection for cookie-authenticated state changes. Configure transactional email with verified sender domain and SPF/DKIM/DMARC when that domain is available.

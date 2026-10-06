@@ -14,6 +14,8 @@ export function Tutoring({ locale }: { locale: Locale }) {
       {!content.tutoring.bookingUrl && <p className="small-note" id="booking-note">{content.tutoring.note[locale]}</p>}
       <p className="small-note">{locale === "ar" ? "الدفع للحصص المؤكدة فقط: تواصل معنا لتأكيد الحصة والمبلغ قبل التحويل. التحويل لا يفعّل دخول التسجيلات تلقائيًا." : "For confirmed lessons only: contact us to confirm the lesson and amount before transferring. A transfer does not automatically unlock recordings."}</p>
       <a className="text-link" href={instaPayUrl}>{locale === "ar" ? "رابط InstaPay للحصص المؤكدة" : "InstaPay for confirmed lessons"} ↗</a>
+    <p><a className="text-link" href={`/${locale}/learn`}>{locale === "ar" ? "مكتبة الطالب" : "Student library"}</a></p>
     </SectionShell>
   );
 }
+

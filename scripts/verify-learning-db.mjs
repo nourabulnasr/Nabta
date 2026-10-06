@@ -1,0 +1,80 @@
+import { PGlite } from "@electric-sql/pglite";
+import { readFile } from "node:fs/promises";
+import assert from "node:assert/strict";
+const db=new PGlite();
+const owner="10000000-0000-4000-8000-000000000001", alice="10000000-0000-4000-8000-000000000002", bob="10000000-0000-4000-8000-000000000003";
+let count=0;
+await db.exec(`create role anon; create role authenticated; create schema auth; create schema storage;
+create table auth.users(id uuid primary key); create table storage.buckets(id text primary key,name text,public boolean,allowed_mime_types text[]);
+create table storage.objects(id uuid default gen_random_uuid(),bucket_id text,name text);
+create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
+create function auth.jwt() returns jsonb language sql stable as $$ select jsonb_build_object('aal',current_setting('request.jwt.claim.aal',true)) $$;
+grant usage on schema auth,public to anon,authenticated;
+insert into auth.users values('${owner}'),('${alice}'),('${bob}');`);
+await db.exec(await readFile("supabase/migrations/202610060001_learning.sql","utf8"));
+await db.exec(`insert into public.nabta_admins values('${owner}')`);
+async function as(user,aal="aal1"){await db.exec("reset role");await db.query("select set_config('request.jwt.claim.sub',$1,false),set_config('request.jwt.claim.aal',$2,false)",[user,aal]);await db.exec("set role authenticated");}
+async function denied(sql,params=[]){await assert.rejects(()=>db.query(sql,params));count++;}
+async function check(sql,expected,params=[]){const r=await db.query(sql,params);assert.equal(r.rows[0].value,expected);count++;}
+try{
+ await as(alice);
+ await denied("insert into public.nabta_admins values($1)",[alice]);
+ await denied("select * from public.nabta_media");
+ await denied("select public.nabta_review_order(gen_random_uuid(),'approved')");
+ await denied("select public.nabta_request_order(null,'PAYMENT001')");
+ await denied("select public.nabta_save_lesson(1,'One','One',90,'one.mp4',null,true)");
+ await as(owner);
+ await denied("select public.nabta_save_lesson(1,'One','One',90,'one.mp4',null,false)");
+ await as(owner,"aal2");
+ await denied("select public.nabta_save_lesson(1,'One','One',90,'missing.mp4',null,true)");
+ await db.exec("reset role; insert into storage.objects(bucket_id,name) values('nabta-recordings','one.mp4')");
+ await as(owner,"aal2");
+ await db.query("select public.nabta_save_lesson(1,'One','الأول',90,'one.mp4',null,true)");
+ const lesson=(await db.query("select id from public.nabta_lessons where position=1")).rows[0].id;
+ await as(alice);
+ await denied("insert into public.nabta_access values(gen_random_uuid(),$1,$2)",[alice,lesson]);
+ await check("select count(*)::int as value from public.nabta_playback_asset($1)",0,[lesson]);
+ const order=(await db.query("select public.nabta_request_order($1,'PAYMENT001') as id",[lesson])).rows[0].id;
+ await denied("select public.nabta_request_order($1,'PAYMENT002')",[lesson]);
+ await as(bob);
+ await check("select count(*)::int as value from public.nabta_orders",0);
+ await denied("select public.nabta_request_order($1,'payment001')",[lesson]);
+ await denied("update public.nabta_orders set status='approved' where id=$1",[order]);
+ await as(owner,"aal2");
+ await db.query("select public.nabta_review_order($1,'approved')",[order]);
+ await db.query("select public.nabta_review_order($1,'approved')",[order]);
+ await as(alice);
+ await check("select count(*)::int as value from public.nabta_access",1);
+ await check("select count(*)::int as value from public.nabta_playback_asset($1)",1,[lesson]);
+ await denied("select public.nabta_request_order($1,'PAYMENT003')",[lesson]);
+ await as(bob);
+ await check("select count(*)::int as value from public.nabta_playback_asset($1)",0,[lesson]);
+ await as(owner,"aal2");
+ await db.query("select public.nabta_review_order($1,'revoked')",[order]);
+ await denied("select public.nabta_review_order($1,'approved')",[order]);
+ await as(alice);
+ await check("select count(*)::int as value from public.nabta_playback_asset($1)",0,[lesson]);
+ await db.exec("reset role");
+ for(let i=2;i<=20;i++){
+  await db.query("insert into storage.objects(bucket_id,name) values('nabta-recordings',$1)",["lesson-"+i+".mp4"]);
+  await as(owner,"aal2");
+  await db.query("select public.nabta_save_lesson($1,$2,$2,90,$3,null,true)",[i,"Lesson "+i,"lesson-"+i+".mp4"]);
+  await db.exec("reset role");
+ }
+ await as(bob);
+ const bundle=(await db.query("select public.nabta_request_order(null,'BUNDLE001') as id")).rows[0].id;
+ await check("select amount_egp as value from public.nabta_orders where id=$1",4500,[bundle]);
+ await as(owner,"aal2");
+ await db.query("select public.nabta_review_order($1,'approved')",[bundle]);
+ await as(bob);
+ await check("select count(*)::int as value from public.nabta_access",20);
+ await denied("select public.nabta_request_order(null,'BUNDLE002')");
+ await as(owner,"aal2");
+ await db.query("select public.nabta_review_order($1,'revoked')",[bundle]);
+ await as(bob);
+ await check("select count(*)::int as value from public.nabta_access",0);
+ await db.exec("reset role;set role anon");
+ await denied("select * from public.nabta_orders");
+ await denied("select public.nabta_request_order(null,'ANONPAYMENT')");
+ console.log(count+" PostgreSQL permission/payment assertions passed; schema and real RLS exercised.");
+}finally{await db.close();}

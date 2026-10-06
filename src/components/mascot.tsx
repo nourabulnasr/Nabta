@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image from "@/components/responsive-image";
 import { useEffect } from "react";
 import { useAnimate } from "motion/react-mini";
 import { spring } from "motion";

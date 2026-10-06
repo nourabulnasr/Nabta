@@ -1,89 +1,72 @@
-# Nabta — account migration handover
+# Nabta — current handover
+Updated 6 October 2026. This replaces contradictory status statements in older dated documents.
 
-Newest deployed update: docs/portfolio-additions-2026-09-28.md. MAS Heavy Equipment and El Amal added: six website previews total. Founder has only the first black-and-white portrait; carousel removed at Nour's request. Cal.com is configured for Google Meet, daily 5pm-midnight Cairo and 24-hour notice; only a real booking/email/conflict end-to-end test remains. See docs/calcom-setup-2026-09-25.md. This replaces the historical carousel and calendar-login notes below.
+## Where everything is
+Laptop folder: C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta
+GitHub: https://github.com/nourabulnasr/Nabta
+Active branch: codex/nabta-phase-1. Do not overwrite it with the historical main branch.
+Website: https://nabta.nourabulnasr.workers.dev/en and /ar.
+Read docs/release-2026-10-06.md for the exact deployed version, checks and performance.
 
-Latest state: Nabta is deployed at https://nabta.nourabulnasr.workers.dev/en and /ar. Read `docs/business-update-2026-09-25.md` for the deployment and business update; this supersedes older Cloudflare authorization blockers below. Cal.com and InstaPay are linked. Recorded-course pricing is EGP250 per lesson / EGP4,500 for 20; recordings remain upcoming. Deploy updates with `npm run deploy:vinext`; GitHub pushes alone do not deploy Cloudflare.
+After changing ChatGPT accounts, open this folder in Codex and say:
+> Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and docs/release-2026-10-06.md. Continue the saved Nabta project; preserve the approved design and zero-budget constraint. Do not restart it.
 
-Saved 24 September 2026; resumed 25 September at Nour's request to complete work not requiring owner actions. See `docs/cloudflare-checkpoint-2026-09-25.md` for the latest build and verification state; older unverified-build statements below describe the previous checkpoint.
+Source, images, scripts, documentation and Git history live here.
+Ignored artifacts/ contains local screenshots/reports. reference-inputs-local/ contains available original references. Copy the whole folder for a laptop migration; GitHub does not back up ignored files or browser sign-ins.
+The original August28 cover image was unavailable at the supplied path during the earlier backup. Existing website assets remain included.
+Credentials, provider logins and the original chat transcript are not included. Reauthenticate as needed; never commit secrets.
+Node22 and npm ci restore dependencies. Use OneDrive's Always keep on this device for offline access if desired.
 
-## Open this project on the same laptop
+## Completed public website
+English/Arabic, responsive menu with Work → AI & Software / Websites / AI Visuals.
+Animated supplied mascot, opening gust/flight/landing, continuing float, desktop shader/leaf and reduced-motion/no-JS fallbacks.
+Only the first black-and-white founder portrait remains.
+Six website previews, including MAS Heavy Equipment and El Amal, plus seven software entries. Six supplied GitHub destinations have verified canonical names; COD has no supplied URL.
+Free consultancy Cal.com link, InstaPay link for confirmed purchases, contact links and Powered by Nour Abulnasr.
+New FAQ, privacy and terms, student library preparation page, responsive media, security headers and bilingual search metadata.
+The intro-film component is ready directly below the hero and stays hidden until the real video is supplied.
+The AI Visuals gallery accepts images/videos; it stays empty until real brand work is provided.
 
-`C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta`
+## Agreed business rules
+Noureldin / Nour Abulnasr, Cairo. Email nourabulnasr@gmail.com; WhatsApp +201069046666.
+Free consultancy:30-minute Google Meet, daily17:00–00:00 Cairo, last start23:30,24-hour notice.
+Cal.com https://cal.com/nour-abulnasr-wmhcrh/30min is consultancy only. Google Calendar conflicts and required business intake were configured September25. Real invitation/Meet/conflict test still needs an authorized appointment.
+Implementation work is quoted after consultation; an AI consultant is a possible later business idea, not this launch.
+Live tutoring and recordings are SEPARATE purchases, explicitly confirmed October6.
+Each costs EGP250 per session. Recorded course:20 planned lessons,1–2hours each, lifetime personal access, EGP4,500 bundle (EGP500 saving).
+No recording payment before publication. Manual InstaPay verification precedes access.
+InstaPay https://ipn.eg/S/noureldin1207/instapay/73kNu0
+No-change-of-mind refund intent after access, preserving mandatory legal rights and non-delivery/duplicate-payment remedies.
+No promise of perfect download or screen-recording prevention.
 
-Open this folder as a project in Codex after signing into the new account. The source files are on this laptop, not stored exclusively in the chat. Account switching does not transfer the old conversation automatically. This document and the project records are the continuation context; they are not a verbatim chat export.
+## Prepared student platform — not activated
+Supabase email-code sign-in, Turnstile hook, owner authenticator MFA.
+Real PostgreSQL schema, row-level access policies, per-account orders and entitlements.
+Manual InstaPay review, approve/reject/revoke, duplicate-reference protection, fixed server prices.
+Personal library, private video/captions through an authenticated streaming API, and owner lesson publication.
+Supabase small-file storage and optional R2 long-video adapter. No public storage URLs.
+It stays disabled without owner services. Local database authorization tests are complete; real email/payment/video end-to-end tests await those services.
+Activation steps: docs/learning-activation.md. No paid product was activated.
 
-Suggested first message in the new account:
+## What Nour still supplies or does
+- Sign into/create the owned Supabase project and allow account setup; connect a usable authentication email sender and Turnstile. Keep credentials in provider settings, not chat.
+- Choose/activate private video capacity after file sizes are known. Supabase's free file/storage limits are unsuitable for typical long videos; R2 may require a billing/account step and is not unlimited free storage.
+- Provide the homepage introduction film, AI Visuals images/videos with brand/title details, and real lesson recordings/titles/durations/captions. Use docs/course-content-template.csv.
+- Confirm live teaching format/place, duration, and cancellation/rescheduling rules before taking those bookings.
+- Confirm InstaPay recipient display name, biography/degree/certification facts and published policy wording.
+- Make or authorize one clearly labelled Cal.com test booking to verify actual email, Meet and occupied-slot behavior. No appointment/email was silently sent.
+- Optional: COD repository URL, additional deployed website links, Search Console/Bing ownership and a scoped GitHub deployment token.
 
-> Open the Nabta project. Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and the referenced completion/deployment records. Summarize the saved state and outstanding work before making changes. Do not restart the design. Cloudflare is live; use the newest dated records for remaining work.
+## Codex follow-through after those inputs
+Connect owned services and apply the migration/settings, configure owner enrollment/MFA, run real two-account email/payment/playback/revocation and backup-restore tests, publish supplied media and update factual copy.
+These are dependent implementation/verification steps, not work already completed. No need to redesign the website.
+Current performance and the remaining upstream build-tool advisory are recorded in the release report; neither should be disguised as an owner content task.
 
-## What's in this folder
+## Technical guardrails
+Cloudflare Worker nabta, account b7ec0633605b5b1dfd7448ac452c457d.
+Current stack Next16.3.8/React19.2.8 with vinext deployment, Motion12, optional desktop R3F.
+npm run deploy:vinext builds/deploys; source pushes alone do not deploy Cloudflare.
+Netlify is historical (regional reachability issue); Vercel Hobby was not chosen for this commercial site.
+No domain purchase, paid plan or billing change is authorized.
+Read docs/release-runbook.md and .env.example. Older phase notes are historical evidence, not the current to-do list.
 
-- `src/`: bilingual website, content, components, animation and security logic.
-- `public/`: website images, supplied-mascot-derived asset and icons.
-- `docs/`: original build brief, phased plans, verification, business decisions, launch checklist and deployment incident history.
-- `scripts/` and `.github/workflows/`: local and hosted verification and security checks.
-- `artifacts/`: local screenshots, browser results and performance reports; ignored by Git but retained on this laptop.
-- `reference-inputs-local/`: available original supplied reference files copied for continuity; kept out of the public repository.
-
-Reference-copy check: the original mascot sheet, Facebook profile image, deployment checklist PDF and initial pasted build request were saved. The original `ChatGPT Image Aug 28, 2026, 02_32_48 PM.png` cover was missing from its supplied Downloads path on 24 September; do not claim that original is included. Website assets already under `public/` remain intact.
-- `.git/`: local history. Repository: https://github.com/nourabulnasr/Nabta . Local branch `codex/nabta-phase-1`; production remote branch `main`.
-- `package.json`, lockfile and hosting configuration: exact dependency and build checkpoint, including unfinished Cloudflare preparation.
-
-The original full conversation, ChatGPT account history, browser sign-ins, global CLI credentials and other account settings are not part of the project folder. Reauthenticate with GitHub/hosting providers if needed. Never put tokens or passwords in this handover or public GitHub repository. `node_modules` and build caches are reproducible with Node 22 and `npm ci`.
-
-## Implemented website
-
-English/Arabic marketing website; navy/cyan/lime identity based on Nour's actual spherical leaf robot mascot. Animated mascot and cinematic loading entrance with gust/flight/landing; continuing float; desktop shader/particles; reduced-motion, mobile and no-JavaScript fallbacks. Responsive navigation, portfolio, founder narrative, contact links, bilingual SEO metadata, structured data, sitemap/robots, strict nonce CSP and security checks are implemented. Detailed phase history is in PROGRESS.md and docs/phase-*.
-
-Founder headshot has NOT been provided. Existing biography is user-supplied; degree/certification wording still needs factual confirmation. Final visual approval and final production performance measurements remain open.
-
-## Hosting: critical current state
-
-Netlify published app at https://nabta-ai-nour.netlify.app/en and /ar, site ID fb999639-8a28-454b-a502-97e2ed0d2869. Existing Free Legacy plan, no paid upgrade. GitHub main push webhook and read-only deploy key connected. App deploy 6aadfeb846245400080e1f28 / commit d1c109a. Final remote verification run 35432595233 succeeded on 19 September (security, SEO, responsive EN/AR).
-
-**Nevertheless Netlify is not usable for this user's launch:** Nour reported timeouts on Wi-Fi AND mobile data in Egypt. DNS resolves, but HTTPS times out locally; matching regional Netlify incidents are documented in docs/netlify-deployment-2026-09-19.md. Never equate external CI success with Egyptian reachability.
-
-Vercel Hobby was not chosen because this commercial site needs a paid eligible plan under Vercel's published usage rules. Nour has zero hosting budget. Do not upgrade, add payment methods or buy a domain without authorization.
-
-Nour signed into Cloudflare. Account ID b7ec0633605b5b1dfd7448ac452c457d, account subdomain nourabulnasr.workers.dev. Created only a test Worker `nabta-connectivity-check`, returning Hello World at https://nabta-connectivity-check.nourabulnasr.workers.dev . Initial TLS failure cleared after hostname activation; local HTTPS 200 verified on 20 September. Initial external workflow 35530451458 failed before activation; no later external success is recorded. Asked Nour to check mobile data; no answer recorded. This is a connectivity test, NOT the Nabta website.
-
-### Unfinished Cloudflare code checkpoint
-
-Official vinext compatibility checker was run. Most reported failures came from generated `.netlify/` files, not application source. Real issues needing verification include fonts (CDN behavior versus self-hosted CSP), image optimization, global 404 behavior, nonce propagation and Workers free-tier size/CPU limits.
-
-The initializer first failed because latest react-server-dom-webpack19.3 conflicted with React19.2.8 / Fiber9.7.0. Dependencies are now pinned to vinext1.0.0-beta.10, @vinext/cloudflare1.0.0-beta.8 and react-server-dom-webpack19.2.8. `package.json` now has type=module plus parallel `*:vinext` scripts; `vite.config.ts` and `wrangler.jsonc` were generated. Existing Next.js scripts remain. **These changes are an unverified work-in-progress snapshot: no successful Nabta Cloudflare build, runtime regression check or real app deployment is recorded.** Do not force peer dependency resolution, weaken CSP or enable paid image/storage services to make the build pass.
-
-When explicitly resumed: inspect dependency installation/config, verify cloud test on owner's networks, build/test parallel Cloudflare output, fix compatibility without changing approved design, verify size/free-plan limits, authenticate deployment tools if required, deploy and test EN/AR/mascot/SEO/security on the actual URL. Configure final canonical origin/indexing and CI only after a real successful deployment. Keep Netlify deployment as existing reference until replacement is verified.
-
-## Business requirements already decided
-
-- Name: Nabta / Nabta AI; founder Noureldin (Nour Abulnasr). Include Powered by Nour Abulnasr.
-- Contact: nourabulnasr@gmail.com; WhatsApp +201069046666.
-- Consultancy: free 30-minute Google Meet, daily 17:00–00:00 Cairo, last start23:30, minimum24-hour notice. Intake: business name, idea, desired outcome and current gaps. Booked slots must become unavailable and owner must receive email. Implementation work quoted separately after consultancy. Human consultation first; AI-assisted consultant is a possible later phase, not currently built.
-- Course: programming and AI for Secondary2 Baccalaureate; EGP250 per session. Exact live/recorded inclusion, duration, access expiry and scheduling remain undecided.
-- Initial payment preference: manual InstaPay followed by verified per-account access, not card checkout. Recipient details still missing.
-- Personal student access and protected recordings wanted. No browser solution guarantees prevention of screen recording. Do not promise otherwise.
-- Refund preference is no refunds; final terms must preserve applicable mandatory rights and handle non-delivery/incorrect payments. Email/WhatsApp support.
-- Supplied portfolio sites: elserafy.com, royalfalconom.com, powerofseamoss.com, palermoeg.com. Existing project cards/content contain saved GitHub links; optional COD agent repository URL remains missing.
-
-## Still needed from Nour
-
-Headshot; biography/certification confirmation; connected calendar/Meet account or booking link; InstaPay destination/display name; exact lesson/access/rescheduling rules; lesson titles/dates/materials/recordings; provider accounts/choice for authentication, database and video; optional missing portfolio link; final visual/content/policy review. No need to send passwords in chat.
-
-## Still needed from the implementer
-
-Finish usable free hosting and production performance measurements; add headshot; integrate real conflict-safe booking/intake/notifications; student registration/login, catalogue/library, payment request/status and owner approval/revocation; server-enforced content authorization; provider-appropriate expiring delivery; final operational policies/FAQs; security and complete booking/payment/access tests. These systems are NOT connected today. Public marketing page currently uses email/WhatsApp contact.
-
-## Read next
-
-1. This handover (latest status overrides older completion claims).
-2. docs/completion-checklist-2026-09-18.md — detailed responsibilities and policies.
-3. docs/launch-decisions-2026-09-17.md — saved owner decisions.
-4. docs/netlify-deployment-2026-09-19.md — deployment evidence and access incident.
-5. docs/build-brief.md and PROGRESS.md — design scope and phased history.
-
-GitHub is a code backup, not a backup of ignored screenshots, original references, credentials or the entire conversation. Keep the full local project folder for those local files. Since this folder is under OneDrive, use Windows Explorer's “Always keep on this device” if offline availability is needed; OneDrive sync/offline status has not been certified here.
-
-Cal.com update: configured and publicly verified consultancy Google Meet, daily evening slots17:00–23:30 Cairo,24-hour notice and required bilingual business intake. Read docs/calcom-setup-2026-09-25.md. Login/configuration blocker is resolved; real booking/email/Meet delivery remains untested.
-
-26 September: read docs/github-portrait-2026-09-26.md. All six GitHub links anonymously resolve200 and already match API canonical names. Founder simplified to first black-and-white image only at owner's request; carousel and other public portrait assets removed.

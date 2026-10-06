@@ -344,3 +344,39 @@ html[lang="ar"] .brand-wordmark { line-height: 1.45; }
 .visual-work-gallery figcaption { padding-block:1rem; }
 .visual-work-gallery figcaption span { color:var(--muted); font-size:.875rem; }
 @media(min-width:768px) { .visual-work-gallery { grid-template-columns:1fr 1fr; align-items:start; } .visual-work-gallery figure:nth-child(even) { margin-block-start:5rem; } }
+
+/* Student and information pages extend the approved Nabta palette. */
+.portal { max-width: 1120px; margin-inline:auto; padding-block:3rem 6rem; min-height:100svh; }
+.portal h1 { font-family:var(--font-display),var(--font-arabic),serif; font-size:clamp(2.7rem,7vw,5.5rem); line-height:1.08; margin-block:3rem 1rem; }
+.portal h2,.faq-section h2,.intro-film h2 { font-size:clamp(1.7rem,3vw,2.8rem); line-height:1.2; margin-block:0 1.5rem; }
+.portal h3 { font-size:1.2rem; margin:0; }
+.portal p { max-width:70ch; line-height:1.8; color:var(--muted); }
+.portal section { margin-block:3.5rem; }
+.portal a { color:var(--sprout); text-underline-offset:4px; }
+.portal-form { display:grid; gap:1.25rem; max-width:620px; margin-block:1.5rem; }
+.portal label { display:grid; gap:.5rem; line-height:1.5; }
+.portal input:not([type=checkbox]) { width:100%; min-width:0; color:inherit; border:1px solid var(--mist); background:transparent; border-radius:4px; padding:.85rem; font:inherit; }
+.portal input[type=checkbox] { width:1.2rem; height:1.2rem; }
+.portal .portal-check { display:flex; flex-wrap:wrap; align-items:center; }
+.portal button { color:var(--sprout); border:1px solid currentColor; background:transparent; padding:.8rem 1.1rem; border-radius:4px; font:inherit; cursor:pointer; min-height:44px; }
+.portal button:hover { background:color-mix(in srgb,var(--sprout) 10%,transparent); }
+.portal button:disabled { opacity:.55; cursor:wait; }
+.portal :focus-visible,.faq-section summary:focus-visible { outline:3px solid var(--sprout); outline-offset:5px; }
+.portal-notice { border-inline-start:3px solid var(--sprout); padding:1.5rem; margin-block:2rem; background:color-mix(in srgb,var(--mist) 5%,transparent); }
+.portal-error { border:1px solid #fba99d; padding:1rem; }
+.portal-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; justify-content:space-between; padding-block:1.5rem; border-block-end:1px solid var(--mist); }
+.lesson-list { padding:0; list-style:none; }
+.lesson-list li { display:flex; flex-wrap:wrap; gap:1.5rem; justify-content:space-between; align-items:center; padding-block:1.5rem; border-block-end:1px solid color-mix(in srgb,var(--mist) 25%,transparent); }
+.lesson-list small,.portal code,.portal-toolbar span { overflow-wrap:anywhere; }
+.portal-actions { display:flex; gap:.75rem; flex-wrap:wrap; }
+.video-frame { position:relative; }
+.video-frame video,.intro-film video { display:block; width:100%; max-height:75svh; background:#000; }
+.video-watermark { position:absolute; top:12%; inset-inline-end:4%; color:#fff; text-shadow:0 1px 3px #000; opacity:.65; font-size:.8rem; pointer-events:none; }
+.owner-panel { border-block-start:2px solid var(--sprout); padding-block-start:2rem; }
+.faq-section,.intro-film { padding-block:5rem; }
+.faq-section details { border-block-end:1px solid color-mix(in srgb,var(--mist) 25%,transparent); padding-block:1.5rem; }
+.faq-section summary { cursor:pointer; font-size:1.15rem; line-height:1.5; }
+.faq-section p { max-width:70ch; line-height:1.8; color:var(--muted); margin-block:1rem 0; }
+.footer-links { display:flex; flex-wrap:wrap; gap:1.25rem; }
+
+

@@ -1,0 +1,39 @@
+name: Deploy Cloudflare
+on:
+  workflow_dispatch:
+concurrency:
+  group: nabta-production
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment: production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: b7ec0633605b5b1dfd7448ac452c457d
+      RAYON_NUM_THREADS: '2'
+      NODE_OPTIONS: --max-old-space-size=4096
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Require a scoped deployment credential
+        run: test -n "$CLOUDFLARE_API_TOKEN"
+      - run: npm ci
+      - run: npm run check
+      - run: node scripts/audit-dependencies.mjs
+      - run: node scripts/verify-learning-db.mjs
+      - run: node --experimental-strip-types scripts/verify-learning-validation.mjs
+      - run: npm run deploy:vinext
+      - run: node scripts/verify-deployment.mjs
+        env:
+          VERIFY_BASE_URL: https://nabta.nourabulnasr.workers.dev
+          CHROME_PATH: /usr/bin/google-chrome
+
