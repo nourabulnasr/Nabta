@@ -26,3 +26,23 @@ jobs:
       - run: npm run build:vinext
       - run: npm run security:scan -- --require-build
 
+
+  live-quality:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/codex/nabta-phase-1'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      VERIFY_BASE_URL: https://nabta.nourabulnasr.workers.dev
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node scripts/lighthouse.mjs artifacts/ci-live
+      - run: node scripts/report-live-quality.mjs

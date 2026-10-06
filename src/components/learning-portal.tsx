@@ -21,8 +21,9 @@ export function LearningPortal({locale,enabled,siteKey}:{locale:Locale;enabled:b
  }
  const refresh=useCallback(async()=>{
   try {
+   setError("");
    const r=await fetch("/api/learning/session",{cache:"no-store"});
-   if(r.status===401){setSession(null);return;}
+   if(r.status===401){setSession(null);setWatch(null);setSelected(undefined);setAccess([]);setOrders([]);setReview([]);return;}
    if(!r.ok)throw new Error(locale==="ar"?"المكتبة غير متاحة مؤقتًا.":"Library temporarily unavailable.");
    const s=await r.json();setSession(s);
    const results=await Promise.all(["library","orders",...(s.admin&&s.mfa?["admin"]:[])].map(a=>fetch("/api/learning/"+a,{cache:"no-store"})));
@@ -53,11 +54,11 @@ export function LearningPortal({locale,enabled,siteKey}:{locale:Locale;enabled:b
   {sent&&<button type="button" disabled={busy||!captchaToken} onClick={()=>void run(async()=>{await sendCode();setMessage(t("Check your inbox and spam for a new code.","راجع البريد والرسائل غير المرغوب فيها للكود الجديد."));})}>{t("Resend code","إعادة إرسال الكود")}</button>}
   <p>{t("Under 18? Involve your parent or guardian before purchasing.","لو أقل من ١٨ سنة، خلي ولي أمرك يشاركك قبل الشراء.")} <a href={`/${locale}/terms`}>{t("Terms","الشروط")}</a> · <a href={`/${locale}/privacy`}>{t("Privacy","الخصوصية")}</a></p>
  </form>:<>
- <div className="portal-toolbar"><span>{session.email}</span><button disabled={busy} onClick={()=>void run(async()=>{await api("logout",{});setSession(null);setWatch(null);setReview([]);setAccess([]);setOrders([]);})}>{t("Sign out","خروج")}</button></div>
+ <div className="portal-toolbar"><span>{session.email}</span><button disabled={busy} onClick={()=>void run(async()=>{await api("logout",{});setSession(null);setSent(false);setSelected(undefined);setWatch(null);setReview([]);setAccess([]);setOrders([]);})}>{t("Sign out","خروج")}</button></div>
  <section><h2>{t("Recorded lessons","الدروس المسجلة")}</h2><p>{t("EGP 250 per recording, with lifetime access. Live tutoring is a separate purchase.","٢٥٠ جنيه للتسجيل مع وصول دائم. الدروس المباشرة شراء منفصل.")}</p>
  {!lessons.length&&<p className="portal-notice">{t("No recordings published yet. Please don’t send a course payment.","مفيش تسجيلات منشورة لسه. من فضلك ما تبعتش مدفوعات للكورس.")}</p>}
- <ol className="lesson-list">{lessons.map(l=><li key={l.id}><div><h3>{ar?l.title_ar:l.title_en}</h3><p>{l.duration_minutes} {t("minutes","دقيقة")}</p></div>{access.includes(l.id)?<button onClick={()=>setWatch(l)}>{t("Watch lesson","شاهد الدرس")}</button>:<button onClick={()=>setSelected(l.id)}>{t("Purchase • EGP 250","شراء • ٢٥٠ جنيه")}</button>}</li>)}</ol>
- {lessons.length===20&&!orders.some(o=>o.lesson_id===null&&o.status==="approved")&&<button onClick={()=>setSelected(null)}>{t("Complete course • EGP 4,500","الكورس كامل • ٤٥٠٠ جنيه")}</button>}
+ <ol className="lesson-list">{lessons.map(l=><li key={l.id}><div><h3>{ar?l.title_ar:l.title_en}</h3><p>{l.duration_minutes} {t("minutes","دقيقة")}</p></div>{access.includes(l.id)?<button onClick={()=>setWatch(l)}>{t("Watch lesson","شاهد الدرس")}</button>:<button disabled={orders.some(o=>o.status==="pending"&&(o.lesson_id===l.id||o.lesson_id===null))} onClick={()=>setSelected(l.id)}>{orders.some(o=>o.status==="pending"&&(o.lesson_id===l.id||o.lesson_id===null))?t("Under review","قيد المراجعة"):t("Purchase • EGP 250","شراء • ٢٥٠ جنيه")}</button>}</li>)}</ol>
+ {lessons.length===20&&lessons.some(l=>!access.includes(l.id))&&!orders.some(o=>o.status==="pending"||(o.lesson_id===null&&o.status==="approved"))&&<button onClick={()=>setSelected(null)}>{t("Complete course • EGP 4,500","الكورس كامل • ٤٥٠٠ جنيه")}</button>}
  </section>
  {selected!==undefined&&<section className="portal-notice"><h2>{t("Submit your transfer for review","ابعت التحويل للمراجعة")}</h2><p>{selected===null?t("Full course: EGP 4,500","الكورس كامل: ٤٥٠٠ جنيه"):t("One recording: EGP 250","تسجيل واحد: ٢٥٠ جنيه")}</p><p>{t("Check the recipient in InstaPay before confirming. Enter the transaction reference after transferring. Access starts after Nour verifies payment; it is not instant.","راجع المستلم في إنستاباي قبل التأكيد. بعد التحويل اكتب رقم العملية. الوصول بيتفعّل بعد مراجعة نور للدفع، مش فوريًا.")}</p>
  <a href={instaPayUrl} target="_blank" rel="noreferrer">{t("Open InstaPay","افتح إنستاباي")}</a>

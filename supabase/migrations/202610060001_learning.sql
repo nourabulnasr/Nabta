@@ -75,10 +75,13 @@ begin
  if (select count(*) from public.nabta_orders where user_id=auth.uid() and created_at>now()-interval '1 day')>=10 then raise exception 'Daily request limit reached'; end if;
  if p_lesson is null then
   if (select count(*) from public.nabta_lessons l join public.nabta_media m on m.lesson_id=l.id where l.published)<>20 then raise exception 'Complete course is not available'; end if;
+  if (select count(distinct lesson_id) from public.nabta_access where user_id=auth.uid())=20 then raise exception 'You already have all lessons'; end if;
+  if exists(select 1 from public.nabta_orders where user_id=auth.uid() and status='pending') then raise exception 'Resolve existing payment requests first'; end if;
   price:=4500;
  else
   if not exists(select 1 from public.nabta_lessons l join public.nabta_media m on m.lesson_id=l.id where l.id=p_lesson and l.published) then raise exception 'Lesson is not available'; end if;
   if exists(select 1 from public.nabta_access where user_id=auth.uid() and lesson_id=p_lesson) then raise exception 'You already have access'; end if;
+  if exists(select 1 from public.nabta_orders where user_id=auth.uid() and lesson_id is null and status='pending') then raise exception 'Course payment is already under review'; end if;
   price:=250;
  end if;
  if p_lesson is null and exists(select 1 from public.nabta_orders where user_id=auth.uid() and lesson_id is null and status='approved') then raise exception 'You already have course access'; end if;

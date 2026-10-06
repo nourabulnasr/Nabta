@@ -16,7 +16,7 @@ try{for(const locale of ["en","ar"]){
   const url=new URL(req.url());if(!url.pathname.startsWith("/api/learning/"))return req.continue();
   const action=url.pathname.split("/").pop();let body={};let status=200;
   if(action==="session"){body=signed?{email:"fixture@example.invalid",admin:owner,mfa}:{error:"Sign in"};if(!signed)status=401;}
-  else if(action==="library")body={lessons:[lesson],access:[]};
+  else if(action==="library")body={lessons:[lesson],access:orders.some(o=>o.status==="approved")?[lesson.id]:[]};
   else if(action==="orders"||action==="admin")body={orders,more:false};
   else if(action==="login")body={sent:true};
   else if(action==="verify"){signed=true;body={signedIn:true};}
@@ -35,6 +35,7 @@ try{for(const locale of ["en","ar"]){
  await p.type('input[name=reference]',"FIXTURE-123456");await p.click('input[type=checkbox]');await p.click(".portal-notice form button:not([type])");
  await p.waitForFunction(()=>[...document.querySelectorAll("p")].some(e=>e.textContent==="FIXTURE-123456"));
  assert.equal(await p.$eval("html",el=>el.scrollWidth<=innerWidth),true);
+ assert.equal(await p.$eval(".lesson-list button",el=>el.disabled),true);
  await p.screenshot({path:"artifacts/2026-10-06/student-fixture-"+locale+".png",fullPage:true});
  owner=true;await p.reload({waitUntil:"networkidle0"});await p.click(".owner-panel button");
  await p.waitForSelector(".owner-panel input");await p.type(".owner-panel input","123456");await p.click(".owner-panel form button");

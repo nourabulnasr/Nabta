@@ -28,5 +28,8 @@ try {
     }));
   }
 } finally {
-  await chrome.kill();
+  try { await chrome.kill(); } catch (error) {
+    if (error?.code !== "EBUSY" && error?.code !== "EPERM") throw error;
+    console.warn("Chrome temporary-profile cleanup was locked; saved reports remain valid.");
+  }
 }

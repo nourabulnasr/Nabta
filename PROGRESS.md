@@ -4,20 +4,20 @@ Older phase-by-phase history is preserved in docs/progress-history-through-2026-
 
 ## Current deployment
 Cloudflare Worker nabta, https://nabta.nourabulnasr.workers.dev/en and /ar.
-Version0221cdb0-47c8-4b19-a459-f9160b590d13.
+Version6e7cb944-cc0b-41f3-a1a1-c2c60cfb2e82.
 Source branch codex/nabta-phase-1. Main is historical.
 Public FAQ/privacy/terms/library notice and responsive image improvements are deployed.
 Source also retains future dashboard variables with Wrangler keep_vars=true.
 
 ## Verified this release
 Lint/types and Cloudflare production build completed.
-25 PostgreSQL permission/payment assertions; origin/reference/path/range/bounded-JSON validation.
+27 PostgreSQL permission/payment assertions; origin/reference/path/range/bounded-JSON validation.
 Local and live security/SEO checks; mobile/desktop EN/AR; current Work navigation; six website previews; one founder portrait.
 Mascot intro/landing/continuing animation, skip/Escape, reduced motion and no-JavaScript checks.
 12 bilingual library/privacy/terms viewport checks; disabled learning API rejects use and cross-origin writes.
 Six GitHub project URLs returned200 again.
 Known-pattern source/history/client asset scan reported no matches or public source maps.
-Live mobile Lighthouse measurement is running; final report will be saved in docs/release-2026-10-06.md.
+Local live Lighthouse and its delivery-path discrepancy are recorded in docs/release-2026-10-06.md; an independent CI measurement is pending.
 
 ## Prepared but inactive
 Real student-library implementation: Supabase email OTP/Turnstile, owner MFA, RLS, manual InstaPay approval/revocation, private streaming and optional R2, lesson publishing and paginated orders.
@@ -34,4 +34,5 @@ Nour authorized completing and publishing all independent work; old phase-stop n
 See the current handover for owner accounts, recordings/intro/AI visuals, factual/policy details and real booking test.
 One unpatched braces build-tool advisory remains under an exact exception expiring20 October2026.
 No paid services or billing changes enabled. No claim of perfect screen-recording prevention, zero audit findings or untested provider readiness.
+
 

@@ -61,8 +61,13 @@ try{
   await db.query("select public.nabta_save_lesson($1,$2,$2,90,$3,null,true)",[i,"Lesson "+i,"lesson-"+i+".mp4"]);
   await db.exec("reset role");
  }
+ await as(alice);
+ const waiting=(await db.query("select public.nabta_request_order($1,'PENDING-SINGLE') as id",[lesson])).rows[0].id;
+ await denied("select public.nabta_request_order(null,'PENDING-COURSE')");
+ await as(owner,"aal2");await db.query("select public.nabta_review_order($1,'rejected')",[waiting]);
  await as(bob);
  const bundle=(await db.query("select public.nabta_request_order(null,'BUNDLE001') as id")).rows[0].id;
+ await denied("select public.nabta_request_order($1,'BUNDLE-DUPLICATE')",[lesson]);
  await check("select amount_egp as value from public.nabta_orders where id=$1",4500,[bundle]);
  await as(owner,"aal2");
  await db.query("select public.nabta_review_order($1,'approved')",[bundle]);

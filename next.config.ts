@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
     NABTA_DEPLOY_CONTEXT: process.env.CONTEXT ?? "",
     NABTA_HOSTED: hosted ? "true" : "false",
   },
+  // Metadata is inexpensive here; render it in head for every browser and crawler.
+  htmlLimitedBots: /.*/,
   poweredByHeader: false,
   // Bound parallel page-generation memory on development machines and free build runners.
   experimental: { inlineCss: true, globalNotFound: true, cpus: 2 },
@@ -31,6 +33,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-
-
