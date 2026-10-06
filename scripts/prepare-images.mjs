@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import {mkdir, readFile, writeFile} from "node:fs/promises";
+import {mkdir} from "node:fs/promises";
 await mkdir("public/images/responsive",{recursive:true});
 const images=[
  ["mascot","public/images/2026-09-14/nabta-mascot.webp",[240,400,800]],
@@ -9,6 +9,3 @@ const images=[
 for(const [id,path,widths] of images)for(const width of widths)await sharp(path).resize({width,withoutEnlargement:true}).webp({quality:80}).toFile("public/images/responsive/"+id+"-"+width+".webp");
 console.log("Responsive versions generated for 8 existing images.");
 
-
-const mobileIntro = (await readFile("public/images/responsive/mascot-400.webp")).toString("base64");
-await writeFile("src/lib/intro-mascot.ts", "// Generated from the existing 400px mascot; same pixels, embedded for the mobile first paint.\nexport const mobileIntroMascot = " + JSON.stringify("data:image/webp;base64," + mobileIntro) + ";\n");
