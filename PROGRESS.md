@@ -1,38 +1,34 @@
-# Nabta current progress — 7 October 2026
-Authoritative continuation: START-HERE-HANDOVER.md.
-Older phase-by-phase history is preserved in docs/progress-history-through-2026-09-28.md.
+# Nabta progress — 7 October 2026
 
-## Current deployment
-Cloudflare Worker nabta, https://nabta.nourabulnasr.workers.dev/en and /ar.
-Version 41925737-9eaf-4a7c-afb3-cde060e1deed.
-Source branch codex/nabta-phase-1. Main is historical.
-Public FAQ/privacy/terms/library notice and responsive image improvements are deployed.
-Source also retains future dashboard variables with Wrangler keep_vars=true.
+Current handover: START-HERE-HANDOVER.md.
+Detailed evidence: docs/release-2026-10-06.md.
+Older history: docs/progress-history-through-2026-09-28.md.
 
-## Verified this release
-Lint/types and Cloudflare production build completed.
-27 PostgreSQL permission/payment assertions; origin/reference/path/range/bounded-JSON validation.
-Local and live security/SEO checks; mobile/desktop EN/AR; current Work navigation; six website previews; one founder portrait.
-Mascot intro/landing/continuing animation, skip/Escape, reduced motion and no-JavaScript checks.
-12 bilingual library/privacy/terms viewport checks; disabled learning API rejects use and cross-origin writes.
-Six GitHub project URLs returned200 again.
-Known-pattern source/history/client asset scan reported no matches or public source maps.
-Repeated fresh-browser audit before the latest off-screen rendering change: English 75 / Arabic 74 median performance, with 100 accessibility, best practices and SEO. The new rendering optimization awaits its repeated independent measurement. See docs/release-2026-10-06.md for exact conditions and stricter target limitations.
+## Live release
 
-## Prepared but inactive
-Real student-library implementation: Supabase email OTP/Turnstile, owner MFA, RLS, manual InstaPay approval/revocation, private streaming and optional R2, lesson publishing and paginated orders.
-Backend services are not provisioned/connected. The public portal deliberately takes no recording payment.
-Provider email, two-account playback/revocation and restore verification remain dependent on owned service accounts and media.
+Cloudflare Worker nabta: https://nabta.nourabulnasr.workers.dev/en and /ar.
+Active version: 41925737-9eaf-4a7c-afb3-cde060e1deed.
+Source branch: codex/nabta-phase-1. Main is historical.
+Application source matches verified release bcb3a1f; the embedded-image experiment was reverted after comparative measurements.
 
-## Decisions
-Live and recorded tutoring are separate EGP250 purchases.20 recorded sessions,1–2h each, lifetime access, EGP4500 full course.
-Consultancy remains free30min, daily17:00–00:00 Cairo,24h notice, Google Meet via the configured Cal.com link.
-Preserve single black-and-white founder portrait and supplied animated mascot.
-Nour authorized completing and publishing all independent work; old phase-stop notes are superseded.
+## Completed
 
-## Outstanding
-See the current handover for owner accounts, recordings/intro/AI visuals, factual/policy details and real booking test.
-One unpatched braces build-tool advisory remains under an exact exception expiring20 October2026.
-No paid services or billing changes enabled. No claim of perfect screen-recording prevention, zero audit findings or untested provider readiness.
+Bilingual public site, supplied animated mascot/intro, responsive Work dropdown, six website previews, verified GitHub destinations, one founder portrait plus the same consultation thumbnail, Cal.com and InstaPay links, FAQ/privacy/terms, student-library preparation state, responsive images, metadata and security headers.
 
+Student platform code and database are prepared: email OTP/Turnstile, owner MFA, row-level permissions, manual InstaPay approval/revocation, private Supabase/R2 video streaming, lesson publishing and paginated orders. It stays disabled until services and real media are connected.
 
+Lint/types/build, 27 PostgreSQL permission/payment assertions, input validation, browser security/SEO, responsive EN/AR, deep links, keyboard/no-JS access, mascot/3D fallback and known-pattern secret scans completed. Real provider email/payment/video acceptance tests remain dependent on accounts and media.
+
+## Performance and security limits
+
+Three fresh-browser mobile audits per language: median EN 78 / AR 75, ranges 75–79 / 74–78. Accessibility, best practices and SEO were 100 throughout. Median-scoring LCP was 4.6 / 4.8 seconds; the stricter speed target is not met and field INP is unmeasured. Keep these limitations visible.
+
+One unpatched upstream braces build-tool advisory remains under an exact exception expiring 20 October 2026. No zero-vulnerability or perfect screen-recording-protection claim.
+
+## Agreed rules and next actions
+
+Live and recorded tutoring are separate EGP 250 purchases. The recorded course has 20 planned lessons, 1–2 hours each, lifetime access and an EGP 4,500 bundle. No recording purchase before publication.
+
+Consultancy stays free: 30 minutes, daily 17:00–00:00 Cairo, 24-hour notice, Google Meet via Cal.com.
+
+Owner actions and dependent follow-through are listed in START-HERE-HANDOVER.md. No paid services, billing changes, real test booking or unsolicited email was activated. Further speed improvement remains a technical opportunity.

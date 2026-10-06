@@ -73,3 +73,10 @@ Hidden download controls and an email watermark are deterrents. A browser can st
 - https://developers.cloudflare.com/r2/pricing/
 - https://developers.cloudflare.com/r2/examples/aws/aws4fetch/
 
+
+## Email setup without purchasing a domain
+A possible low-volume route to investigate is the owner's existing Gmail account, if Google offers an app password for that account. Supabase accepts custom SMTP credentials; a dedicated app password must be entered directly in the provider settings, never the normal Google password or a chat message. This route is not configured or verified yet.
+
+Google requires two-step verification for app passwords, may withhold them for some accounts, and prefers OAuth when an application supports it. Changing the main Google password revokes existing app passwords. Keep production sign-in closed until real delivery and rate limits are checked. A separate transactional sender can replace this later.
+
+Sources: [Supabase custom SMTP](https://supabase.com/docs/guides/auth/auth-smtp), [Google app-password requirements](https://support.google.com/accounts/answer/185833?hl=en).
