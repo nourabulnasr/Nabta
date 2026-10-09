@@ -3,7 +3,7 @@ import { HorizontalWork } from "@/components/motion/horizontal-work";
 import Image from "@/components/responsive-image";
 import { visualWork } from "@/lib/visual-work";
 
-const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal"];
+const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "vesper-acoustics"];
 
 export function SelectedWork({ locale }: { locale: Locale }) {
   return (
@@ -30,7 +30,7 @@ export function SelectedWork({ locale }: { locale: Locale }) {
         <p>{locale === "ar" ? "واجهات لشركات وعلامات تجارية. من أول انطباع لآخر تفصيلة." : "Digital homes for businesses and brands. From the first impression to the final detail."}</p></div>
       <div className="website-showcase">{content.work.projects.filter(project => websiteIds.includes(project.id)).map(project => <article className="website-entry" key={project.id}>
         <a className="website-preview" href={project.url!} aria-label={`${locale === "ar" ? "زيارة" : "Visit"} ${project.title[locale]}`}>
-          <Image src={`/images/websites/${project.id}.jpg`} alt={locale === "ar" ? `معاينة الموقع — ${project.title[locale]}` : `${project.title[locale]} website preview`} width={1440} height={1000} sizes="(min-width: 768px) 65vw, 90vw" />
+          <Image src={`/images/websites/${project.id === "el-amal" ? "el-amal-home" : project.id}.jpg`} alt={locale === "ar" ? `معاينة الموقع — ${project.title[locale]}` : `${project.title[locale]} website preview`} width={1440} height={1000} sizes="(min-width: 768px) 65vw, 90vw" />
         </a>
         <div className="website-description"><h3>{project.title[locale]}</h3><p>{project.summary[locale]}</p><a className="text-link" href={project.url!}>{locale === "ar" ? "زيارة الموقع" : "Visit website"} ↗</a></div>
       </article>)}</div>

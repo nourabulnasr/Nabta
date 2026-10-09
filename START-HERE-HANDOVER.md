@@ -1,12 +1,12 @@
 # Nabta — current handover
-Updated 7 October 2026. This replaces contradictory status statements in older dated documents.
+Updated 10 October 2026. This replaces contradictory status statements in older dated documents.
 
 ## Where everything is
 Laptop folder: C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta
 GitHub: https://github.com/nourabulnasr/Nabta
 Active branch: codex/nabta-phase-1. Do not overwrite it with the historical main branch.
 Website: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Read docs/release-2026-10-06.md for the exact deployed version, checks and performance.
+Read docs/portfolio-update-2026-10-10.md for the current deployed version and portfolio checks. docs/release-2026-10-06.md records the platform and performance baseline.
 
 After changing ChatGPT accounts, open this folder in Codex and say:
 > Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and docs/release-2026-10-06.md. Continue the saved Nabta project; preserve the approved design and zero-budget constraint. Do not restart it.
@@ -21,7 +21,7 @@ Node22 and npm ci restore dependencies. Use OneDrive's Always keep on this devic
 English/Arabic, responsive menu with Work → AI & Software / Websites / AI Visuals.
 Animated supplied mascot, opening gust/flight/landing, continuing float, desktop shader/leaf and reduced-motion/no-JS fallbacks.
 Only the first black-and-white founder portrait remains; the same portrait also appears beside the consultation link.
-Six website previews, including MAS Heavy Equipment and El Amal, plus seven software entries. Six supplied GitHub destinations have verified canonical names; COD has no supplied URL.
+Seven website previews, including Vesper Acoustics, MAS Heavy Equipment and El Amal’s homepage, plus seven software entries. Six supplied GitHub destinations have verified canonical names; COD has no supplied URL.
 Free consultancy Cal.com link, InstaPay link for confirmed purchases, contact links and Powered by Nour Abulnasr.
 New FAQ, privacy and terms, student library preparation page, responsive media, security headers and bilingual search metadata.
 The intro-film component is ready directly below the hero and stays hidden until the real video is supplied.
