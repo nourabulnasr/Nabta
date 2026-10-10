@@ -3,7 +3,7 @@ import { HorizontalWork } from "@/components/motion/horizontal-work";
 import Image from "@/components/responsive-image";
 import { visualWork } from "@/lib/visual-work";
 
-const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "vesper-acoustics"];
+const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "vesper-acoustics", "ironman-3d", "elgabaly-architects"];
 
 export function SelectedWork({ locale }: { locale: Locale }) {
   return (

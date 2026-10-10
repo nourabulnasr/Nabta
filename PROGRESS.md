@@ -1,20 +1,20 @@
 # Nabta progress — 10 October 2026
 
 Current handover: START-HERE-HANDOVER.md.
-Latest portfolio release: docs/portfolio-update-2026-10-10.md.
+Latest portfolio release: docs/portfolio-expansion-2026-10-10.md.
 Platform and performance baseline: docs/release-2026-10-06.md.
 Older history: docs/progress-history-through-2026-09-28.md.
 
 ## Live release
 
 Cloudflare Worker nabta: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Active version: f5bd8db0-7f7b-4723-bfae-fd6870ca46b1.
+Active version: fdd3548a-0505-4089-9bbc-0f7454ba953a.
 Source branch: codex/nabta-phase-1. Main is historical.
-The 10 October release adds Vesper Acoustics and replaces El Amal’s catalogue preview and link with its homepage. It retains the verified rendering release; the earlier embedded-image experiment remains reverted.
+The latest 10 October release adds Iron Man 3D, Elgabaly Architects and four software repositories. The nine websites start with Vesper, Iron Man and Elgabaly; Royal Falcon, Power of Sea Moss and Elserafy are last. Vesper and El Amal’s homepage were added in the earlier release that day.
 
 ## Completed
 
-Bilingual public site, supplied animated mascot/intro, responsive Work dropdown, seven website previews, verified GitHub destinations, one founder portrait plus the same consultation thumbnail, Cal.com and InstaPay links, FAQ/privacy/terms, student-library preparation state, responsive images, metadata and security headers.
+Bilingual public site, supplied animated mascot/intro, responsive Work dropdown, nine website previews, verified GitHub destinations, one founder portrait plus the same consultation thumbnail, Cal.com and InstaPay links, FAQ/privacy/terms, student-library preparation state, responsive images, metadata and security headers.
 
 Student platform code and database are prepared: email OTP/Turnstile, owner MFA, row-level permissions, manual InstaPay approval/revocation, private Supabase/R2 video streaming, lesson publishing and paginated orders. It stays disabled until services and real media are connected.
 

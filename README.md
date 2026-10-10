@@ -42,6 +42,6 @@ Never copy a broad local OAuth credential into GitHub.
 ## Current limitations
 Owner media/accounts are pending. Connected learning flows have not yet been verified against real provider accounts.
 One unpatched build-tool advisory is narrowly documented in docs/security-exception-2026-10-06.md.
-Performance measurements are in docs/release-2026-10-06.md; the current portfolio deployment is recorded in docs/portfolio-update-2026-10-10.md.
+Performance measurements are in docs/release-2026-10-06.md; the current portfolio deployment is recorded in docs/portfolio-expansion-2026-10-10.md.
 No browser implementation can guarantee prevention of screen recording.
 
