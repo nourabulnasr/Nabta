@@ -1,20 +1,20 @@
-# Nabta progress — 10 October 2026
+# Nabta progress — 19 October 2026
 
 Current handover: START-HERE-HANDOVER.md.
-Latest portfolio release: docs/portfolio-expansion-2026-10-10.md.
+Latest portfolio release: docs/media-release-2026-10-19.md.
 Platform and performance baseline: docs/release-2026-10-06.md.
 Older history: docs/progress-history-through-2026-09-28.md.
 
 ## Live release
 
 Cloudflare Worker nabta: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Active version: fdd3548a-0505-4089-9bbc-0f7454ba953a.
+Active version: 78a767b9-c2de-4d69-b8a5-472118ed60b9.
 Source branch: codex/nabta-phase-1. Main is historical.
-The latest 10 October release adds Iron Man 3D, Elgabaly Architects and four software repositories. The nine websites start with Vesper, Iron Man and Elgabaly; Royal Falcon, Power of Sea Moss and Elserafy are last. Vesper and El Amal’s homepage were added in the earlier release that day.
+The 19 October release adds eleven supplied films to AI Visuals, replaces the single founder/consultation portrait, and adds Nightjar after Vesper. The ten websites retain Royal Falcon, Power of Sea Moss and Elserafy last. A narrowly scoped public-video streaming handler supports byte ranges without buffering entire films.
 
 ## Completed
 
-Bilingual public site, supplied animated mascot/intro, responsive Work dropdown, nine website previews, verified GitHub destinations, one founder portrait plus the same consultation thumbnail, Cal.com and InstaPay links, FAQ/privacy/terms, student-library preparation state, responsive images, metadata and security headers.
+Bilingual public site, supplied animated mascot/intro, responsive Work dropdown, ten website previews and eleven AI Visuals films, verified GitHub destinations, the new supplied founder portrait plus the same consultation thumbnail, Cal.com and InstaPay links, FAQ/privacy/terms, student-library preparation state, responsive images, metadata and security headers.
 
 Student platform code and database are prepared: email OTP/Turnstile, owner MFA, row-level permissions, manual InstaPay approval/revocation, private Supabase/R2 video streaming, lesson publishing and paginated orders. It stays disabled until services and real media are connected.
 
@@ -22,7 +22,7 @@ Lint/types/build, 27 PostgreSQL permission/payment assertions, input validation,
 
 ## Performance and security limits
 
-7 October baseline, not remeasured for this content update: three fresh-browser mobile audits per language: median EN 78 / AR 75, ranges 75–79 / 74–78. Accessibility, best practices and SEO were 100 throughout. Median-scoring LCP was 4.6 / 4.8 seconds; the stricter speed target is not met and field INP is unmeasured. Keep these limitations visible.
+19 October fresh single-run mobile checks: EN 65 / AR 66, LCP 5.8 / 5.9 seconds, CLS 0, TBT 170 / 90 ms. Accessibility, best practices and SEO scored 100 in both. These are single samples, not a three-run median; the speed target is not met. The previous 7 October three-run medians were EN 78 / AR 75. Field INP is unmeasured. The fresh reports flag uncompressed document delivery in Chrome, while direct Node requests negotiated Brotli/Zstandard; investigate that discrepancy before changing compression behavior.
 
 One unpatched upstream braces build-tool advisory remains under an exact exception expiring 20 October 2026. No zero-vulnerability or perfect screen-recording-protection claim.
 

@@ -338,12 +338,37 @@ html[lang="ar"] .brand-wordmark { line-height: 1.45; }
   .work-dropdown { position:static; box-shadow:none; border:0; border-inline-start:1px solid var(--rule); margin-block-end:.75rem; min-inline-size:0; }
   .work-dropdown a { white-space:normal; }
 }
-.visual-work-gallery { display:grid; gap:3rem; margin-block-start:3rem; }
-.visual-work-gallery figure { margin:0; }
-.visual-work-gallery :is(img,video) { inline-size:100%; block-size:auto; display:block; }
-.visual-work-gallery figcaption { padding-block:1rem; }
-.visual-work-gallery figcaption span { color:var(--muted); font-size:.875rem; }
-@media(min-width:768px) { .visual-work-gallery { grid-template-columns:1fr 1fr; align-items:start; } .visual-work-gallery figure:nth-child(even) { margin-block-start:5rem; } }
+.visual-screening-room { display:grid; gap:2rem; margin-block:2.5rem 3rem; }
+.visual-player,.visual-index { min-inline-size:0; }
+.visual-film { margin:0; }
+.visual-player-frame { aspect-ratio:16/9; background:oklch(8% .01 250); border:1px solid var(--rule); }
+.visual-player-frame video { display:block; inline-size:100%; block-size:100%; object-fit:contain; }
+.visual-film figcaption { padding-block:1.25rem; }
+.visual-film-meta,.visual-index-heading { display:flex; align-items:center; justify-content:space-between; gap:1rem; color:var(--muted); font-size:.8125rem; }
+.visual-film h3 { font-family:var(--font-display),var(--font-arabic),serif; font-size:clamp(1.8rem,3vw,3rem); font-weight:400; line-height:1.15; margin-block:.75rem; }
+.visual-film p { color:var(--muted); line-height:1.7; max-inline-size:55ch; }
+.visual-index-heading { border-block-end:1px solid var(--rule); padding-block-end:1rem; margin-block-end:.5rem; }
+.visual-index-heading h3 { color:var(--ink); font:inherit; font-weight:500; margin:0; }
+.visual-film-list { display:flex; gap:.75rem; overflow-x:auto; padding:.5rem 2px 1rem; scroll-snap-type:x proximity; scrollbar-width:thin; scrollbar-color:var(--sprout) transparent; }
+.visual-film-choice { flex:0 0 13rem; position:relative; display:grid; grid-template-columns:1fr auto; gap:.75rem; padding:1rem; color:var(--ink); background:transparent; border:1px solid var(--rule); text-align:start; font:inherit; cursor:pointer; scroll-snap-align:start; }
+.visual-film-choice[aria-pressed="true"] { border-color:var(--sprout); background:oklch(75% .15 145 / .05); }
+.visual-film-choice:hover { background:oklch(95% 0 0 / .04); }
+.visual-film-choice:focus-visible { outline:2px solid var(--sprout); outline-offset:2px; }
+.visual-film-number { color:var(--muted); font-size:.6875rem; font-variant-numeric:tabular-nums; }
+.visual-thumbnail { grid-column:1/-1; grid-row:1; background:oklch(8% .01 250); aspect-ratio:16/9; }
+.visual-thumbnail img { display:block; inline-size:100%; block-size:100%; object-fit:contain; }
+.visual-choice-text { grid-column:1/-1; grid-row:2; display:grid; gap:.25rem; }
+.visual-choice-title { font-size:.875rem; line-height:1.4; }
+.visual-choice-category,.visual-choice-duration { color:var(--muted); font-size:.6875rem; line-height:1.5; }
+.visual-choice-duration { justify-self:end; font-variant-numeric:tabular-nums; }
+@media(min-width:1024px) {
+  .visual-screening-room { grid-template-columns:minmax(0,1.8fr) minmax(18rem,1fr); gap:clamp(2rem,4vw,4rem); align-items:start; }
+  .visual-film-list { display:grid; gap:0; overflow-y:auto; overflow-x:hidden; max-block-size:33rem; padding:0 .25rem .25rem; scrollbar-gutter:stable; scroll-snap-type:y proximity; }
+  .visual-film-choice { grid-template-columns:1.25rem 5rem minmax(0,1fr) auto; align-items:center; padding:.875rem .5rem; gap:.625rem; border:0; border-block-end:1px solid var(--rule); border-inline-start:2px solid transparent; }
+  .visual-film-choice[aria-pressed="true"] { border-block-end-color:var(--rule); border-inline-start-color:var(--sprout); }
+  .visual-thumbnail { grid-column:2; grid-row:1; }
+  .visual-choice-text { grid-column:3; grid-row:1; }
+}
 
 /* Student and information pages extend the approved Nabta palette. */
 .portal { max-width: 1120px; margin-inline:auto; padding-block:3rem 6rem; min-height:100svh; }

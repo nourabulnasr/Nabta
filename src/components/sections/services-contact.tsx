@@ -18,7 +18,7 @@ export function ServicesContact({ locale }: { locale: Locale }) {
       </dl>
       <div className="contact-details" data-reveal>
         <p className="contact-invitation">{content.contact.invitation[locale]}</p>
-        <div className="consultation-profile"><Image src="/images/founder/portrait-1.webp" alt="" width={72} height={88} sizes="72px"/><div><p className="small-note">{locale==="ar"?"استشارتك مع نور أبو النصر":"Your consultation with Nour Abulnasr"}</p><p><a className="text-link" href={consultancyBookingUrl}>{locale === "ar" ? "احجز استشارة ذكاء اصطناعي مجانية — ٣٠ دقيقة" : "Book a free AI consultation — 30 minutes"} ↗</a></p></div></div>
+        <div className="consultation-profile"><Image src="/images/founder/portrait-20261019.webp" alt="" width={72} height={88} sizes="72px"/><div><p className="small-note">{locale==="ar"?"استشارتك مع نور أبو النصر":"Your consultation with Nour Abulnasr"}</p><p><a className="text-link" href={consultancyBookingUrl}>{locale === "ar" ? "احجز استشارة ذكاء اصطناعي مجانية — ٣٠ دقيقة" : "Book a free AI consultation — 30 minutes"} ↗</a></p></div></div>
         <dl className="contact-channels">
           <div><dt>{content.contact.emailLabel[locale]}</dt><dd>
             {content.contact.emailUrl ? <a href={content.contact.emailUrl}><bdi>{content.contact.email[locale]}</bdi></a> : <bdi>{content.contact.email[locale]}</bdi>}

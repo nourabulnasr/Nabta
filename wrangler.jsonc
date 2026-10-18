@@ -5,11 +5,12 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "main": "vinext/server/fetch-handler",
+  "main": "worker.ts",
   "assets": {
     "directory": "dist/client",
     "not_found_handling": "none",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    "run_worker_first": ["/media/visuals/*"]
   },
   "keep_vars": true
 }

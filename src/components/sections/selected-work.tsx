@@ -1,9 +1,9 @@
 import { content, type Locale } from "@/content";
 import { HorizontalWork } from "@/components/motion/horizontal-work";
 import Image from "@/components/responsive-image";
-import { visualWork } from "@/lib/visual-work";
+import { VisualGallery } from "@/components/visual-gallery";
 
-const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "vesper-acoustics", "ironman-3d", "elgabaly-architects"];
+const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "vesper-acoustics", "nightjar-passage", "ironman-3d", "elgabaly-architects"];
 
 export function SelectedWork({ locale }: { locale: Locale }) {
   return (
@@ -38,13 +38,7 @@ export function SelectedWork({ locale }: { locale: Locale }) {
     <section id="ai-visuals" className="visuals-section page-gutter" aria-labelledby="ai-visuals-title">
       <div className="work-heading"><h2 id="ai-visuals-title">{locale === "ar" ? "إبداع بصري بالذكاء الاصطناعي" : "AI Visuals"}</h2>
         <p>{locale === "ar" ? "صور وأفلام للعلامات التجارية، برؤية وإخراج إبداعي." : "Images and films for brands, shaped by creative direction."}</p></div>
-      {visualWork.length ? <div className="visual-work-gallery">{visualWork.map(item => <figure key={item.id}>
-        {item.kind === "image" ? <Image src={item.src} alt={item.title[locale]} width={item.width} height={item.height} sizes="(min-width: 768px) 45vw, 90vw" /> :
-          <video controls playsInline preload="none" poster={item.poster} width={item.width} height={item.height} aria-label={item.title[locale]}>
-            <source src={item.src} /><track kind="captions" src={item.captions} srcLang={item.captionLanguage} label={item.captionLanguage} />
-          </video>}
-        <figcaption><span>{item.brand}</span><h3>{item.title[locale]}</h3></figcaption>
-      </figure>)}</div> : <p className="visuals-pending">{locale === "ar" ? "مجموعة مختارة من الأعمال قريبًا." : "Selected brand work coming soon."}</p>}
+      <VisualGallery locale={locale} />
       <a className="text-link" href="#contact">{locale === "ar" ? "لنتحدث عن علامتك التجارية" : "Let’s talk about your brand"} ↗</a>
     </section></>
   );

@@ -1,15 +1,15 @@
 # Nabta release and recovery
-Current host: Cloudflare Worker nabta. Origin: https://nabta.nourabulnasr.workers.dev.
+Current host: Cloudflare Worker nabta. The custom worker.ts entry delegates the application to vinext and handles byte ranges only for allowlisted public portfolio films; preserve this entry and the selective run_worker_first setting. Origin: https://nabta.nourabulnasr.workers.dev.
 Active source: codex/nabta-phase-1. Main and Netlify are historical; do not deploy the old main branch over this website.
 No paid hosting/storage changes or new domains without Nour's authorization.
 
 ## Release
 1. Review git status and current handover. Install the lockfile with npm ci.
-2. Run npm run check, node scripts/audit-dependencies.mjs, node scripts/verify-learning-db.mjs, node scripts/verify-learning-validation.mjs.
+2. Run npm run check, node scripts/audit-dependencies.mjs, node scripts/verify-learning-db.mjs, node scripts/verify-learning-validation.mjs and node scripts/verify-public-film-response.mjs.
 3. Set SITE_URL to the production origin, SITE_INDEXABLE=true, NABTA_CLOUDFLARE=true, CONTEXT=production.
 4. Build with npm run build:vinext. On this low-memory Windows host use RAYON_NUM_THREADS=1, GOMAXPROCS=1 and NODE_OPTIONS=--max-old-space-size=512.
 5. Serve dist/server/wrangler.json locally on port3001. Local preview must not redirect to production or upgrade local image requests to HTTPS.
-6. With VERIFY_BASE_URL=http://127.0.0.1:3001, VERIFY_SITE_URL set to production and VERIFY_INDEXABLE=true run verify-deployment.mjs, verify-seo.mjs, verify-completion.mjs, verify-work-founder.mjs, verify-section-navigation.mjs, verify-intro.mjs and verify-learning-pages.mjs.
+6. With VERIFY_BASE_URL=http://127.0.0.1:3001, VERIFY_SITE_URL set to production and VERIFY_INDEXABLE=true run verify-deployment.mjs, verify-seo.mjs, verify-completion.mjs, verify-work-founder.mjs, verify-section-navigation.mjs, verify-intro.mjs and verify-learning-pages.mjs, verify-visual-gallery.mjs and verify-public-film-delivery.mjs.
 7. Run npm run security:scan -- --require-build. Review the exact advisory exception; never claim zero audit findings if it is used.
 8. Before uploading a checked build, run a Wrangler deploy dry-run and confirm its module table includes the generated ssr/_next/static modules (including the React chunk imported by ssr/index.js). Local preview alone does not establish that the upload package is complete. On 10 October, a direct upload omitted 49 SSR chunks; staging a byte-identical build outside OneDrive and verifying all 129 modules before upload resolved the packaging failure. Do not activate a package with missing modules.
 9. Deploy with npm run deploy:vinext (builds again) or upload an already checked build using node node_modules/wrangler/bin/wrangler.js deploy --config dist/server/wrangler.json --keep-vars. Retain existing Worker secrets.

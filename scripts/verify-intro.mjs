@@ -1,5 +1,6 @@
 import puppeteer from "puppeteer-core";
 import { mkdir, writeFile } from "node:fs/promises";
+import { content } from "../src/content.ts";
 
 const output = process.env.VERIFY_OUTPUT ?? "artifacts/2026-09-16/checklist";
 const base = process.env.VERIFY_BASE_URL ?? "http://127.0.0.1:3000";
@@ -55,7 +56,7 @@ try {
   await edge.emulateMediaFeatures([{ name: "prefers-reduced-motion", value: "no-preference" }]);
   await edge.reload();
   const noJs = await edge.evaluate(() => ({ intro: !!document.querySelector(".brand-intro") && getComputedStyle(document.querySelector(".brand-intro")).display !== "none", projects: document.querySelectorAll(".project-entry, .website-entry").length }));
-  if (noJs.intro || noJs.projects !== 13) throw new Error(JSON.stringify(noJs));
+  if (noJs.intro || noJs.projects !== content.work.projects.length) throw new Error(JSON.stringify(noJs));
   results.push({ mobileSkip: true, liveReducedUnlock: unlocked, noJs });
   console.log(JSON.stringify(results));
   await writeFile(`${output}/intro-verification.json`, JSON.stringify(results, null, 2));

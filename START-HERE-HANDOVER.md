@@ -1,12 +1,12 @@
 # Nabta — current handover
-Updated 10 October 2026. This replaces contradictory status statements in older dated documents.
+Updated 19 October 2026. This replaces contradictory status statements in older dated documents.
 
 ## Where everything is
 Laptop folder: C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta
 GitHub: https://github.com/nourabulnasr/Nabta
 Active branch: codex/nabta-phase-1. Do not overwrite it with the historical main branch.
 Website: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Read docs/portfolio-expansion-2026-10-10.md for the current deployed version and portfolio checks. docs/release-2026-10-06.md records the platform and performance baseline.
+Read docs/media-release-2026-10-19.md for the latest media work and deployment status. docs/release-2026-10-06.md records the platform and performance baseline.
 
 After changing ChatGPT accounts, open this folder in Codex and say:
 > Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and docs/release-2026-10-06.md. Continue the saved Nabta project; preserve the approved design and zero-budget constraint. Do not restart it.
@@ -20,12 +20,12 @@ Node22 and npm ci restore dependencies. Use OneDrive's Always keep on this devic
 ## Completed public website
 English/Arabic, responsive menu with Work → AI & Software / Websites / AI Visuals.
 Animated supplied mascot, opening gust/flight/landing, continuing float, desktop shader/leaf and reduced-motion/no-JS fallbacks.
-Only the first black-and-white founder portrait remains; the same portrait also appears beside the consultation link.
-Nine website previews, including Vesper Acoustics, Iron Man 3D, Elgabaly Architects, MAS Heavy Equipment and El Amal’s homepage, plus eleven software entries. Ten supplied GitHub destinations have verified canonical names; COD has no supplied URL. Royal Falcon, Power of Sea Moss and Elserafy are the final three websites.
+The single founder portrait and consultation thumbnail use the replacement supplied on 19 October (portrait-20261019.webp).
+Ten website previews, including Nightjar Passage after Vesper Acoustics, Iron Man 3D, Elgabaly Architects, MAS Heavy Equipment and El Amal’s homepage, plus eleven software entries. Ten supplied GitHub destinations have verified canonical names; COD has no supplied URL. Royal Falcon, Power of Sea Moss and Elserafy are the final three websites.
 Free consultancy Cal.com link, InstaPay link for confirmed purchases, contact links and Powered by Nour Abulnasr.
 New FAQ, privacy and terms, student library preparation page, responsive media, security headers and bilingual search metadata.
 The intro-film component is ready directly below the hero and stays hidden until the real video is supplied.
-The AI Visuals gallery accepts images/videos; it stays empty until real brand work is provided.
+AI Visuals contains eleven supplied films in a bilingual screening-room gallery. One native player loads on demand; vertical films retain their full frame. Descriptive titles do not claim brand commissions.
 
 ## Agreed business rules
 Noureldin / Nour Abulnasr, Cairo. Email nourabulnasr@gmail.com; WhatsApp +201069046666.
@@ -51,7 +51,7 @@ Activation steps: docs/learning-activation.md. No paid product was activated.
 ## What Nour still supplies or does
 - Sign into/create the owned Supabase project and allow account setup; connect a usable authentication email sender and Turnstile. Keep credentials in provider settings, not chat.
 - Choose/activate private video capacity after file sizes are known. Supabase's free file/storage limits are unsuitable for typical long videos; R2 may require a billing/account step and is not unlimited free storage.
-- Provide the homepage introduction film, AI Visuals images/videos with brand/title details, and real lesson recordings/titles/durations/captions. Use docs/course-content-template.csv.
+- Provide the homepage introduction film and real lesson recordings/titles/durations/captions. The eleven AI Visuals films and replacement portrait are already supplied; optional preferred film titles/brand credits and any needed speech captions can follow. Use docs/course-content-template.csv.
 - Confirm live teaching format/place, duration, and cancellation/rescheduling rules before taking those bookings.
 - Confirm InstaPay recipient display name, biography/degree/certification facts and published policy wording.
 - Make or authorize one clearly labelled Cal.com test booking to verify actual email, Meet and occupied-slot behavior. No appointment/email was silently sent.

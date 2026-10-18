@@ -19,10 +19,13 @@ See docs/release-runbook.md for browser checks and deployment.
 ## Edit the website
 - src/content.ts: bilingual business copy, AI/software projects, contact details.
 - src/content.ts plus src/components/sections/selected-work.tsx: website entries/previews.
-- src/lib/visual-work.ts: supplied AI images/videos. Empty until real work is supplied.
+- src/lib/visual-work.ts: bilingual metadata for eleven owner-supplied portfolio films.
+- public/media/visuals/ and public/images/visuals/: films, posters and thumbnails; src/components/visual-gallery.tsx controls on-demand playback.
 - src/lib/introduction-video.ts: homepage founder introduction film; null keeps it hidden.
 - src/lib/site-information.ts: privacy and service terms.
-- public/images/founder/portrait-1.webp: the single approved black-and-white portrait.
+- public/images/founder/portrait-20261019.webp: the current supplied founder and consultation portrait.
+- worker.ts and src/lib/public-film-response.ts: streaming byte ranges for the public portfolio films; paid recordings use their separate authenticated API.
+- scripts/prepare-film-manifest.mjs: regenerate exact byte sizes after replacing films; the validation workflow checks this manifest against the files.
 - scripts/prepare-images.mjs: regenerate responsive image assets after changing sources.
 - src/components/responsive-image.tsx: next/image plus static picture sources for adapter compatibility.
 - src/components/motion/: supplied mascot animation, intro, reduced-motion support and desktop 3D.
@@ -42,6 +45,6 @@ Never copy a broad local OAuth credential into GitHub.
 ## Current limitations
 Owner media/accounts are pending. Connected learning flows have not yet been verified against real provider accounts.
 One unpatched build-tool advisory is narrowly documented in docs/security-exception-2026-10-06.md.
-Performance measurements are in docs/release-2026-10-06.md; the current portfolio deployment is recorded in docs/portfolio-expansion-2026-10-10.md.
+Performance measurements are in docs/release-2026-10-06.md; the current portfolio deployment is recorded in docs/media-release-2026-10-19.md.
 No browser implementation can guarantee prevention of screen recording.
 
