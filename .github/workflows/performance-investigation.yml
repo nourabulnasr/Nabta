@@ -6,10 +6,9 @@ on:
       - '.github/workflows/performance-investigation.yml'
       - 'scripts/performance/**'
       - 'worker.ts'
-      - 'src/lib/first-paint.ts'
-      - 'src/app/brand-intro.css'
-      - 'src/app/globals.css'
-      - 'src/components/motion/brand-intro.tsx'
+      - 'src/**'
+      - 'public/**'
+      - 'package*.json'
       - 'vite.config.ts'
       - 'next.config.ts'
   workflow_dispatch:

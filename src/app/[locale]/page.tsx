@@ -1,7 +1,6 @@
 import { Faq } from "@/components/sections/faq";
 import { IntroductionVideo } from "@/components/sections/introduction-video";
 import type { Metadata } from "next";
-import { MascotPreload } from "@/components/mascot-preload";
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import { content, isLocale } from "@/content";
@@ -73,7 +72,6 @@ export default async function HomePage({ params }: PageProps) {
 
   return (
     <>
-      <MascotPreload />
       <script nonce={nonce} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <BrandIntro locale={locale} copy={{label:content.intro.label[locale],name:content.brand.name[locale],descriptor:content.brand.descriptor[locale],skip:content.intro.skip[locale],title:content.hero.title[locale],statement:content.intro.statement[locale]}} />
       <PageAccents />
