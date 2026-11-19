@@ -36,3 +36,11 @@ Owner actions and dependent follow-through are listed in START-HERE-HANDOVER.md.
 
 ## 19 November prepared checkpoint
 Studio landing pages and Strata portfolio integration are implemented and checked locally. Dependencies were patched and npm audit reports zero known vulnerabilities. Cloudflare authentication is required to publish. Local mobile samples86/84, LCP3.8/4.2seconds, target still pending. Read docs/website-checkpoint-2026-11-19.md for exact verification limits and owner/technical follow-through. Google Ads and outreach are deferred.
+
+
+## Published verification — 19 November 2026
+Published checked source a8dbd11 to Cloudflare Worker version 2e976338-5ea4-4e04-ba87-661e4daed3a2 after successful OAuth login. Both studio routes are live. Live EN/AR phone/desktop studio checks, axe, keyboard details, no-JS content, security headers/nonces/hydration/404, SEO/sitemap and all eleven film byte-range checks succeeded.
+
+Fresh single-run live mobile results were EN60/LCP5.9s/TBT440ms and AR58/LCP6.2s/TBT500ms. Both had CLS0 and accessibility/best-practices/SEO100. These measured results supersede any expectation based on the faster local samples. The public site is deployed, while mobile performance remains unfinished. Field INP is unmeasured. Rendering/CSS duplication is a diagnostic hypothesis requiring a measured implementation before claiming improvement.
+
+Cloudflare sign-in is resolved. Owner content/account requirements listed above still apply. Ads and outreach remain deferred.

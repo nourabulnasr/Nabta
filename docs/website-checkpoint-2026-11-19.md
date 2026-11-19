@@ -30,3 +30,11 @@ Local evidence is under artifacts/2026-11-19 and is ignored by Git.
 Owner: Cloudflare sign-in to publish this checkpoint, homepage introduction film, real course content, owned Supabase/authentication-email/Turnstile/private-video services, live-tutoring format/duration/place/change rules, InstaPay recipient display name and factual biography/policy confirmation, authorized real Cal.com acceptance appointment.
 Technical: finish LCP trace-driven optimization and verify live performance, connect owner services, enroll adminMFA, run actual two-account sign-in/payment/private-playback/revocation and backup-restore acceptance tests. Student services stay disabled until connected tests are complete.
 Google Ads and outreach were explicitly deferred by Nour until the website step is complete.
+
+
+## Published verification — 19 November 2026
+Published checked source a8dbd11 to Cloudflare Worker version 2e976338-5ea4-4e04-ba87-661e4daed3a2 after successful OAuth login. Both studio routes are live. Live EN/AR phone/desktop studio checks, axe, keyboard details, no-JS content, security headers/nonces/hydration/404, SEO/sitemap and all eleven film byte-range checks succeeded.
+
+Fresh single-run live mobile results were EN60/LCP5.9s/TBT440ms and AR58/LCP6.2s/TBT500ms. Both had CLS0 and accessibility/best-practices/SEO100. These measured results supersede any expectation based on the faster local samples. The public site is deployed, while mobile performance remains unfinished. Field INP is unmeasured. Rendering/CSS duplication is a diagnostic hypothesis requiring a measured implementation before claiming improvement.
+
+Cloudflare sign-in is resolved. Owner content/account requirements listed above still apply. Ads and outreach remain deferred.

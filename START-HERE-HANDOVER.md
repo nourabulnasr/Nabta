@@ -73,3 +73,6 @@ Read docs/release-runbook.md and .env.example. Older phase notes are historical 
 
 ## 19 November prepared checkpoint
 Studio landing pages and Strata portfolio integration are implemented and checked locally. Dependencies were patched and npm audit reports zero known vulnerabilities. Cloudflare authentication is required to publish. Local mobile samples86/84, LCP3.8/4.2seconds, target still pending. Read docs/website-checkpoint-2026-11-19.md for exact verification limits and owner/technical follow-through. Google Ads and outreach are deferred.
+
+
+19 November publication update: Worker 2e976338-5ea4-4e04-ba87-661e4daed3a2 serves the studio pages and Strata addition. Cloudflare authentication resolved. Live checks succeeded. Mobile speed remains below target, EN60/AR58 and LCP5.9/6.2s in single runs. See docs/website-checkpoint-2026-11-19.md.
