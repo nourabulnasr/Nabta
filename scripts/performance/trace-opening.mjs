@@ -3,6 +3,7 @@ const browser=await puppeteer.launch({executablePath:process.env.CHROME_PATH??'C
 try{
  const page=await browser.newPage();
  await page.setViewport({width:1440,height:900});
+ await page.evaluateOnNewDocument(()=>window.addEventListener('resize',()=>console.error('INTRO RESIZE',innerWidth,innerHeight)));
  page.on('pageerror',error=>console.log('PAGE ERROR',error.message));
  page.on('console',message=>{if(message.type()==='error')console.log('CONSOLE ERROR',message.text())});
  page.on('requestfailed',request=>console.log('REQUEST FAILED',request.url(),request.failure()?.errorText));

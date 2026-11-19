@@ -81,7 +81,10 @@ export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"lab
         { type: spring, stiffness: 95, damping: 23, mass: 0.8 });
       if (!cancelled) finish();
     };
-    void run().catch(() => { if (!cancelled) finish(); });
+    void run().catch(error => {
+      console.error("Mascot intro could not complete", error);
+      if (!cancelled) finish();
+    });
     return () => {
       cancelled = true;
       clearTimeout(failSafe);
