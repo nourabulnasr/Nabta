@@ -108,7 +108,7 @@ export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"lab
     <div className="intro-meta intro-top"><span>{copy.name} / {copy.descriptor}</span>
       <button ref={skip} type="button" onClick={() => setFinished(true)}>{copy.skip}</button></div>
     <div className="intro-wordmark" aria-hidden="true">{copy.title}<span>{copy.statement}</span></div>
-    <div className="intro-robot" aria-hidden="true"><Image src={mascotInline} alt="" width={400} height={400} unoptimized loading="eager" fetchPriority="high" decoding="async" /></div>
+    <div className="intro-robot" aria-hidden="true"><Image src={mascotInline} alt="" width={400} height={400} unoptimized loading="eager" fetchPriority="high" decoding="sync" /></div>
     <div className="intro-gust" aria-hidden="true">{Array.from({ length: 24 }, (_, i) => <i className="intro-particle" key={i} />)}</div>
     <div className="intro-meta intro-bottom"><span>{copy.label}</span><span className="intro-loading-line" aria-hidden="true" /></div>
   </div></>;

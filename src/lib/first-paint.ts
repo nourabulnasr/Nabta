@@ -16,7 +16,10 @@ type Rewriter = {
 
 // First paint uses the same CSS source as the full stylesheet. Hydration starts
 // after that paint; this changes scheduling, not the server-rendered page content.
-const bootstrap = `requestAnimationFrame(()=>requestAnimationFrame(()=>{
+const bootstrap = `let openingTimer;Promise.race([
+  Promise.resolve().then(()=>document.querySelector('.intro-robot img')?.decode?.()).catch(()=>{}),
+  new Promise(resolve=>{openingTimer=setTimeout(resolve,1500)})
+]).finally(()=>clearTimeout(openingTimer)).then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{
   const styles=Array.from(document.querySelectorAll('link[data-opening-style]'));
   Promise.all(styles.map(link=>new Promise(resolve=>{
     let timer;
@@ -33,7 +36,7 @@ const bootstrap = `requestAnimationFrame(()=>requestAnimationFrame(()=>{
     script.type='module';script.src=old.getAttribute('data-opening-module');script.nonce=old.nonce;
     document.head.append(script);old.remove();
   }));
-}))`;
+})))`;
 
 export function openingFrameResponse(request: Request, response: Response): Response {
   if (request.method !== "GET" || !/^\/(en|ar)\/?$/.test(new URL(request.url).pathname) ||
