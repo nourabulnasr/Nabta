@@ -51,6 +51,7 @@ jobs:
           exit 1
       - name: Check mascot sequence, skip, reduced motion and no JavaScript
         run: |
+          node scripts/performance/trace-opening.mjs
           node scripts/verify-intro.mjs
           node scripts/performance/verify-opening.mjs
       - name: Check production response and SEO
