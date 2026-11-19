@@ -9,7 +9,7 @@ try{
  page.on('requestfailed',request=>console.log('REQUEST FAILED',request.url(),request.failure()?.errorText));
  await page.goto(`${process.env.VERIFY_BASE_URL??'http://127.0.0.1:3016'}/en`,{waitUntil:'domcontentloaded'});
  for(let i=0;i<16;i++){
-  console.log(JSON.stringify(await page.evaluate(()=>({time:performance.now(),stage:document.querySelector('.brand-intro')?.dataset.stage,modules:document.querySelectorAll('script[data-opening-module]').length,styles:[...document.querySelectorAll('link[rel=stylesheet]')].map(link=>({href:link.getAttribute('href'),media:link.media,loaded:!!link.sheet})),css:document.querySelector('main')&&getComputedStyle(document.querySelector('main')).contentVisibility}))));
+  console.log(JSON.stringify(await page.evaluate(()=>({time:performance.now(),stage:document.querySelector('.brand-intro')?.dataset.stage,intros:document.querySelectorAll('.brand-intro').length,modules:document.querySelectorAll('script[data-opening-module]').length,styles:[...document.querySelectorAll('link[rel=stylesheet]')].map(link=>({href:link.getAttribute('href'),media:link.media,loaded:!!link.sheet})),css:document.querySelector('main')&&getComputedStyle(document.querySelector('main')).contentVisibility,mainStyle:document.querySelector('main')?.getAttribute('style')}))));
   await new Promise(resolve=>setTimeout(resolve,500));
  }
 }finally{await browser.close()}

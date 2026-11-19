@@ -43,7 +43,9 @@ export function BrandIntro({ locale, copy }: { locale: Locale; copy: Record<"lab
       const robot = scope.current.querySelector<HTMLElement>(".intro-robot")!;
       const asset = robot.querySelector("img")!;
       const wordmark = container.querySelector<HTMLElement>(".intro-wordmark")!;
-      const introFont = document.fonts.load(getComputedStyle(wordmark).font || "16px sans-serif", copy.title);
+      // A font fetch can reject even though its fallback is already usable.
+      // Typography must not cancel the mascot or leave the opening scene stuck.
+      const introFont = document.fonts.load(getComputedStyle(wordmark).font || "16px sans-serif", copy.title).catch(() => []);
       await Promise.all([
         Promise.race([Promise.all([introFont, asset.decode().catch(() => {})]), delay(2500)]),
         delay(700),
