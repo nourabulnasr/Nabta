@@ -18,6 +18,7 @@ try {
     await page.waitForFunction(()=>document.querySelector('.brand-intro')?.dataset.stage==='gust');
     await page.waitForSelector('.brand-intro',{hidden:true,timeout:10000});
     assert.equal(await page.evaluate(()=>document.querySelector('main').inert),false);
+    assert.notEqual(await page.evaluate(()=>getComputedStyle(document.querySelector('main')).contentVisibility),'hidden');
     await page.setJavaScriptEnabled(false);
     await page.reload({waitUntil:'networkidle0'});
     const noJs=await page.evaluate(()=>({intro:getComputedStyle(document.querySelector('.brand-intro')).display,content:getComputedStyle(document.querySelector('main')).contentVisibility}));
