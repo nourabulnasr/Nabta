@@ -6,7 +6,7 @@ Laptop folder: C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta
 GitHub: https://github.com/nourabulnasr/Nabta
 Active branch: codex/nabta-phase-1. Do not overwrite it with the historical main branch.
 Website: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Read docs/website-checkpoint-2026-11-19.md for the current prepared changes, publication blocker and remaining performance work. docs/release-2026-10-06.md records the platform and performance baseline.
+Read docs/website-checkpoint-2026-11-19.md for the published changes and final performance evidence. Live Worker f13adf58-e776-45eb-bca5-15ab280a5914 uses checked source402af12. All six fresh-browser mobile Lighthouse runs met LCP≤2.5s: EN1.54–1.91s, AR1.53–2.07s. Performance99–100; accessibility/best-practices/SEO100. Field INP remains unmeasured. docs/release-2026-10-06.md is a historical baseline.
 
 After changing ChatGPT accounts, open this folder in Codex and say:
 > Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and docs/release-2026-10-06.md. Continue the saved Nabta project; preserve the approved design and zero-budget constraint. Do not restart it.
@@ -21,7 +21,7 @@ Node22 and npm ci restore dependencies. Use OneDrive's Always keep on this devic
 English/Arabic, responsive menu with Work → AI & Software / Websites / AI Visuals.
 Animated supplied mascot, opening gust/flight/landing, continuing float, desktop shader/leaf and reduced-motion/no-JS fallbacks.
 The single founder portrait and consultation thumbnail use the replacement supplied on 19 October (portrait-20261019.webp).
-Ten website previews, including Nightjar Passage after Vesper Acoustics, Iron Man 3D, Elgabaly Architects, MAS Heavy Equipment and El Amal’s homepage, plus eleven software entries. Ten supplied GitHub destinations have verified canonical names; COD has no supplied URL. Royal Falcon, Power of Sea Moss and Elserafy are the final three websites.
+Eleven website previews, with Strata Atelier first, including Nightjar Passage after Vesper Acoustics, Iron Man 3D, Elgabaly Architects, MAS Heavy Equipment and El Amal’s homepage, plus eleven software entries. Ten supplied GitHub destinations have verified canonical names; COD has no supplied URL. Royal Falcon, Power of Sea Moss and Elserafy are the final three websites.
 Free consultancy Cal.com link, InstaPay link for confirmed purchases, contact links and Powered by Nour Abulnasr.
 New FAQ, privacy and terms, student library preparation page, responsive media, security headers and bilingual search metadata.
 The intro-film component is ready directly below the hero and stays hidden until the real video is supplied.
@@ -60,11 +60,11 @@ Activation steps: docs/learning-activation.md. No paid product was activated.
 ## Codex follow-through after those inputs
 Connect owned services and apply the migration/settings, configure owner enrollment/MFA, run real two-account email/payment/playback/revocation and backup-restore tests, publish supplied media and update factual copy.
 These are dependent implementation/verification steps, not work already completed. No need to redesign the website.
-Current performance and the remaining upstream build-tool advisory are recorded in the release report; neither should be disguised as an owner content task.
+The public homepage LCP task is complete against the six-run live acceptance gate. No known dependency vulnerabilities remained in the strict 19November audit. Owner-dependent student service activation and its acceptance tests remain unfinished. Ads and outreach remain deferred.
 
 ## Technical guardrails
 Cloudflare Worker nabta, account b7ec0633605b5b1dfd7448ac452c457d.
-Current stack Next16.3.8/React19.2.8 with vinext deployment, Motion12, optional desktop R3F.
+Current stack Next16.4.6/React19.3.1 with vinext1.4.6 deployment, Motion12, optional desktop R3F.
 npm run deploy:vinext builds/deploys; source pushes alone do not deploy Cloudflare.
 Netlify is historical (regional reachability issue); Vercel Hobby was not chosen for this commercial site.
 No domain purchase, paid plan or billing change is authorized.

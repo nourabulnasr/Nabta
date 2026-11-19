@@ -1,5 +1,21 @@
 # Nabta website checkpoint — 19 November 2026
 
+## Current published result
+The mobile homepage LCP task is complete against all six fresh-browser Lighthouse runs on the public EN/AR URLs. Worker f13adf58-e776-45eb-bca5-15ab280a5914 runs the exact CI-tested source402af12. The older preparation/blocker sections below are historical and superseded by this result.
+
+| Locale | LCP run1 | LCP run2 | LCP run3 | Performance |
+|---|---:|---:|---:|---:|
+| English | 1762.624ms | 1905.186ms | 1543.404ms | 100 / 99 / 100 |
+| Arabic | 1902.836ms | 2068.938ms | 1534.638ms | 99 / 99 / 100 |
+
+All runs: accessibility/best-practices/SEO100, TBT30–40ms, CLS≤0.02422. The strict gate requires each LCP≤2500ms, CLS<0.1 and performance≥90. These are mobile laboratory measurements, not field INP or a guarantee across every device/network.
+
+Live evidence: https://github.com/nourabulnasr/Nabta/actions/runs/44613054045/attempts/2 (job135882210288). Reports and screenshots are also saved in artifacts/2026-11-19/published-mobile-quality-final/ and its ZIP. Re-running the budget checker against the downloaded reports succeeded. The first live attempt failed two outliers and remains saved separately; the successful attempt followed a real decode-order/preload fix and a new deployment.
+
+Implementation: shared critical opening CSS paints before the full stylesheet, explicit streaming gzip, bounded image-decode readiness, deferred module hydration after paint and stylesheet readiness, inline opening image and removal of obsolete high-priority WebP preloads. The original hero image quality is retained. Optional font-loading failure no longer cancels the intro. No-JS, reduced-motion, print and timeout fallbacks are retained.
+
+Verification: source402af12 validation/build/security and six-run local production acceptance succeeded in CI44614390750. Published behavior/security/SEO and mascot gust/landing/continuing float/skip/reduced-motion/no-JS checks succeeded before the live mobile gate. No new paid services, real appointments, ads or outreach were activated. Owner-dependent content/service inputs remain listed in START-HERE-HANDOVER.md.
+
 ## Prepared changes
 - Added /en/studios and /ar/studios for architecture and interiors studios. Existing Nabta palette/type, two project previews, native expandable approach details, mobile/RTL layouts, free review request through WhatsApp and email, and a homepage portfolio link.
 - The review CTA asks Nour to agree a meeting time. The existing Cal.com event remains specifically for AI consultancy.

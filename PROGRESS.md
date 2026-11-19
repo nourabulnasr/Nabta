@@ -1,16 +1,16 @@
 # Nabta progress — 19 November 2026
 
 Current handover: START-HERE-HANDOVER.md.
-Latest prepared checkpoint: docs/website-checkpoint-2026-11-19.md. Publication awaits Cloudflare sign-in.
+Latest published checkpoint: docs/website-checkpoint-2026-11-19.md. Cloudflare sign-in and publication are complete.
 Platform and performance baseline: docs/release-2026-10-06.md.
 Older history: docs/progress-history-through-2026-09-28.md.
 
 ## Live release
 
 Cloudflare Worker nabta: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Active version: 78a767b9-c2de-4d69-b8a5-472118ed60b9.
+Active version: f13adf58-e776-45eb-bca5-15ab280a5914, checked source402af12.
 Source branch: codex/nabta-phase-1. Main is historical.
-The 19 October release adds eleven supplied films to AI Visuals, replaces the single founder/consultation portrait, and adds Nightjar after Vesper. The ten websites retain Royal Falcon, Power of Sea Moss and Elserafy last. A narrowly scoped public-video streaming handler supports byte ranges without buffering entire films.
+The 19November release includes bilingual studio landing pages, Strata first among eleven websites, patched dependencies, and the completed first-paint optimization. Six live mobile Lighthouse runs met LCP≤2.5s: EN1.54–1.91s and AR1.53–2.07s. Performance99–100; accessibility/best-practices/SEO100. Mascot gust/flight/landing/float, skip, reduced-motion and no-JS checks succeeded. Field INP remains unmeasured. Later sections retain historical measurements; this paragraph supersedes their current-status implications.
 
 ## Completed
 
