@@ -1,0 +1,44 @@
+name: Verify live performance
+on:
+  workflow_dispatch:
+  push:
+    branches: ['codex/nabta-phase-1']
+    paths: ['.github/workflows/verify-live-performance.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      VERIFY_BASE_URL: https://nabta.nourabulnasr.workers.dev
+      VERIFY_SITE_URL: https://nabta.nourabulnasr.workers.dev
+      VERIFY_INDEXABLE: 'true'
+      VERIFY_OUTPUT: artifacts/live/interactions
+      CHROME_PATH: /usr/bin/google-chrome
+      LIGHTHOUSE_RUNS: '3'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Verify published behavior and SEO
+        run: |
+          node scripts/verify-deployment.mjs
+          node scripts/verify-intro.mjs
+          node scripts/verify-seo.mjs
+      - name: Measure live mobile EN and AR
+        run: node scripts/lighthouse.mjs artifacts/live/mobile
+      - name: Enforce every live run
+        run: node scripts/performance/assert-budget.mjs artifacts/live/mobile
+      - name: Retain live evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: published-mobile-quality
+          path: artifacts/live
+          retention-days: 14
