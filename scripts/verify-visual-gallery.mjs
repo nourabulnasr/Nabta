@@ -46,9 +46,9 @@ try {
         await page.$$eval(".visual-film-choice", (buttons, i) => buttons[i].click(), index);
         await page.$eval("#ai-visuals video", video => new Promise((resolve, reject) => {
           const timer = setTimeout(() => reject(new Error("Film did not load: " + video.src)), 25000);
-          video.onloadeddata = () => { clearTimeout(timer); resolve(); };
+          video.onloadedmetadata = () => { clearTimeout(timer); resolve(); };
           video.onerror = () => { clearTimeout(timer); reject(new Error("Invalid film: " + video.src)); };
-          video.preload = "auto"; video.load();
+          video.preload = "metadata"; video.load();
         }));
         assert.equal(await page.$eval("#ai-visuals video", video => Number.isFinite(video.duration) && video.videoWidth > 0), true);
       }

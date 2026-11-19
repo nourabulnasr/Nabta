@@ -1,12 +1,12 @@
 # Nabta — current handover
-Updated 19 October 2026. This replaces contradictory status statements in older dated documents.
+Updated 19 November 2026. This replaces contradictory status statements in older dated documents.
 
 ## Where everything is
 Laptop folder: C:\Users\noura\OneDrive\Documents\ChatGPT\Nabta
 GitHub: https://github.com/nourabulnasr/Nabta
 Active branch: codex/nabta-phase-1. Do not overwrite it with the historical main branch.
 Website: https://nabta.nourabulnasr.workers.dev/en and /ar.
-Read docs/media-release-2026-10-19.md for the latest media work and deployment status. docs/release-2026-10-06.md records the platform and performance baseline.
+Read docs/website-checkpoint-2026-11-19.md for the current prepared changes, publication blocker and remaining performance work. docs/release-2026-10-06.md records the platform and performance baseline.
 
 After changing ChatGPT accounts, open this folder in Codex and say:
 > Read START-HERE-HANDOVER.md, AGENTS.md, PROGRESS.md and docs/release-2026-10-06.md. Continue the saved Nabta project; preserve the approved design and zero-budget constraint. Do not restart it.
@@ -70,3 +70,6 @@ Netlify is historical (regional reachability issue); Vercel Hobby was not chosen
 No domain purchase, paid plan or billing change is authorized.
 Read docs/release-runbook.md and .env.example. Older phase notes are historical evidence, not the current to-do list.
 
+
+## 19 November prepared checkpoint
+Studio landing pages and Strata portfolio integration are implemented and checked locally. Dependencies were patched and npm audit reports zero known vulnerabilities. Cloudflare authentication is required to publish. Local mobile samples86/84, LCP3.8/4.2seconds, target still pending. Read docs/website-checkpoint-2026-11-19.md for exact verification limits and owner/technical follow-through. Google Ads and outreach are deferred.

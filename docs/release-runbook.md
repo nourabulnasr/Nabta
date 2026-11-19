@@ -13,7 +13,7 @@ No paid hosting/storage changes or new domains without Nour's authorization.
 7. Run npm run security:scan -- --require-build. Review the exact advisory exception; never claim zero audit findings if it is used.
 8. Before uploading a checked build, run a Wrangler deploy dry-run and confirm its module table includes the generated ssr/_next/static modules (including the React chunk imported by ssr/index.js). Local preview alone does not establish that the upload package is complete. On 10 October, a direct upload omitted 49 SSR chunks; staging a byte-identical build outside OneDrive and verifying all 129 modules before upload resolved the packaging failure. Do not activate a package with missing modules.
 9. Deploy with npm run deploy:vinext (builds again) or upload an already checked build using node node_modules/wrangler/bin/wrangler.js deploy --config dist/server/wrangler.json --keep-vars. Retain existing Worker secrets.
-10. Repeat HTTPS header/SEO/browser checks against the real URL. Run mobile Lighthouse with npm run audit:mobile and save both reports. Confirm real reachability from Nour's network.
+10. Repeat HTTPS header/SEO/browser checks against the real URL. Verify /en/studios and /ar/studios with scripts/verify-studios.mjs. Run mobile Lighthouse with npm run audit:mobile and save both reports. Confirm real reachability from Nour's network.
 11. Record the Worker version, measured limitations and source commit. Update handover and memory, commit and push codex/nabta-phase-1, verify origin history.
 
 ## GitHub workflows
@@ -35,7 +35,7 @@ Before activation, prove a restore into an isolated database and verify purchase
 Handle data access/deletion requests through the published support email after verifying identity and preserving required financial records.
 
 ## Maintenance
-The current build-tool advisory exception expires20 October2026. Patch or reassess it before the next release.
+The19November dependency checkpoint reports zero known advisories. The old time-limited exception was removed from the audit checker. Run the audit again at every release.
 Check dependency/security notifications, Worker errors and free usage allowances.
 No external analytics, uptime provider or billing service was silently enrolled. Configure any optional external monitoring with owner-controlled accounts.
 Search Console/Bing ownership and real-user Web Vitals require the owner's accounts/traffic; lab scores do not establish field INP.

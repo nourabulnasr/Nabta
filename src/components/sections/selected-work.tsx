@@ -3,7 +3,7 @@ import { HorizontalWork } from "@/components/motion/horizontal-work";
 import Image from "@/components/responsive-image";
 import { VisualGallery } from "@/components/visual-gallery";
 
-const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "vesper-acoustics", "nightjar-passage", "ironman-3d", "elgabaly-architects"];
+const websiteIds = ["elserafy", "royal-falcon", "sea-moss", "palermo", "mas-heavy-equipment", "el-amal", "strata-atelier","vesper-acoustics", "nightjar-passage", "ironman-3d", "elgabaly-architects"];
 
 export function SelectedWork({ locale }: { locale: Locale }) {
   return (
@@ -27,7 +27,7 @@ export function SelectedWork({ locale }: { locale: Locale }) {
     </HorizontalWork>
     <section id="websites" className="website-section page-gutter" aria-labelledby="websites-title">
       <div className="work-heading"><h2 id="websites-title">{locale === "ar" ? "المواقع الإلكترونية" : "Websites"}</h2>
-        <p>{locale === "ar" ? "واجهات لشركات وعلامات تجارية. من أول انطباع لآخر تفصيلة." : "Digital homes for businesses and brands. From the first impression to the final detail."}</p></div>
+        <p>{locale === "ar" ? "واجهات لشركات وعلامات تجارية. من أول انطباع لآخر تفصيلة." : "Digital homes for businesses and brands. From the first impression to the final detail."}</p><a className="text-link" href={`/${locale}/studios`}>{locale === "ar" ? "مواقع لمكاتب العمارة والتصميم الداخلي" : "Websites for architecture & interiors studios"} ↗</a></div>
       <div className="website-showcase">{content.work.projects.filter(project => websiteIds.includes(project.id)).map(project => <article className="website-entry" key={project.id}>
         <a className="website-preview" href={project.url!} aria-label={`${locale === "ar" ? "زيارة" : "Visit"} ${project.title[locale]}`}>
           <Image src={`/images/websites/${project.id === "el-amal" ? "el-amal-home" : project.id}.jpg`} alt={locale === "ar" ? `معاينة الموقع — ${project.title[locale]}` : `${project.title[locale]} website preview`} width={1440} height={1000} sizes="(min-width: 768px) 65vw, 90vw" />

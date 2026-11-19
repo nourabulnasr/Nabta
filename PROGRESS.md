@@ -1,7 +1,7 @@
-# Nabta progress — 19 October 2026
+# Nabta progress — 19 November 2026
 
 Current handover: START-HERE-HANDOVER.md.
-Latest portfolio release: docs/media-release-2026-10-19.md.
+Latest prepared checkpoint: docs/website-checkpoint-2026-11-19.md. Publication awaits Cloudflare sign-in.
 Platform and performance baseline: docs/release-2026-10-06.md.
 Older history: docs/progress-history-through-2026-09-28.md.
 
@@ -33,3 +33,6 @@ Live and recorded tutoring are separate EGP 250 purchases. The recorded course h
 Consultancy stays free: 30 minutes, daily 17:00–00:00 Cairo, 24-hour notice, Google Meet via Cal.com.
 
 Owner actions and dependent follow-through are listed in START-HERE-HANDOVER.md. No paid services, billing changes, real test booking or unsolicited email was activated. Further speed improvement remains a technical opportunity.
+
+## 19 November prepared checkpoint
+Studio landing pages and Strata portfolio integration are implemented and checked locally. Dependencies were patched and npm audit reports zero known vulnerabilities. Cloudflare authentication is required to publish. Local mobile samples86/84, LCP3.8/4.2seconds, target still pending. Read docs/website-checkpoint-2026-11-19.md for exact verification limits and owner/technical follow-through. Google Ads and outreach are deferred.
