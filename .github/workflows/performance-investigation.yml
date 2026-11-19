@@ -1,10 +1,17 @@
-name: Investigate first paint
+name: Verify first paint
 on:
   push:
     branches: ['codex/nabta-phase-1']
     paths:
       - '.github/workflows/performance-investigation.yml'
       - 'scripts/performance/**'
+      - 'worker.ts'
+      - 'src/lib/first-paint.ts'
+      - 'src/app/brand-intro.css'
+      - 'src/app/globals.css'
+      - 'src/components/motion/brand-intro.tsx'
+      - 'vite.config.ts'
+      - 'next.config.ts'
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,6 +26,10 @@ jobs:
       CONTEXT: production
       CHROME_PATH: /usr/bin/google-chrome
       LIGHTHOUSE_RUNS: '3'
+      VERIFY_BASE_URL: http://127.0.0.1:3016
+      VERIFY_SITE_URL: https://nabta.nourabulnasr.workers.dev
+      VERIFY_INDEXABLE: 'true'
+      VERIFY_OUTPUT: artifacts/performance/interactions
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
@@ -33,20 +44,23 @@ jobs:
         run: |
           mkdir -p artifacts/performance
           npx wrangler dev --config dist/server/wrangler.json --port 3016 > artifacts/performance/preview.log 2>&1 &
-          node scripts/performance/first-paint-proxy.mjs > artifacts/performance/proxy.log 2>&1 &
           for attempt in $(seq 1 60); do
-            if curl --fail --silent http://127.0.0.1:3017/en > /dev/null; then exit 0; fi
+            if curl --fail --silent http://127.0.0.1:3016/en > /dev/null; then exit 0; fi
             sleep 1
           done
           exit 1
-      - name: Measure current source baseline
+      - name: Check mascot sequence, skip, reduced motion and no JavaScript
+        run: |
+          node scripts/verify-intro.mjs
+          node scripts/performance/verify-opening.mjs
+      - name: Check production response and SEO
+        run: |
+          node scripts/verify-deployment.mjs
+          node scripts/verify-seo.mjs
+      - name: Measure integrated production rendering
         run: node scripts/lighthouse.mjs artifacts/performance/baseline
-        env:
-          VERIFY_BASE_URL: http://127.0.0.1:3016
-      - name: Measure critical opening CSS and deferred hydration
-        run: node scripts/lighthouse.mjs artifacts/performance/experiment
-        env:
-          VERIFY_BASE_URL: http://127.0.0.1:3017
+      - name: Enforce the LCP budget in every run
+        run: node scripts/performance/assert-budget.mjs artifacts/performance/baseline
       - name: Print exact values
         if: always()
         run: node scripts/performance/report.mjs

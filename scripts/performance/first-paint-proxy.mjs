@@ -1,9 +1,9 @@
 import http from 'node:http';
 import { gzipSync } from 'node:zlib';
 import { readFileSync } from 'node:fs';
-const source=readFileSync('src/app/globals.css','utf8');
+const source=readFileSync('src/app/brand-intro.css','utf8');
 // Diagnostic only: compare first-paint architecture before any production rewrite.
-const critical=source.slice(source.indexOf(':root {'),source.indexOf('.site-header {'))+source.slice(source.indexOf('.brand-intro { position'),source.indexOf('.hero-leaf-fallback'))+source.slice(source.indexOf('.brand-intro { display: none; }'),source.indexOf('/* Founder copy'));
+const critical=source;
 http.createServer(async (req,res)=>{
   try {
     const upstream=await fetch('http://127.0.0.1:3016'+req.url,{headers:{'accept-encoding':'identity'}});
