@@ -62,6 +62,17 @@ jobs:
         run: node scripts/lighthouse.mjs artifacts/performance/baseline
       - name: Enforce the LCP budget in every run
         run: node scripts/performance/assert-budget.mjs artifacts/performance/baseline
+      - name: Record checked build revision
+        run: git rev-parse HEAD > dist/BUILD_COMMIT
+      - name: Retain checked release build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: checked-first-paint-build
+          path: |
+            dist
+            !dist/**/.wrangler/**
+            !dist/**/.vite/**
+          retention-days: 7
       - name: Print exact values
         if: always()
         run: node scripts/performance/report.mjs
