@@ -38,3 +38,8 @@ Published checked source a8dbd11 to Cloudflare Worker version 2e976338-5ea4-4e04
 Fresh single-run live mobile results were EN60/LCP5.9s/TBT440ms and AR58/LCP6.2s/TBT500ms. Both had CLS0 and accessibility/best-practices/SEO100. These measured results supersede any expectation based on the faster local samples. The public site is deployed, while mobile performance remains unfinished. Field INP is unmeasured. Rendering/CSS duplication is a diagnostic hypothesis requiring a measured implementation before claiming improvement.
 
 Cloudflare sign-in is resolved. Owner content/account requirements listed above still apply. Ads and outreach remain deferred.
+
+## First-paint investigation continues
+LCP remains unfinished. Local diagnostic changes inline the opening mascot, suppress redundant module preloading, and postpone covered-page layout, with no-JavaScript, print and seven-second timeout fallbacks. An unsuccessful server-delay experiment was removed; a display-none experiment introduced layout shift and was rejected. No new performance experiment has been published.
+
+Windows virtual-memory exhaustion caused diagnostic process crashes, so `.github/workflows/performance-investigation.yml` builds the same source on a clean runner and compares three simulated-mobile runs per language against a loopback-only critical-CSS/deferred-hydration proxy. Reports are retained as CI artifacts. These are diagnostic comparisons, not production acceptance. Next: inspect clean-runner evidence, implement only verified improvements, review and test the complete mascot flow, then deploy and measure live EN/AR against LCP ≤2,500ms.

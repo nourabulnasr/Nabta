@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
   htmlLimitedBots: /.*/,
   poweredByHeader: false,
   // Bound parallel page-generation memory on development machines and free build runners.
-  experimental: { inlineCss: true, globalNotFound: true, cpus: 2 },
+  experimental: { inlineCss: false, globalNotFound: true, cpus: 2 },
   productionBrowserSourceMaps: false,
   images: { remotePatterns: [], localPatterns: [{ pathname: "/images/**", search: "" }], maximumRedirects: 0 },
   async headers() {

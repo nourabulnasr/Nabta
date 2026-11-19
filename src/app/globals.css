@@ -314,8 +314,17 @@ html[lang="ar"] .brand-wordmark { line-height: 1.45; }
 .brand-intro { display: none; }
 @media (prefers-reduced-motion: no-preference) {
   .brand-intro { display: block; animation: intro-timeout 0s linear 7s forwards; }
+  body:has(.brand-intro[data-stage="loading"]) main {
+    content-visibility: hidden;
+    contain-intrinsic-block-size: 100svh;
+    animation: intro-content-timeout 0s linear 7s forwards;
+  }
 }
 @keyframes intro-timeout { to { visibility: hidden; pointer-events: none; } }
+@keyframes intro-content-timeout { to { content-visibility: visible; } }
+@media print {
+  body:has(.brand-intro[data-stage="loading"]) main { content-visibility: visible; animation: none; }
+}
 
 /* Founder copy follows the existing editorial hierarchy; portrait awaits supplied asset. */
 .section-founder { border-block-start: 1px solid var(--rule); }

@@ -1,0 +1,59 @@
+name: Investigate first paint
+on:
+  push:
+    branches: ['codex/nabta-phase-1']
+    paths:
+      - '.github/workflows/performance-investigation.yml'
+      - 'scripts/performance/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SITE_URL: https://nabta.nourabulnasr.workers.dev
+      SITE_INDEXABLE: 'true'
+      NABTA_CLOUDFLARE: 'true'
+      CONTEXT: production
+      CHROME_PATH: /usr/bin/google-chrome
+      LIGHTHOUSE_RUNS: '3'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build:vinext
+      - name: Start isolated servers
+        run: |
+          mkdir -p artifacts/performance
+          npx wrangler dev --config dist/server/wrangler.json --port 3016 > artifacts/performance/preview.log 2>&1 &
+          node scripts/performance/first-paint-proxy.mjs > artifacts/performance/proxy.log 2>&1 &
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3017/en > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Measure current source baseline
+        run: node scripts/lighthouse.mjs artifacts/performance/baseline
+        env:
+          VERIFY_BASE_URL: http://127.0.0.1:3016
+      - name: Measure critical opening CSS and deferred hydration
+        run: node scripts/lighthouse.mjs artifacts/performance/experiment
+        env:
+          VERIFY_BASE_URL: http://127.0.0.1:3017
+      - name: Print exact values
+        if: always()
+        run: node scripts/performance/report.mjs
+      - name: Retain performance evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: first-paint-comparison
+          path: artifacts/performance
+          retention-days: 14
